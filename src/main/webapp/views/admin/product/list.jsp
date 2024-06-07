@@ -11,18 +11,23 @@
                 </div>
                 <div class="flex-wrap inline-flex xl:flex items-center gap-2 mb-3">
                     <a class="btn btn-default btn-solid mr-2" href="${contextPath}/admin/product/add">
-						<span class="flex items-center justify-center gap-2"> <span
-                                class="text-lg">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6">
-                                <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd"></path>
-                            </svg>
-						</span> <span>Add New Product</span>
-						</span>
+                        <span class="flex items-center justify-center gap-2">
+                            <span class="text-lg">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-6 h-6">
+                                    <path fill-rule="evenodd"
+                                          d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
+                                          clip-rule="evenodd">
+
+                                    </path>
+                                </svg>
+						    </span>
+                            <span>Add New Product</span>
+					    </span>
                     </a>
 
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="table-default table-hover data-table">
+                    <table   class="table-default table-hover data-table">
                         <thead>
                         <tr>
                             <th>STT</th>
@@ -36,7 +41,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="p" varStatus="loop" items="${products}" >
+                        <c:forEach var="p" varStatus="loop" items="${products.content}" >
                             <tr>
                                 <td>${loop.count}</td>
                                 <td>
@@ -93,8 +98,74 @@
                         </c:forEach>
                         </tbody>
                     </table>
+                    <div class="pagination">
+                        <c:choose>
+                            <c:when test="${not products.first}">
+                                 <span class="pagination-pager pagination-pager-prev">
+                                     <a href="?page=${products.number - 1}&size=${products.size}">
+                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                     </a>
+                                </span>
+                            </c:when>
+                            <c:otherwise>
+                                <span class="pagination-pager pagination-pager-prev pagination-pager-disabled">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </c:otherwise>
+                        </c:choose>
+                        <c:forEach begin="0" end="${products.totalPages - 1}" step="1" varStatus="status">
+                            <c:choose>
+                                <c:when test="${status.index == products.number}">
+                                    <li class="pagination-pager active">${status.index + 1}</li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="pagination-pager">
+                                        <a href="?page=${status.index}&size=${products.size}">
+                                                ${status.index + 1}
+                                        </a>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
+
+                        </c:forEach>
+                        <c:choose>
+                            <c:when test="${not products.last}">
+                                    <span class="pagination-pager pagination-pager-next">
+                                        <a href="?page=${products.number + 1}&size=${products.size}">
+                                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                        </a>
+                                    </span>
+                            </c:when>
+                            <c:otherwise>
+                                <span class="pagination-pager pagination-pager-next pagination-pager-disabled">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                            </c:otherwise>
+                        </c:choose>
+                        <form id="submitForm" action="${contextPath}/admin/product">
+                            <label for="pageSizeSelect"></label>
+                            <select id="pageSizeSelect" name="size" class="input input-sm max-w-[120px] onchange= "submitPageSize()">
+                                <option value="5" <c:if test="${size == 5}">selected</c:if>>5 / page</option>
+                                <option value="10" <c:if test="${size == 10}">selected</c:if>>10 / page</option>
+                                <option value="20" <c:if test="${size == 15}">selected</c:if>>20 / page</option>
+                                <option value="50" <c:if test="${size == 20}">selected</c:if>>50 / page</option>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function submitPageSize() {
+        document.getElementById('submitForm').submit();
+    }
+</script>

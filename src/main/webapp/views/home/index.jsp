@@ -296,12 +296,6 @@
 
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-btn-25"><a href="shop-4column.html" class="btn btn-outline"><i
-                        class="fas fa-eye"></i><span>show more</span></a></div>
-            </div>
-        </div>
     </div>
 </section>
 <section class="section countdown-part">
@@ -394,15 +388,7 @@
 
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <div class="section-btn-25">
-                    <a href="shop-4column.html" class="btn btn-outline">
-                        <i class="fas fa-eye"></i><span>show more</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+
     </div>
 </section>
 <div class="section promo-part">

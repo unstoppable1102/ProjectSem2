@@ -1,3 +1,4 @@
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -70,12 +71,16 @@
                                 class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                         </div>
                     </div>
-                    <div class="details-action-group">
-                        <a class="details-wish wish" href="#" title="Add Your Wishlist">
-                            <i class="icofont-heart"></i>
-                            <span>add to wish</span>
-                        </a>
-                    </div>
+                    <f:form action="${contextPath}/wishlist/add" method="post"  modelAttribute="wishlist">
+                        <div class="details-action-group">
+                            <f:hidden path="productId" value="${product.id}" />
+                            <f:hidden path="accountId" value="${sessionScope.userId}" />
+                            <button type="submit" class="details-wish wish product-add" title="Add Your Wishlist">
+                                <i class="icofont-heart"></i>
+                                <span>add to wish</span>
+                            </button>
+                        </div>
+                    </f:form>
                 </div>
             </div>
         </div>

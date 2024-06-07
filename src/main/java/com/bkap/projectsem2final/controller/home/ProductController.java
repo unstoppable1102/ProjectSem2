@@ -2,6 +2,7 @@ package com.bkap.projectsem2final.controller.home;
 
 import com.bkap.projectsem2final.entities.Category;
 import com.bkap.projectsem2final.entities.Product;
+import com.bkap.projectsem2final.entities.Wishlist;
 import com.bkap.projectsem2final.service.BrandService;
 import com.bkap.projectsem2final.service.CategoryService;
 import com.bkap.projectsem2final.service.ProductService;
@@ -51,16 +52,15 @@ public class ProductController {
             case "price_desc":
                 sorting = Sort.by("price").descending();
                 break;
-
         }
 
         Page<Product> productPage = productService.findAll(page, size, sorting);
 
-        // Thêm danh sách sản phẩm vào model để hiển thị trên trang JSP
+        // Add list product into model to display on JSP file
         model.addAttribute("products", productPage);
-
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("brands", brandService.findAll());
+        model.addAttribute("wishlist" , new Wishlist());
         model.addAttribute("currentPage", page);
         model.addAttribute("size", size);
         model.addAttribute("sort", sort);
@@ -74,7 +74,7 @@ public class ProductController {
             @RequestParam(defaultValue = "8") int size,
             @RequestParam(defaultValue = "") String keyword, Model model){
 
-        //Phân trang
+        //Paginate
         Pageable pageable = PageRequest.of(page, size);
 
         //search and paginate
@@ -128,7 +128,7 @@ public class ProductController {
             List<Product> productInSameCategoryId = productService.findProductsByCategoryIdExcludingProductId(category.getId(), id);
             model.addAttribute("productInSameCategoryId", productInSameCategoryId);
         }
-
+        model.addAttribute("wishlist" , new Wishlist());
         model.addAttribute("page", "product/detail");
         return "home";
     }
@@ -150,6 +150,5 @@ public class ProductController {
         model.addAttribute("page", "product/brand");
         return "home";
     }
-
 
 }

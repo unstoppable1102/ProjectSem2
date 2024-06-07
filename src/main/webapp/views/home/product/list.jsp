@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 
 <div class="modal fade" id="product-view">
     <div class="modal-dialog">
@@ -207,14 +208,13 @@
                                 </div>
                                 <div class="filter-short">
                                     <label class="filter-label">Sort by :</label>
-
-                                        <select id="sortSelect" name="sort" class="form-select filter-select" onchange="submitSortForm()">
-                                            <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Mặc định</option>
-                                            <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Tên từ A-Z</option>
-                                            <option value="name_desc" <c:if test="${sort == 'name_desc'}">selected</c:if>>Tên từ Z-A</option>
-                                            <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Giá tăng dần</option>
-                                            <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Giá giảm dần</option>
-                                        </select>
+                                    <select id="sortSelect" name="sort" class="form-select filter-select" onchange="submitSortForm()">
+                                        <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Default</option>
+                                        <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Name A-Z</option>
+                                        <option value="name_desc" <c:if test="${sort == 'name_desc'}">selected</c:if>>Name Z-A</option>
+                                        <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Price ASC</option>
+                                        <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Price DESC</option>
+                                    </select>
                                 </div>
                                 <input type="hidden" name="page" value="${currentPage}" />
                             </form>
@@ -227,9 +227,13 @@
                             <div class="product-card">
                                 <div class="product-media">
                                     <div class="product-label"><label class="label-text sale">sale</label></div>
-                                    <button class="product-wish wish">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
+                                    <f:form method="post" action="${contextPath}/wishlist/add" modelAttribute="wishlist">
+                                        <f:hidden path="productId" value="${p.id}" />
+                                        <f:hidden path="accountId" value="${sessionScope.userId}" />
+                                        <button class="product-wish wish">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                    </f:form>
                                     <a class="product-image" href="${contextPath}/product/detail/${p.id}">
                                         <img src="${contextPath}/resources/images/${p.image}" alt="product">
                                     </a>
@@ -271,7 +275,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bottom-paginate">
-                            <p class="page-info">Hiển thị ${products.content.size()} của ${products.totalElements} kết quả</p>
+                            <p class="page-info">Show ${products.content.size()} of ${products.totalElements} results</p>
                             <ul class="pagination">
                                 <c:choose>
                                     <c:when test="${not products.first}">
@@ -283,13 +287,12 @@
                                     </c:when>
                                     <c:otherwise>
                                         <li class="page-item disabled">
-                        <span class="page-link">
-                            <i class="fas fa-long-arrow-alt-left"></i>
-                        </span>
+                                        <span class="page-link">
+                                            <i class="fas fa-long-arrow-alt-left"></i>
+                                        </span>
                                         </li>
                                     </c:otherwise>
                                 </c:choose>
-
                                 <c:forEach begin="0" end="${products.totalPages - 1}" step="1" varStatus="status">
                                     <c:choose>
                                         <c:when test="${status.index == products.number}">
@@ -300,7 +303,7 @@
                                         <c:otherwise>
                                             <li class="page-item">
                                                 <a class="page-link" href="?page=${status.index}&size=${products.size}&sort=${sort}">
-                                                        ${status.index + 1}
+                                                    ${status.index + 1}
                                                 </a>
                                             </li>
                                         </c:otherwise>
@@ -317,9 +320,9 @@
                                     </c:when>
                                     <c:otherwise>
                                         <li class="page-item disabled">
-                        <span class="page-link">
-                            <i class="fas fa-long-arrow-alt-right"></i>
-                        </span>
+                                            <span class="page-link">
+                                                <i class="fas fa-long-arrow-alt-right"></i>
+                                            </span>
                                         </li>
                                     </c:otherwise>
                                 </c:choose>

@@ -7,6 +7,7 @@ import com.bkap.projectsem2final.service.ProductService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,9 +27,16 @@ public class ProductController {
     private final BrandService brandService;
 
     @GetMapping("list")
-    public String list(Model model) {
+    public String list(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            Model model) {
+        Page<Product> products = productService.findAll(page, size);
+
         model.addAttribute("page", "product/list");
-        model.addAttribute("products", productService.findAll());
+        model.addAttribute("products", products);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("size", size);
         model.addAttribute("category", categoryService.findAll());
         return "admin";
 

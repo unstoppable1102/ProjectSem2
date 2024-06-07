@@ -28,6 +28,8 @@ public interface ProductService extends GenericService<Product, Integer> {
 
     Page<Product> findAll(int page, int size, Sort sort);
 
+    Page<Product> findAll(int page, int size);
+
     Page<Product> search(String keyword, Pageable pageable);
 
     Page<Product> search(double min, double max, Pageable pageable);

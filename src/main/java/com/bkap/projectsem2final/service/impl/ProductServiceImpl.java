@@ -85,27 +85,39 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findProductsByCategoryId(categoryId);
     }
 
+    // List product by brand
     @Override
     public List<Product> findProductsByBrandId(Integer brandId) {
         return productRepository.findProductsByBrandId(brandId);
     }
 
+    // List product by category except product detail
     @Override
     public List<Product> findProductsByCategoryIdExcludingProductId(Integer categoryId, Integer productId) {
         return productRepository.findProductsByCategoryIdExcludingProductId(categoryId, productId);
     }
 
+    //Paginate for user
     @Override
     public Page<Product> findAll(int page, int size, Sort sort) {
         Pageable pageable = PageRequest.of(page, size, sort);
         return productRepository.findAll(pageable);
     }
 
+    //Paginate for admin
+    @Override
+    public Page<Product> findAll(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productRepository.findAll(pageable);
+    }
+
+    //Search with paginate
     @Override
     public Page<Product> search(String keyword, Pageable pageable) {
         return productRepository.findByProductNameContainingIgnoreCase(keyword, pageable);
     }
 
+    //Search by price with paginate
     @Override
     public Page<Product> search(double min, double max, Pageable pageable) {
         return productRepository.findByPriceBetween(min, max, pageable);

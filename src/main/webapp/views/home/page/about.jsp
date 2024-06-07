@@ -54,13 +54,13 @@
     <div class="container">
         <ul class="testi-slider slider-arrow">
             <li>
-                <div class="testi-content"><a class="testi-img" href="#"><img src="resources/home/images/testimonial/01.jpg"
+                <div class="testi-content"><a class="testi-img" href="#"><img src="${contextPath}/resources/images/undefinded.jpg"
                                                                               alt="testimonial"></a>
                     <div class="testi-quote"><i class="icofont-quote-left"></i>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit neque earum sapiente vitae
                             obcaecati magnam doloribus magni provident ab ipsam sint dolores repellat inventore
                             sequi temporibus natus.</p>
-                        <h4>tahmina labonno</h4>
+                        <h4>Pham Thanh Minh</h4>
                         <h6>Former MD - joomtech.com</h6>
                     </div>
                 </div>

@@ -33,6 +33,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
      @Query("SELECT p FROM Product p WHERE p.category.id = :categoryId AND p.id <> :productId")
      List<Product> findProductsByCategoryIdExcludingProductId(Integer categoryId, Integer productId);
 
+     //Paginate
      Page<Product> findAll(Pageable pageable);
 
      Page<Product> findByProductNameContainingIgnoreCase(String keyword, Pageable pageable);

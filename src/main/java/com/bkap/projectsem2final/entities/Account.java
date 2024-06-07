@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,5 +33,8 @@ public class Account implements Serializable {
     private boolean role;
     private String avatar;
     private boolean status;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<Wishlist> wishlists;
 
 }

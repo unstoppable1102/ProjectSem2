@@ -105,14 +105,13 @@
 
             <form id="searchForm"  class="header-form" action="${contextPath}/product/search">
                 <input name="keyword" type="text" placeholder="Search anything...">
-                <button type="button" onclick="submitSearchForm()">
+                <button type="submit" onclick="submitSearchForm()">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
             <div class="header-widget-group">
-                <a href="${contextPath}/wishlist" class="header-widget" title="Wishlist">
+                <a href="${contextPath}/wishlist/${sessionScope.userId}" class="header-widget" title="Wishlist">
                     <i class="fas fa-heart"></i>
-                    <sup>0</sup>
                 </a>
                 <button class="header-widget header-cart" title="Cartlist">
                     <i class="fas fa-shopping-cart"></i>
@@ -132,7 +131,7 @@
                     <ul class="navbar-list">
                         <li class="navbar-item"><a class="navbar-link" href="${contextPath}">home</a></li>
                         <li class="navbar-item dropdown">
-                            <a class="navbar-link dropdown-arrow" href="${contextPath}/categories">Category</a>
+                            <a class="navbar-link dropdown-arrow" >Category</a>
                                 <ul class="dropdown-position-list">
                                     <c:forEach var="c" items="${categories}">
                                         <li><a href="${contextPath}/product/categories/${c.id}">${c.name}</a></li>
