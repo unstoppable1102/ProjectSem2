@@ -1,15 +1,33 @@
 package com.bkap.projectsem2final.entities;
 
-import java.io.Serializable;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.io.Serializable;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Cart implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Integer productId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    private String tittle;
+    private Integer accountId;
 
-    private float price;
+    @OneToOne
+    @JoinColumn(name = "accountId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Account account;
 
-    private int quantity;
+    @OneToMany(mappedBy = "cart")
+    private List<CartItem> items;
+
 }

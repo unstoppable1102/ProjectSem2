@@ -21,21 +21,7 @@
                                     class="view-label off">-10%</label></div>
                             <ul class="preview-slider slider-arrow">
                                 <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                            </ul>
-                            <ul class="thumb-slider">
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+
                             </ul>
                         </div>
                     </div>
@@ -54,7 +40,7 @@
                                 <i class="icofont-star">
 
                                 </i>(3 reviews)</div>
-                            <h3 class="view-price"><del>$38.00</del><span>$24.00<small>/per kilo</small></span></h3>
+                            <h3 class="view-price"><del>$38.00</del><span>$24.00</span></h3>
                             <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora
                                 magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos
                                 reprehenderit fuga</p>
@@ -67,19 +53,11 @@
                                 </ul>
                             </div>
                             <div class="view-add-group">
-                                <button class="product-add" title="Add to Cart">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    <span>add to cart</span>
-                                </button>
-                                <div class="product-action">
-                                    <button class="action-minus" title="Quantity Minus">
-                                        <i class="icofont-minus"></i>
+                                    <button class="product-add" title="Add to Cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <span>add to cart</span>
                                     </button>
-                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                    <button class="action-plus" title="Quantity Plus">
-                                        <i class="icofont-plus"></i>
-                                    </button>
-                                </div>
+
                             </div>
                             <div class="view-action-group">
                                 <a class="view-wish wish" href="#" title="Add Your Wishlist">
@@ -107,9 +85,6 @@
     <div class="container">
         <div class="row content-reverse">
             <div class="col-lg-3">
-                <div class="shop-widget-promo">
-                    <a href="#"><img src="${contextPath}/resources/home/images/promo/shop/01.jpg" alt="promo"></a>
-                </div>
                 <div class="shop-widget">
                     <h6 class="shop-widget-title">Filter by Price</h6>
                     <form action="${contextPath}/product/searchPrice">
@@ -254,19 +229,13 @@
                                         <del>$${p.priceOld}</del>
                                         <span>$${p.price}<small>/piece</small></span>
                                     </h6>
-                                    <button class="product-add" title="Add to Cart">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        <span>add</span>
-                                    </button>
-                                    <div class="product-action">
-                                        <button class="action-minus" title="Quantity Minus">
-                                            <i class="icofont-minus"></i>
+                                    <f:form method="get" action="${contextPath}/cart/add/${p.id}/${sessionScope.userId}" modelAttribute="cartItem">
+                                        <f:hidden path="quantity" value="1" />
+                                        <button class="product-add">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <span>add</span>
                                         </button>
-                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                        <button class="action-plus" title="Quantity Plus">
-                                            <i class="icofont-plus"></i>
-                                        </button>
-                                    </div>
+                                    </f:form>
                                 </div>
                             </div>
                         </div>

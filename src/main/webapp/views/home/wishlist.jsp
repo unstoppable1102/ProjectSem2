@@ -24,15 +24,15 @@
                 <div class="table-scroll">
                     <table class="table-list">
                         <thead>
-                        <tr>
-                            <th scope="col">No.</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">status</th>
-                            <th scope="col">shopping</th>
-                            <th scope="col">action</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">status</th>
+                                <th scope="col">shopping</th>
+                                <th scope="col">action</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <c:forEach var="w" items="${wishlists}" varStatus="loop">
@@ -40,7 +40,9 @@
                                     <td class="table-serial">
                                         <h6>${loop.count}</h6>
                                     </td>
-                                    <td class="table-image"><img src="${contextPath}/resources/images/${w.product.image}" alt="product"></td>
+                                    <td class="table-image">
+                                        <img src="${contextPath}/resources/images/${w.product.image}" alt="product">
+                                    </td>
                                     <td class="table-name">
                                         <h6>${w.product.productName}</h6>
                                     </td>
@@ -72,10 +74,8 @@
                                     </td>
                                 </tr>
                             </c:forEach>
-
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>

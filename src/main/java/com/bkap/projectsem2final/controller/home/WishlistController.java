@@ -4,7 +4,6 @@ import com.bkap.projectsem2final.entities.Wishlist;
 import com.bkap.projectsem2final.service.ProductService;
 import com.bkap.projectsem2final.service.WishlistService;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

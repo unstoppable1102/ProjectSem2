@@ -34,22 +34,22 @@
                             <div class="view-label-group"><label class="view-label new">new</label><label
                                     class="view-label off">-10%</label></div>
                             <ul class="preview-slider slider-arrow">
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
                             </ul>
                             <ul class="thumb-slider">
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
-                                <li><img src="resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
                             </ul>
                         </div>
                     </div>
@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
-                    <div class="banner-img"><img src="resources/home/images/home/index/01.png" alt="index"></div>
+                    <div class="banner-img"><img src="${contextPath}/resources/home/images/home/index/01.png" alt="index"></div>
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 col-lg-6">
-                    <div class="banner-img"><img src="resources/home/images/home/index/02.png" alt="index"></div>
+                    <div class="banner-img"><img src="${contextPath}/resources/home/images/home/index/02.png" alt="index"></div>
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="banner-content">
@@ -227,7 +227,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="promo-img"><a href="#"><img src="resources/home/images/promo/home/03.jpg" alt="promo"></a></div>
+                <div class="promo-img"><a href="#"><img src="${contextPath}/resources/home/images/promo/home/03.jpg" alt="promo"></a></div>
             </div>
         </div>
     </div>
@@ -276,25 +276,14 @@
                                 <span>$${fp.price}</span>
                             </h6>
                             <p class="feature-desc">${fp.description}...</p>
-                            <button class="product-add" title="Add to Cart">
+                            <button class="product-add" title="Add to Cart" type="submit">
                                 <i class="fas fa-shopping-cart"></i>
                                 <span>add</span>
                             </button>
-                            <div class="product-action">
-                                <button class="action-minus" title="Quantity Minus">
-                                    <i class="icofont-minus"></i>
-                                </button>
-                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                <button class="action-plus" title="Quantity Plus">
-                                    <i class="icofont-plus"></i>
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>
             </c:forEach>
-
-            </div>
         </div>
     </div>
 </section>
@@ -310,14 +299,15 @@
                             class="countdown-time"><span>00</span><small>days</small></span><span
                             class="countdown-time"><span>00</span><small>hours</small></span><span
                             class="countdown-time"><span>00</span><small>minutes</small></span><span
-                            class="countdown-time"><span>00</span><small>seconds</small></span></div><a
-                        href="shop-4column.html" class="btn btn-inline"><i
-                        class="fas fa-shopping-cart"></i><span>shop now</span></a>
+                            class="countdown-time"><span>00</span><small>seconds</small></span></div>
+                        <a href="shop-4column.html" class="btn btn-inline">
+                            <i class="fas fa-shopping-cart"></i><span>shop now</span>
+                        </a>
                 </div>
             </div>
             <div class="col-lg-1"></div>
             <div class="col-lg-5">
-                <div class="countdown-img"><img src="resources/home/images/countdown.png" alt="countdown">
+                <div class="countdown-img"><img src="${contextPath}/resources/home/images/countdown.png" alt="countdown">
                     <div class="countdown-off"><span>20%</span><span>off</span></div>
                 </div>
             </div>
@@ -337,52 +327,52 @@
             <div class="col">
                     <ul class="new-slider slider-arrow">
                         <c:forEach var="na" items="${newArrivals}">
-                        <li>
-                            <div class="product-card">
-                                <div class="product-media">
-                                    <div class="product-label">
-                                        <label class="label-text new">new</label>
+                            <li>
+                                <div class="product-card">
+                                    <div class="product-media">
+                                        <div class="product-label">
+                                            <label class="label-text new">new</label>
+                                        </div>
+                                        <button class="product-wish wish"><i class="fas fa-heart"></i></button>
+                                        <a class="product-image" href="${contextPath}/product/detail/${na.id}">
+                                            <img src="${contextPath}/resources/images/${na.image}" alt="product">
+                                        </a>
+                                        <div class="product-widget">
+                                           <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        </div>
                                     </div>
-                                    <button class="product-wish wish"><i class="fas fa-heart"></i></button>
-                                    <a class="product-image" href="${contextPath}/product/detail/${na.id}">
-                                        <img src="${contextPath}/resources/images/${na.image}" alt="product">
-                                    </a>
-                                    <div class="product-widget">
-                                       <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                    <div class="product-content">
+                                        <div class="product-rating">
+                                            <i class="active icofont-star"></i>
+                                            <i class="active icofont-star"></i>
+                                            <i class="active icofont-star"></i>
+                                            <i class="active icofont-star"></i>
+                                            <i class="icofont-star"></i>
+                                            <a href="${contextPath}/product/detail/${na.id}">(3)</a>
+                                        </div>
+                                        <h6 class="product-name">
+                                            <a href="${contextPath}/product/detail/${na.id}">${na.productName}</a>
+                                        </h6>
+                                        <h6 class="product-price">
+                                            <del>$${na.priceOld}</del>
+                                            <span>$${na.price}</span>
+                                        </h6>
+                                        <button class="product-add" title="Add to Cart">
+                                            <i class="fas fa-shopping-cart"></i>
+                                            <span>add</span>
+                                        </button>
+                                        <div class="product-action">
+                                            <button class="action-minus" title="Quantity Minus">
+                                                <i class="icofont-minus"></i>
+                                            </button>
+                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                            <button class="action-plus" title="Quantity Plus">
+                                                <i class="icofont-plus"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="product-content">
-                                    <div class="product-rating">
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                        <i class="active icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <a href="${contextPath}/product/detail/${na.id}">(3)</a>
-                                    </div>
-                                    <h6 class="product-name">
-                                        <a href="${contextPath}/product/detail/${na.id}">${na.productName}</a>
-                                    </h6>
-                                    <h6 class="product-price">
-                                        <del>$${na.priceOld}</del>
-                                        <span>$${na.price}</span>
-                                    </h6>
-                                    <button class="product-add" title="Add to Cart">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        <span>add</span>
-                                    </button>
-                                    <div class="product-action">
-                                        <button class="action-minus" title="Quantity Minus">
-                                            <i class="icofont-minus"></i>
-                                        </button>
-                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                        <button class="action-plus" title="Quantity Plus">
-                                            <i class="icofont-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
                         </c:forEach>
                     </ul>
 
@@ -395,10 +385,10 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                <div class="promo-img"><a href="#"><img src="resources/home/images/promo/home/01.jpg" alt="promo"></a></div>
+                <div class="promo-img"><a href="#"><img src="${contextPath}/resources/home/images/promo/home/01.jpg" alt="promo"></a></div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                <div class="promo-img"><a href="#"><img src="resources/home/images/promo/home/02.jpg" alt="promo"></a></div>
+                <div class="promo-img"><a href="#"><img src="${contextPath}/resources/home/images/promo/home/02.jpg" alt="promo"></a></div>
             </div>
         </div>
     </div>
@@ -447,7 +437,7 @@
             <div class="col-lg-12">
                 <div class="blog-slider slider-arrow">
                     <div class="blog-card">
-                        <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/01.jpg"
+                        <div class="blog-media"><a class="blog-img" href="#"><img src="${contextPath}/resources/home/images/blog/01.jpg"
                                                                                   alt="blog"></a></div>
                         <div class="blog-content">
                             <ul class="blog-meta">
@@ -462,7 +452,7 @@
                         </div>
                     </div>
                     <div class="blog-card">
-                        <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/02.jpg"
+                        <div class="blog-media"><a class="blog-img" href="#"><img src="${contextPath}/resources/home/images/blog/02.jpg"
                                                                                   alt="blog"></a></div>
                         <div class="blog-content">
                             <ul class="blog-meta">
@@ -477,7 +467,7 @@
                         </div>
                     </div>
                     <div class="blog-card">
-                        <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/03.jpg"
+                        <div class="blog-media"><a class="blog-img" href="#"><img src="${contextPath}/resources/home/images/blog/03.jpg"
                                                                                   alt="blog"></a></div>
                         <div class="blog-content">
                             <ul class="blog-meta">
@@ -492,7 +482,7 @@
                         </div>
                     </div>
                     <div class="blog-card">
-                        <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/04.jpg"
+                        <div class="blog-media"><a class="blog-img" href="#"><img src="${contextPath}/resources/home/images/blog/04.jpg"
                                                                                   alt="blog"></a></div>
                         <div class="blog-content">
                             <ul class="blog-meta">

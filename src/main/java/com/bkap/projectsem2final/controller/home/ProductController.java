@@ -1,5 +1,6 @@
 package com.bkap.projectsem2final.controller.home;
 
+import com.bkap.projectsem2final.entities.CartItem;
 import com.bkap.projectsem2final.entities.Category;
 import com.bkap.projectsem2final.entities.Product;
 import com.bkap.projectsem2final.entities.Wishlist;
@@ -61,6 +62,7 @@ public class ProductController {
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("brands", brandService.findAll());
         model.addAttribute("wishlist" , new Wishlist());
+        model.addAttribute("cartItem", new CartItem());
         model.addAttribute("currentPage", page);
         model.addAttribute("size", size);
         model.addAttribute("sort", sort);

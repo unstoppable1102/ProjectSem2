@@ -2,10 +2,8 @@ package com.bkap.projectsem2final.controller.home;
 
 
 import com.bkap.projectsem2final.entities.Account;
-import com.bkap.projectsem2final.service.AccountService;
-import com.bkap.projectsem2final.service.BrandService;
-import com.bkap.projectsem2final.service.CategoryService;
-import com.bkap.projectsem2final.service.ProductService;
+import com.bkap.projectsem2final.entities.Cart;
+import com.bkap.projectsem2final.service.*;
 import com.bkap.projectsem2final.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -25,6 +23,7 @@ public class HomeController {
     private final CategoryService categoryService;
     private final BrandService brandService;
     private final AccountService accountService;
+    private final CartService cartService;
 
     @GetMapping
     public String home(Model model) {
@@ -73,13 +72,23 @@ public class HomeController {
     }
 
     @PostMapping("login")
-    public String loginProcess(@ModelAttribute Account account, Model model, HttpServletRequest req) {
-        Account ac = accountService.findByUsername(account.getUsername());
-        String passwordMD5 = Cipher.GenerateMD5(account.getPassword());
+    public String loginProcess(String username, String password, Model model, HttpServletRequest req) {
+        Account ac = accountService.findByUsername(username);
+        String passwordMD5 = Cipher.GenerateMD5(password);
 
         if (ac == null || !ac.getPassword().equals(passwordMD5)) {
             model.addAttribute("error", "Invalid username or password");
             return "home/login";
+        }
+
+        var data = accountService.findByUsername(ac.getUsername()).getId();
+        Cart cart = cartService.findByAccountId(data);
+//
+        if(cart == null){
+            cart = new Cart();
+            cart.setAccountId(ac.getId());
+            cart.setAccount(ac);
+            cartService.save(cart);
         }
         HttpSession session = req.getSession();
         session.setMaxInactiveInterval(3600);
@@ -89,6 +98,7 @@ public class HomeController {
         session.setAttribute("address", ac.getAddress());
         session.setAttribute("phone", ac.getPhone());
         session.setAttribute("fullName", ac.getFullName());
+        session.setAttribute("cart",cart);
         System.out.println(ac.getEmail());
         return "redirect:/";
     }

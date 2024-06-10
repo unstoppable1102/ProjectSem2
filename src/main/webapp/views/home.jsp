@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/home/css/about.css">
     <link rel="stylesheet" href="${contextPath}/resources/home/css/blog-grid.css">
     <link rel="stylesheet" href="${contextPath}/resources/home/css/product-details.css">
+    <link rel="stylesheet" href="${contextPath}/resources/home/css/checkout.css">
 </head>
 
 <body>
@@ -113,12 +114,12 @@
                 <a href="${contextPath}/wishlist/${sessionScope.userId}" class="header-widget" title="Wishlist">
                     <i class="fas fa-heart"></i>
                 </a>
-                <button class="header-widget header-cart" title="Cartlist">
+                <a href="${contextPath}/cart/${sessionScope.userId}" class="header-widget header-cart" title="Cartlist">
                     <i class="fas fa-shopping-cart"></i>
                     <sup>5</sup>
                     <span>totalprice<small>$345.00</small>
                     </span>
-                </button>
+                </a>
             </div>
         </div>
     </div>
@@ -142,7 +143,7 @@
                             <a class="navbar-link dropdown-arrow" href="#">brand</a>
                             <ul class="dropdown-position-list">
                                 <c:forEach var="b" items="${brands}">
-                                    <li><a href="${contextPath}/brands/${b.id}">${b.name}</a></li>
+                                    <li><a href="${contextPath}/product/brands/${b.id}">${b.name}</a></li>
                                 </c:forEach>
                             </ul>
                         </li>
@@ -186,10 +187,10 @@
 
 <aside class="cart-sidebar">
     <div class="cart-header">
-        <div class="cart-total">
+        <a  class="cart-total">
             <i class="fas fa-shopping-cart"></i>
             <span>total item (5)</span>
-        </div>
+        </a>
         <button class="cart-close"><i class="icofont-close"></i></button>
     </div>
     <ul class="cart-list">
@@ -519,13 +520,13 @@
         </div>
     </div>
 </footer>
-<script src="${contextPath}/resources/home/vendor//bootstrap/jquery-1.12.4.min.js"></script>
-<script src="${contextPath}/resources/home/vendor//bootstrap/popper.min.js"></script>
-<script src="${contextPath}/resources/home/vendor//bootstrap/bootstrap.min.js"></script>
-<script src="${contextPath}/resources/home/vendor//countdown/countdown.min.js"></script>
-<script src="${contextPath}/resources/home/vendor//niceselect/nice-select.min.js"></script>
-<script src="${contextPath}/resources/home/vendor//slickslider/slick.min.js"></script>
-<script src="${contextPath}/resources/home/vendor//venobox/venobox.min.js"></script>
+<script src="${contextPath}/resources/home/vendor/bootstrap/jquery-1.12.4.min.js"></script>
+<script src="${contextPath}/resources/home/vendor/bootstrap/popper.min.js"></script>
+<script src="${contextPath}/resources/home/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="${contextPath}/resources/home/vendor/countdown/countdown.min.js"></script>
+<script src="${contextPath}/resources/home/vendor/niceselect/nice-select.min.js"></script>
+<script src="${contextPath}/resources/home/vendor/slickslider/slick.min.js"></script>
+<script src="${contextPath}/resources/home/vendor/venobox/venobox.min.js"></script>
 <script src="${contextPath}/resources/home/js/nice-select.js"></script>
 <script src="${contextPath}/resources/home/js/countdown.js"></script>
 <script src="${contextPath}/resources/home/js/accordion.js"></script>

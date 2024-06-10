@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.io.Serial;
 
 @WebFilter(dispatcherTypes = {DispatcherType.REQUEST}, urlPatterns = { "/ptm/admin/*" })
 public class AuthenticationFilter extends HttpFilter implements Filter {
