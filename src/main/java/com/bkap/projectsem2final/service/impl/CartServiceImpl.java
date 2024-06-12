@@ -1,18 +1,26 @@
 package com.bkap.projectsem2final.service.impl;
 
 import com.bkap.projectsem2final.entities.Cart;
+import com.bkap.projectsem2final.repository.CartItemRepository;
 import com.bkap.projectsem2final.repository.CartRepository;
 import com.bkap.projectsem2final.service.CartService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class CartServiceImpl implements CartService {
-    private final CartRepository cartRepository;
 
-    public CartServiceImpl(CartRepository cartRepository) {
-        this.cartRepository = cartRepository;
+    private final CartRepository cartRepository;
+    private final CartItemRepository cartItemRepository;
+
+
+    @Override
+    public List<Cart> findAll() {
+        return cartRepository.findAll();
     }
 
     @Override
@@ -20,11 +28,11 @@ public class CartServiceImpl implements CartService {
         return cartRepository.findByAccountId(accountId);
     }
 
-
     @Override
-    public List<Cart> findAll() {
-        return cartRepository.findAll();
+    public Integer countItemsInCart(Integer accountId) {
+        return cartItemRepository.countCartItemsByAccountId(accountId);
     }
+
 
     @Override
     public Cart findById(Integer id) {

@@ -6,13 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<section class="inner-section single-banner" style="background: url(resources/home/images/single-banner.jpg) no-repeat center;">
+<section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>blog</h2>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Blogs</li>
-        </ol>
     </div>
 </section>
 <section class="inner-section blog-grid">
@@ -35,9 +31,6 @@
                                 <option value="1">featured</option>
                                 <option value="2">recommend</option>
                             </select></div>
-                            <div class="filter-action"><a href="blog-grid.html" class="active" title="Two Column"><i
-                                    class="fas fa-th-large"></i></a><a href="blog-standard.html"
-                                                                       title="One Column"><i class="fas fa-th-list"></i></a></div>
                         </div>
                     </div>
                 </div>

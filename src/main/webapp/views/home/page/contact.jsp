@@ -6,13 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<section class="inner-section single-banner" style="background: url(resources/home/images/single-banner.jpg) no-repeat center;">
+<section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>contact us</h2>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Contact</li>
-        </ol>
     </div>
 </section>
 <section class="inner-section contact-part">
@@ -21,19 +17,19 @@
             <div class="col-md-6 col-lg-4">
                 <div class="contact-card"><i class="icofont-location-pin"></i>
                     <h4>head office</h4>
-                    <p>1Hd- 50, 010 Avenue, NY 90001 United States</p>
+                    <p>238 Hoang Quoc Viet Street, Co Nhue, Bac Tu Liem, HN</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="contact-card active"><i class="icofont-phone"></i>
                     <h4>phone number</h4>
-                    <p><a href="#">009-215-5596 <span>(toll free)</span></a><a href="#">009-215-5595</a></p>
+                    <p><a href="#">0963-203-410<span>(toll free)</span></a><a href="#">009-215-5595</a></p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="contact-card"><i class="icofont-email"></i>
                     <h4>Support mail</h4>
-                    <p><a href="#">contact@example.com</a><a href="#">info@example.com</a></p>
+                    <p><a href="#">minhkhmtd@gmail.com</a></p>
                 </div>
             </div>
         </div>

@@ -6,13 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<section class="inner-section single-banner" style="background: url(${contextPath}resources/home/images/single-banner.jpg) no-repeat center;">
+<section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
   <div class="container">
     <h2>my profile</h2>
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="${contextPath}">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">profile</li>
-    </ol>
   </div>
 </section>
 <section class="inner-section profile-part">
@@ -68,17 +64,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-4 alert fade show">
-                <div class="profile-card contact">
-                  <h6>secondary</h6>
-                  <p>+8801941101915</p>
-                  <ul>
-                    <li><button class="edit icofont-edit" title="Edit This"
-                                data-bs-toggle="modal" data-bs-target="#contact-edit"></button></li>
-                    <li><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button></li>
-                  </ul>
-                </div>
-              </div>
+
               <div class="col-md-6 col-lg-4 alert fade show">
                 <div class="profile-card contact">
                   <h6>secondary</h6>
@@ -123,17 +109,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="col-md-6 col-lg-4 alert fade show">
-                <div class="profile-card address">
-                  <h6>Bussiness</h6>
-                  <p>kawran bazar, dhaka-1100. word no-02, road no-13/d, house no-7/m</p>
-                  <ul class="user-action">
-                    <li><button class="edit icofont-edit" title="Edit This"
-                                data-bs-toggle="modal" data-bs-target="#address-edit"></button></li>
-                    <li><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button></li>
-                  </ul>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -157,14 +133,6 @@
               <div class="col-md-6 col-lg-4 alert fade show">
                 <div class="payment-card payment">
                   <img src="${contextPath}/resources/home/images/payment/png/02.png" alt="payment">
-                  <h4>card number</h4>
-                  <p><span>****</span><span>****</span><span>****</span><sup>1876</sup></p>
-                  <h5>miron mahmud</h5><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4 alert fade show">
-                <div class="payment-card payment">
-                  <img src="${contextPath}/resources/home/images/payment/png/03.png" alt="payment">
                   <h4>card number</h4>
                   <p><span>****</span><span>****</span><span>****</span><sup>1876</sup></p>
                   <h5>miron mahmud</h5><button class="trash icofont-ui-delete" title="Remove This" data-bs-dismiss="alert"></button>

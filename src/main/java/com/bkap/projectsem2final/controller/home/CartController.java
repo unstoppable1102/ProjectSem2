@@ -6,18 +6,22 @@ import com.bkap.projectsem2final.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("cart")
+@SessionAttributes("userId")
 public class CartController {
 
     private final CartService cartService;
     private final CartItemService cartItemService;
+
+    @ModelAttribute("countCartItem")
+    public Integer getCountCartItem(@ModelAttribute("userId") Integer userId) {
+        return cartService.countItemsInCart(userId);
+    }
+
 
     @GetMapping("{id}")
     public String showCart(Model model, @PathVariable int id) {

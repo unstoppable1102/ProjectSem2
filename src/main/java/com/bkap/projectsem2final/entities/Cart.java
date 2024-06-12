@@ -30,4 +30,7 @@ public class Cart implements Serializable {
     @OneToMany(mappedBy = "cart")
     private List<CartItem> items;
 
+    @Transient
+    private Integer countCartItem;
+
 }

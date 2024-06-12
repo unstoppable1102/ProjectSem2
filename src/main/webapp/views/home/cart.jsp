@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<section class="inner-section single-banner" style="background: url(${contextPath}/resources/images/single-banner.jpg) no-repeat center;">
+<section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>cart</h2>
     </div>
@@ -15,18 +15,6 @@
 <section class="inner-section checkout-part">
     <div class="container">
         <div class="row">
-            <c:choose>
-                <c:when test="${!empty sessionScope.userId}">
-
-                </c:when>
-                <c:otherwise>
-                    <div class="col-lg-12">
-                        <div class="alert-info">
-                            <p>Returning customer? <a href="login.html">Click here to login</a></p>
-                        </div>
-                    </div>
-                </c:otherwise>
-            </c:choose>
             <div class="col-lg-12">
                 <div class="account-card">
                     <div class="account-title">
@@ -67,7 +55,7 @@
                                                         <button class="action-minus" title="Quantity Minus">
                                                             <i class="icofont-minus"></i>
                                                         </button>
-                                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="${c.quantity}">
                                                         <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                                                     </div>
                                                 </div>
@@ -79,7 +67,7 @@
                                                 <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view">
                                                     <i class="fas fa-eye"></i>
                                                 </a>
-                                                <a class="trash" href="#" title="Remove Wishlist">
+                                                <a class="trash" href="${contextPath}/cart/delete/${c.id}" onclick="return confirm('Are you sure want to remove from cart?')">
                                                     <i class="icofont-trash"></i>
                                                 </a>
                                             </td>
@@ -109,8 +97,7 @@
 
             <div class="col-lg-3 m-auto">
                 <div class="account-card mb-0">
-
-                    <div class="checkout-proced" width="400px">
+                    <div class="checkout-proced">
                         <a href="invoice.html" class="btn btn-inline">proced to checkout</a>
                     </div>
                 </div>
@@ -217,3 +204,21 @@
         </div>
     </div>
 </div>
+<script>
+    function showAddCart(productId, quantity) {
+        $.ajax({
+            url: "${pageContext.servletContext.contextPath}/cart/add",
+            type: "POST",
+            data: {
+                productId: productId,
+                quantity: quantity
+            },
+            success: function(countCartItem) {
+                $("#cartItemCount").text(countCartItem);
+            },
+            error: function() {
+                alert("Error adding to cart");
+            }
+        });
+    }
+</script>

@@ -140,7 +140,8 @@
                         <div class="banner-btn"><a class="btn btn-inline" href="shop-4column.html"><i
                                 class="fas fa-shopping-cart"></i><span>shop now</span></a><a
                                 class="btn btn-outline" href="offer.html"><i
-                                class="icofont-sale-discount"></i><span>get offer</span></a></div>
+                                class="icofont-sale-discount"></i><span>get offer</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -227,7 +228,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="promo-img"><a href="#"><img src="${contextPath}/resources/home/images/promo/home/03.jpg" alt="promo"></a></div>
+                <div class="promo-img">
+                    <a href="#">
+                        <img src="${contextPath}/resources/home/images/promo/home/03.jpg" alt="promo">
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -437,8 +442,11 @@
             <div class="col-lg-12">
                 <div class="blog-slider slider-arrow">
                     <div class="blog-card">
-                        <div class="blog-media"><a class="blog-img" href="#"><img src="${contextPath}/resources/home/images/blog/01.jpg"
-                                                                                  alt="blog"></a></div>
+                        <div class="blog-media">
+                            <a class="blog-img" href="#">
+                                <img src="${contextPath}/resources/home/images/blog/01.jpg" alt="blog">
+                            </a>
+                        </div>
                         <div class="blog-content">
                             <ul class="blog-meta">
 
@@ -501,7 +509,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="section-btn-25"><a href="blog-grid.html" class="btn btn-outline"><i
+                <div class="section-btn-25"><a href="${contextPath}/blogs" class="btn btn-outline"><i
                         class="fas fa-eye"></i><span>view all blog</span></a></div>
             </div>
         </div>
