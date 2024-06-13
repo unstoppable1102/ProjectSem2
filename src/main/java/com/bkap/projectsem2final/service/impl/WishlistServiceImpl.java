@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -18,6 +20,14 @@ public class WishlistServiceImpl implements WishlistService {
     @Override
     public List<Wishlist> findWishlistsByAccountId(Integer accountId) {
         return wishlistRepository.findWishlistsByAccountId(accountId);
+    }
+
+    @Override
+    public List<Integer> getWishlistProductIds(Integer accountId) {
+        return wishlistRepository.findWishlistsByAccountId(accountId)
+                .stream()
+                .map(Wishlist::getProductId)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -33,6 +43,10 @@ public class WishlistServiceImpl implements WishlistService {
     @Override
     public boolean save(Wishlist wishlist) {
         try {
+            Optional<Wishlist> wishlistOptional = wishlistRepository.findByAccountIdAndProductId(wishlist.getAccountId(), wishlist.getProductId());
+            if (wishlistOptional.isPresent()) {
+                return false;
+            }
             wishlistRepository.save(wishlist);
             return true;
         }catch (Exception e){

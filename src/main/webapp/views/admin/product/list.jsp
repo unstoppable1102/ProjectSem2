@@ -150,22 +150,9 @@
                                 </span>
                             </c:otherwise>
                         </c:choose>
-                        <form id="submitForm" action="${contextPath}/admin/product">
-                            <label for="pageSizeSelect"></label>
-                            <select id="pageSizeSelect" name="size" class="input input-sm max-w-[120px] onchange= "submitPageSize()">
-                                <option value="5" <c:if test="${size == 5}">selected</c:if>>5 / page</option>
-                                <option value="10" <c:if test="${size == 10}">selected</c:if>>10 / page</option>
-                                <option value="20" <c:if test="${size == 15}">selected</c:if>>20 / page</option>
-                                <option value="50" <c:if test="${size == 20}">selected</c:if>>50 / page</option>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    function submitPageSize() {
-        document.getElementById('submitForm').submit();
-    }
-</script>

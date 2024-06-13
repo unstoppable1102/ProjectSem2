@@ -26,10 +26,12 @@ public class ProductController {
     private final CategoryService categoryService;
     private final BrandService brandService;
 
+
+
     @GetMapping("list")
     public String list(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "6") int size,
             Model model) {
         Page<Product> products = productService.findAll(page, size);
 

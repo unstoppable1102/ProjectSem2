@@ -64,10 +64,8 @@
                                                 <h6>$${c.product.price * c.quantity} </h6>
                                             </td>
                                             <td class="table-action">
-                                                <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                                <a class="trash" href="${contextPath}/cart/delete/${c.id}" onclick="return confirm('Are you sure want to remove from cart?')">
+                                                <a class="trash" href="${contextPath}/cart/delete/${c.id}"
+                                                   onclick="return confirm('Are you sure want to remove from cart?')">
                                                     <i class="icofont-trash"></i>
                                                 </a>
                                             </td>
@@ -78,9 +76,10 @@
                             </table>
                         </div>
                         <div class="chekout-coupon"><button class="coupon-btn">Do you have a coupon code?</button>
-                            <form class="coupon-form"><input type="text"
-                                                             placeholder="Enter your coupon code"><button
-                                    type="submit"><span>apply</span></button></form>
+                            <form class="coupon-form">
+                                <input type="text" placeholder="Enter your coupon code">
+                                <button type="submit"><span>apply</span></button>
+                            </form>
                         </div>
                         <div class="checkout-charge">
                             <ul>
@@ -142,8 +141,7 @@
                     <option value="others">others</option>
                 </select></div>
                 <div class="form-group"><label class="form-label">address</label><textarea class="form-control"
-                                                                                           placeholder="Enter your address"></textarea></div><button class="form-btn"
-                                                                                                                                                     type="submit">save address info</button>
+                                                                                           placeholder="Enter your address"></textarea></div><button class="form-btn" type="submit">save address info</button>
             </form>
         </div>
     </div>
@@ -205,20 +203,20 @@
     </div>
 </div>
 <script>
-    function showAddCart(productId, quantity) {
-        $.ajax({
-            url: "${pageContext.servletContext.contextPath}/cart/add",
-            type: "POST",
-            data: {
-                productId: productId,
-                quantity: quantity
-            },
-            success: function(countCartItem) {
-                $("#cartItemCount").text(countCartItem);
-            },
-            error: function() {
-                alert("Error adding to cart");
-            }
+    // Lấy tất cả các input có class là "action-input"
+    const quantityInputs = document.querySelectorAll('.action-input');
+
+    // Lặp qua từng input và thêm sự kiện 'input' vào mỗi input
+    quantityInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            const quantity = parseInt(this.value); // Lấy giá trị số lượng mới
+            const price = parseFloat(this.parentElement.parentElement.nextElementSibling.querySelector('h6').innerText.replace('$', '')); // Lấy giá sản phẩm từ phần tử kế tiếp
+            console.log('Input Changed')
+
+            // Tính toán giá mới dựa trên số lượng mới và giá sản phẩm
+            const newPrice = quantity * price;
+            // Hiển thị giá mới trong phần tử h6
+            this.parentElement.parentElement.nextElementSibling.querySelector('h6').innerText = '$' + newPrice.toFixed(2);
         });
-    }
+    });
 </script>

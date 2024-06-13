@@ -92,8 +92,13 @@
                 <button class="header-user">
                     <img src="${contextPath}/resources/home/images/user.png" alt="user">
                 </button>
-                <a href="${contextPath}"><img src="${contextPath}/resources/home/images/logo.png" alt="logo"></a><button
-                    class="header-src"><i class="fas fa-search"></i></button></div>
+                <a href="${contextPath}">
+                    <img src="${contextPath}/resources/home/images/logo.png" alt="logo">
+                </a>
+                <button class="header-src">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
             <a href="${contextPath}" class="header-logo"><img src="${contextPath}/resources/home/images/logo.png" alt="logo"></a>
             <c:choose>
                 <c:when test="${!empty sessionScope.userId}">
@@ -102,6 +107,9 @@
                         <span>${sessionScope.fullName}</span>
                     </a>
                 </c:when>
+                <c:otherwise>
+
+                </c:otherwise>
             </c:choose>
 
             <form id="searchForm"  class="header-form" action="${contextPath}/product/search">
@@ -128,7 +136,7 @@
                         </a>
                         <a href="${contextPath}/login" class="header-widget header-cart" title="Cartlist">
                             <i class="fas fa-shopping-cart"></i>
-                            <sup>5</sup>
+                            <sup>${countCartItem}</sup>
                             <span>totalprice<small>$345.00</small></span>
                         </a>
                     </c:otherwise>

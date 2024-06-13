@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -35,6 +36,10 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     public boolean save(CartItem cartItem) {
         try {
+            Optional<CartItem> cartItemOptional = cartItemRepository.findByCartIdAndProductId(cartItem.getCartId(), cartItem.getProductId());
+            if (cartItemOptional.isPresent()) {
+                return false;
+            }
             cartItemRepository.save(cartItem);
             return true;
         }catch (Exception e){

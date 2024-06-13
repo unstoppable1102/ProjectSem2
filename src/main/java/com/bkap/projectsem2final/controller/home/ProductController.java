@@ -5,8 +5,10 @@ import com.bkap.projectsem2final.entities.Category;
 import com.bkap.projectsem2final.entities.Product;
 import com.bkap.projectsem2final.entities.Wishlist;
 import com.bkap.projectsem2final.service.BrandService;
+import com.bkap.projectsem2final.service.CartService;
 import com.bkap.projectsem2final.service.CategoryService;
 import com.bkap.projectsem2final.service.ProductService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 
@@ -15,21 +17,31 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+
 import java.util.List;
 
 
 @Controller(value = "ProductOfHome")
 @RequestMapping("product")
 @RequiredArgsConstructor
+@SessionAttributes("userId")
 public class ProductController {
 
     private final ProductService productService;
     private final CategoryService categoryService;
     private final BrandService brandService;
+    private final CartService cartService;
+
+    @ModelAttribute("countCartItem")
+    public Integer getCountCartItem(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("userId");
+        if (id == null) {
+            return null;
+        }
+        return cartService.countItemsInCart(id);
+    }
 
     @GetMapping
     public String products(

@@ -10,13 +10,14 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
 @RequiredArgsConstructor
+@SessionAttributes(value = "userId", types = Account.class)
 public class HomeController {
 
     private final ProductService productService;
@@ -24,6 +25,15 @@ public class HomeController {
     private final BrandService brandService;
     private final AccountService accountService;
     private final CartService cartService;
+
+    @ModelAttribute("countCartItem")
+    public Integer getCountCartItem(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("userId");
+        if (id == null) {
+            return null;
+        }
+        return cartService.countItemsInCart(id);
+    }
 
     @GetMapping
     public String home(Model model) {
@@ -60,9 +70,12 @@ public class HomeController {
     }
 
     @GetMapping("logout")
-    public String logout(HttpServletRequest req) {
+    public String logout(HttpServletRequest req, SessionStatus sessionStatus) {
         HttpSession session = req.getSession();
+
+        session.removeAttribute("userId");
         session.invalidate();
+        sessionStatus.setComplete();
         return "redirect:/";
     }
 

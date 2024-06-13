@@ -1,5 +1,6 @@
 package com.bkap.projectsem2final.controller.home;
 
+import com.bkap.projectsem2final.entities.Account;
 import com.bkap.projectsem2final.entities.CartItem;
 import com.bkap.projectsem2final.service.CartItemService;
 import com.bkap.projectsem2final.service.CartService;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("cart")
-@SessionAttributes("userId")
+@SessionAttributes(value = "userId", types = Account.class)
 public class CartController {
 
     private final CartService cartService;

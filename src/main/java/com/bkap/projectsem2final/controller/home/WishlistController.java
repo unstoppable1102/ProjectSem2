@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -21,6 +23,8 @@ public class WishlistController {
     @GetMapping("/{id}")
     public String wishlist(Model model,@PathVariable int id){
         model.addAttribute("wishlists" , wishlistService.findWishlistsByAccountId(id));
+        List<Integer> wishlistProductIds = wishlistService.getWishlistProductIds(id);
+        model.addAttribute("wishlistProductIds", wishlistProductIds);
         model.addAttribute("page" , "wishlist");
         return "home";
     }
@@ -36,6 +40,12 @@ public class WishlistController {
     public String deleteWishlist(Model model , @PathVariable int id){
         wishlistService.delete(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/items")
+    @ResponseBody
+    public List<Integer> getWishlistProductIds(@RequestParam("accountId") Integer accountId) {
+        return wishlistService.getWishlistProductIds(accountId);
     }
 
 }

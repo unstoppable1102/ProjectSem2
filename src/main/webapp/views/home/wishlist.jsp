@@ -65,9 +65,6 @@
                                         <button class="product-add" title="Add to Cart">add to cart</button>
                                     </td>
                                     <td class="table-action">
-                                        <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
                                         <a onclick="return confirm('Are you sure want to remove from wishlist?')" class="trash" href="${contextPath}/wishlist/delete/${w.id}" title="Remove Wishlist">
                                             <i class="icofont-trash"></i>
                                         </a>

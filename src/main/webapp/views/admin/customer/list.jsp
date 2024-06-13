@@ -129,7 +129,15 @@
                                 </td>
                                 <td>${acc.email}</td>
                                 <td>
-                                    <div class="flex items-center">${acc.phone}</div>
+                                    <c:choose>
+                                        <c:when test="${acc.phone != null}">
+                                            <div class="flex items-center">${acc.phone}</div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="flex items-center">N/A</div>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                 </td>
                                 <td>
                                     <c:choose>

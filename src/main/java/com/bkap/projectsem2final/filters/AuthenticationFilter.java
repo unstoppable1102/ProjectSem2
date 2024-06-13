@@ -48,6 +48,15 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
                 return;
             }
         }
+
+        if (req.getRequestURI().equals("/logout")) {
+           req.getSession(false);
+           if (session != null){
+               session.invalidate();
+           }
+           res.sendRedirect("/");
+           return;
+        }
         // pass the request along the filter chain
         chain.doFilter(request, response);
     }

@@ -420,12 +420,6 @@
                 </div>
             </c:forEach>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-btn-50"><a href="brand-list.html" class="btn btn-outline"><i
-                        class="fas fa-eye"></i><span>view all brands</span></a></div>
-            </div>
-        </div>
     </div>
 </section>
 
