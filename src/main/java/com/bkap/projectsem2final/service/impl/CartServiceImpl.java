@@ -1,8 +1,11 @@
 package com.bkap.projectsem2final.service.impl;
 
 import com.bkap.projectsem2final.entities.Cart;
+import com.bkap.projectsem2final.entities.CartItem;
+import com.bkap.projectsem2final.entities.Product;
 import com.bkap.projectsem2final.repository.CartItemRepository;
 import com.bkap.projectsem2final.repository.CartRepository;
+import com.bkap.projectsem2final.repository.ProductRepository;
 import com.bkap.projectsem2final.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,7 @@ public class CartServiceImpl implements CartService {
 
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
+    private final ProductRepository productRepository;
 
 
     @Override
@@ -31,6 +35,17 @@ public class CartServiceImpl implements CartService {
     @Override
     public Integer countItemsInCart(Integer accountId) {
         return cartItemRepository.countCartItemsByAccountId(accountId);
+    }
+
+    @Override
+    public Double calculateTotalPrice(Integer accountId) {
+        Cart cart = cartRepository.findByAccountId(accountId);
+        if (cart == null) return 0.0;
+        List<CartItem> cartItems = cart.getItems();
+        return cartItems.stream().mapToDouble(item ->{
+            Product product = productRepository.findById(item.getProductId()).orElseThrow(()->new RuntimeException("Product not found"));
+            return item.getQuantity() * product.getPrice();
+        }).sum();
     }
 
 

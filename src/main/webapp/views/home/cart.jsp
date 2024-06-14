@@ -18,7 +18,7 @@
             <div class="col-lg-12">
                 <div class="account-card">
                     <div class="account-title">
-                        <h4>Your order</h4>
+                        <h4>Your cart</h4>
                     </div>
                     <div class="account-content">
                         <div class="table-scroll">
@@ -55,7 +55,8 @@
                                                         <button class="action-minus" title="Quantity Minus">
                                                             <i class="icofont-minus"></i>
                                                         </button>
-                                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="${c.quantity}">
+                                                        <input class="action-input" title="Quantity Number"
+                                                               type="text" name="quantity" value="${c.quantity}" onchange="updateCart('${c.productId}', this.value)">
                                                         <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                                                     </div>
                                                 </div>
@@ -75,148 +76,42 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="chekout-coupon"><button class="coupon-btn">Do you have a coupon code?</button>
-                            <form class="coupon-form">
-                                <input type="text" placeholder="Enter your coupon code">
-                                <button type="submit"><span>apply</span></button>
-                            </form>
-                        </div>
-                        <div class="checkout-charge">
-                            <ul>
-                                <li><span>Sub total</span><span>$${total}</span></li>
-                                <li><span>delivery fee</span><span>$00.00</span></li>
-                                <li><span>discount</span><span>$00.00</span></li>
-                                <li><span>Total<small>(Incl. VAT)</small></span><span>$${total}</span></li>
-                            </ul>
-                        </div>
+                       <c:choose>
+                           <c:when test="${! empty cartItem}">
+                               <div class="chekout-coupon"><button class="coupon-btn">Do you have a coupon code?</button>
+                                   <form class="coupon-form">
+                                       <input type="text" placeholder="Enter your coupon code">
+                                       <button type="submit"><span>apply</span></button>
+                                   </form>
+                               </div>
+                               <div class="checkout-charge">
+                                   <ul>
+                                       <li><span>Sub total</span><span>$${total}</span></li>
+                                       <li><span>delivery fee</span><span>$00.00</span></li>
+                                       <li><span>discount</span><span>$00.00</span></li>
+                                       <li><span>Total<small>(Incl. VAT)</small></span><span>$${total}</span></li>
+                                   </ul>
+                               </div>
+                           </c:when>
+
+                       </c:choose>
                     </div>
                 </div>
             </div>
 
 
-            <div class="col-lg-3 m-auto">
-                <div class="account-card mb-0">
-                    <div class="checkout-proced">
-                        <a href="invoice.html" class="btn btn-inline">proced to checkout</a>
+            <c:choose>
+                <c:when test="${! empty cartItem}">
+                    <div class="col-lg-3 m-auto">
+                        <div class="account-card mb-0">
+                            <div class="checkout-proced">
+                                <a href="invoice.html" class="btn btn-inline">proced to checkout</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </c:when>
+            </c:choose>
         </div>
     </div>
 </section>
-<div class="modal fade" id="contact-add">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content"><button class="modal-close" data-bs-dismiss="modal"><i
-                class="icofont-close"></i></button>
-            <form class="modal-form">
-                <div class="form-title">
-                    <h3>add new contact</h3>
-                </div>
-                <div class="form-group"><label class="form-label">title</label><select class="form-select">
-                    <option selected>choose title</option>
-                    <option value="primary">primary</option>
-                    <option value="secondary">secondary</option>
-                </select></div>
-                <div class="form-group"><label class="form-label">number</label><input class="form-control"
-                                                                                       type="text" placeholder="Enter your number"></div><button class="form-btn"
-                                                                                                                                                 type="submit">save contact info</button>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="address-add">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content"><button class="modal-close" data-bs-dismiss="modal"><i
-                class="icofont-close"></i></button>
-            <form class="modal-form">
-                <div class="form-title">
-                    <h3>add new address</h3>
-                </div>
-                <div class="form-group"><label class="form-label">title</label><select class="form-select">
-                    <option selected>choose title</option>
-                    <option value="home">home</option>
-                    <option value="office">office</option>
-                    <option value="Bussiness">Bussiness</option>
-                    <option value="academy">academy</option>
-                    <option value="others">others</option>
-                </select></div>
-                <div class="form-group"><label class="form-label">address</label><textarea class="form-control"
-                                                                                           placeholder="Enter your address"></textarea></div><button class="form-btn" type="submit">save address info</button>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="payment-add">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content"><button class="modal-close" data-bs-dismiss="modal"><i
-                class="icofont-close"></i></button>
-            <form class="modal-form">
-                <div class="form-title">
-                    <h3>add new payment</h3>
-                </div>
-                <div class="form-group"><label class="form-label">card number</label><input class="form-control"
-                                                                                            type="text" placeholder="Enter your card number"></div><button class="form-btn"
-                                                                                                                                                           type="submit">save card info</button>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="contact-edit">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content"><button class="modal-close" data-bs-dismiss="modal"><i
-                class="icofont-close"></i></button>
-            <form class="modal-form">
-                <div class="form-title">
-                    <h3>edit contact info</h3>
-                </div>
-                <div class="form-group"><label class="form-label">title</label><select class="form-select">
-                    <option value="primary" selected>primary</option>
-                    <option value="secondary">secondary</option>
-                </select></div>
-                <div class="form-group"><label class="form-label">number</label><input class="form-control"
-                                                                                       type="text" value="+8801838288389"></div><button class="form-btn" type="submit">save contact
-                info</button>
-            </form>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="address-edit">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content"><button class="modal-close" data-bs-dismiss="modal"><i
-                class="icofont-close"></i></button>
-            <form class="modal-form">
-                <div class="form-title">
-                    <h3>edit address info</h3>
-                </div>
-                <div class="form-group"><label class="form-label">title</label><select class="form-select">
-                    <option value="home" selected>home</option>
-                    <option value="office">office</option>
-                    <option value="Bussiness">Bussiness</option>
-                    <option value="academy">academy</option>
-                    <option value="others">others</option>
-                </select></div>
-                <div class="form-group"><label class="form-label">address</label><textarea class="form-control"
-                                                                                           placeholder="jalkuri, fatullah, narayanganj-1420. word no-09, road no-17/A"></textarea>
-                </div><button class="form-btn" type="submit">save address info</button>
-            </form>
-        </div>
-    </div>
-</div>
-<script>
-    // Lấy tất cả các input có class là "action-input"
-    const quantityInputs = document.querySelectorAll('.action-input');
 
-    // Lặp qua từng input và thêm sự kiện 'input' vào mỗi input
-    quantityInputs.forEach(input => {
-        input.addEventListener('input', function() {
-            const quantity = parseInt(this.value); // Lấy giá trị số lượng mới
-            const price = parseFloat(this.parentElement.parentElement.nextElementSibling.querySelector('h6').innerText.replace('$', '')); // Lấy giá sản phẩm từ phần tử kế tiếp
-            console.log('Input Changed')
-
-            // Tính toán giá mới dựa trên số lượng mới và giá sản phẩm
-            const newPrice = quantity * price;
-            // Hiển thị giá mới trong phần tử h6
-            this.parentElement.parentElement.nextElementSibling.querySelector('h6').innerText = '$' + newPrice.toFixed(2);
-        });
-    });
-</script>

@@ -3,6 +3,8 @@ package com.bkap.projectsem2final.controller.home;
 
 import com.bkap.projectsem2final.entities.Account;
 import com.bkap.projectsem2final.entities.Cart;
+import com.bkap.projectsem2final.entities.CartItem;
+import com.bkap.projectsem2final.entities.Wishlist;
 import com.bkap.projectsem2final.service.*;
 import com.bkap.projectsem2final.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,12 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 @Controller
 @RequiredArgsConstructor
-@SessionAttributes(value = "userId", types = Account.class)
+@SessionAttributes("userId")
 public class HomeController {
 
     private final ProductService productService;
@@ -25,6 +25,13 @@ public class HomeController {
     private final BrandService brandService;
     private final AccountService accountService;
     private final CartService cartService;
+
+    @ModelAttribute("totalPrice")
+    public Double getTotalPrice(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("userId");
+        if (id == null) return 0.0;
+        return cartService.calculateTotalPrice(id);
+    }
 
     @ModelAttribute("countCartItem")
     public Integer getCountCartItem(HttpServletRequest req) {
@@ -40,6 +47,8 @@ public class HomeController {
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("brands", brandService.findAll());
         model.addAttribute("products", productService.findAll());
+        model.addAttribute("wishlist" , new Wishlist());
+        model.addAttribute("cartItem", new CartItem());
         model.addAttribute("top10Products", productService.findTop10ByOrderByCreateDateAsc());
         model.addAttribute("newArrivals", productService.findTop8ByOrderByCreateDateDesc());
         model.addAttribute("features", productService.findProductByFeaturedIsTrue());

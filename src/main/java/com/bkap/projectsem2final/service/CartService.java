@@ -8,4 +8,5 @@ import org.springframework.stereotype.Service;
 public interface CartService extends GenericService<Cart, Integer>{
     Cart findByAccountId(Integer accountId);
     Integer countItemsInCart(Integer accountId);
+    Double calculateTotalPrice(Integer accountId);
 }

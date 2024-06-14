@@ -201,7 +201,7 @@
                                     <f:form method="post" action="${contextPath}/wishlist/add" modelAttribute="wishlist">
                                         <f:hidden path="productId" value="${p.id}" />
                                         <f:hidden path="accountId" value="${sessionScope.userId}" />
-                                        <button class="product-wish wish ${wishlistProductIds.contains(product.id) ? 'active' : ''}">
+                                        <button class="product-wish wish ${wishlistProductIds.contains(product.id) ? 'active' : ''} ">
                                             <i class="fas fa-heart"></i>
                                         </button>
                                     </f:form>

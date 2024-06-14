@@ -18,7 +18,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 
 import java.util.List;
 
@@ -33,6 +32,13 @@ public class ProductController {
     private final CategoryService categoryService;
     private final BrandService brandService;
     private final CartService cartService;
+
+    @ModelAttribute("totalPrice")
+    public Double getTotalPrice(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("userId");
+        if (id == null) return 0.0;
+        return cartService.calculateTotalPrice(id);
+    }
 
     @ModelAttribute("countCartItem")
     public Integer getCountCartItem(HttpServletRequest req) {

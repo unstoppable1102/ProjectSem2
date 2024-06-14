@@ -23,6 +23,12 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
+    public CartItem findByCartIdAndProductId(Integer cartId, Integer productId) {
+        return cartItemRepository.findByCartIdAndProductId(cartId, productId);
+    }
+
+
+    @Override
     public List<CartItem> findAll() {
         return cartItemRepository.findAll();
     }
@@ -36,10 +42,6 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     public boolean save(CartItem cartItem) {
         try {
-            Optional<CartItem> cartItemOptional = cartItemRepository.findByCartIdAndProductId(cartItem.getCartId(), cartItem.getProductId());
-            if (cartItemOptional.isPresent()) {
-                return false;
-            }
             cartItemRepository.save(cartItem);
             return true;
         }catch (Exception e){

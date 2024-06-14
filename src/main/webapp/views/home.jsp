@@ -127,7 +127,7 @@
                         <a href="${contextPath}/cart/${sessionScope.userId}" class="header-widget header-cart" title="Cartlist">
                             <i class="fas fa-shopping-cart"></i>
                             <sup id="cartItemCount">${countCartItem}</sup>
-                            <span>totalprice<small>$345.00</small></span>
+                            <span>totalprice<small>$${totalPrice}</small></span>
                         </a>
                     </c:when>
                     <c:otherwise>

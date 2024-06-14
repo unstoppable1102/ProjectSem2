@@ -50,6 +50,7 @@
 											<img class="avatar-img avatar-rounded" src="${contextPath}/resources/images/${p.image}" alt="">
 										</span>
                                         <span class="ml-2 rtl:mr-2 font-semibold">${p.productName}</span>
+
                                     </div>
                                 </td>
                                 <td><span class="capitalize">${p.category.name}</span></td>

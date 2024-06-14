@@ -16,5 +16,5 @@ public interface CartItemRepository extends JpaRepository<CartItem, Integer> {
     @Query("select count(ci) from CartItem ci where ci.cart.account.id = :accountId")
     Integer countCartItemsByAccountId(Integer accountId);
 
-    Optional<CartItem> findByCartIdAndProductId(Integer cartId, Integer productId);
+    CartItem findByCartIdAndProductId(Integer cartId, Integer productId);
 }
