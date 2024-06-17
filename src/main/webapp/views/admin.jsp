@@ -1,7 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
+<c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application" />
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="light">
 
@@ -127,6 +127,16 @@
                                         <li data-menu-item="modern-product-list" class="menu-item">
                                             <a class="h-full w-full flex items-center" href="${contextPath}/admin/product/list">
                                                 <span>Product List</span>
+                                            </a>
+                                        </li>
+                                        <li data-menu-item="modern-product-list" class="menu-item">
+                                            <a class="h-full w-full flex items-center" href="${contextPath}/admin/postcategory/list">
+                                                <span>Post Category List</span>
+                                            </a>
+                                        </li>
+                                        <li data-menu-item="modern-product-list" class="menu-item">
+                                            <a class="h-full w-full flex items-center" href="${contextPath}/admin/post/list">
+                                                <span>Post List</span>
                                             </a>
                                         </li>
                                         <li data-menu-item="modern-order-list" class="menu-item">

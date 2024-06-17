@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/home/css/blog-grid.css">
     <link rel="stylesheet" href="${contextPath}/resources/home/css/product-details.css">
     <link rel="stylesheet" href="${contextPath}/resources/home/css/checkout.css">
+    <link rel="stylesheet" href="${contextPath}/resources/home/css/blog-details.css">
 </head>
 
 <body>

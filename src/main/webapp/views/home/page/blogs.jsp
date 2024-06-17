@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>blog</h2>
@@ -17,239 +18,141 @@
             <div class="col-lg-8">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="top-filter">
-                            <div class="filter-show"><label class="filter-label">Show :</label><select
-                                    class="form-select filter-select">
-                                <option value="1">12</option>
-                                <option value="2">24</option>
-                                <option value="3">36</option>
-                            </select></div>
-                            <div class="filter-short"><label class="filter-label">Short by :</label><select
-                                    class="form-select filter-select">
-                                <option selected>default</option>
-                                <option value="3">recent</option>
-                                <option value="1">featured</option>
-                                <option value="2">recommend</option>
-                            </select></div>
-                        </div>
+<%--                        <div class="top-filter">--%>
+                        <form id="submitForm" style="margin-bottom: 22px;" method="get" action="${contextPath}/blogs" class="d-flex justify-content-between">
+
+                            <div class="filter-show">
+                                <label class="filter-label">Show :</label>
+                                <select id="pageSizeSelect" name="size" class="form-select filter-select" onchange="submitPageSize()">
+                                    <option value="8" <c:if test="${size == 8}">selected</c:if>>8</option>
+                                    <option value="12" <c:if test="${size == 12}">selected</c:if>>12</option>
+                                    <option value="16" <c:if test="${size == 16}">selected</c:if>>16</option>
+                                </select>
+                            </div>
+                            <div class="filter-short">
+                                <label class="filter-label">Sort by :</label>
+                                <select id="sortSelect" name="sort" class="form-select filter-select" onchange="submitSortForm()">
+                                    <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Default</option>
+                                    <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Name A-Z</option>
+                                    <option value="name_desc" <c:if test="${sort == 'name_desc'}">selected</c:if>>Name Z-A</option>
+                                </select>
+                            </div>
+
+                            <input type="hidden" name="page" value="${currentPage}" />
+
+                        </form>
+<%--                    </div>--%>
+
                     </div>
                 </div>
                 <div class="row">
+        <c:forEach var="p" items="${posts.content}">
                     <div class="col-md-6 col-lg-6">
                         <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/01.jpg"
+                            <div class="blog-media"><a class="blog-img" href="${contextPath}/blog-detail/${p.id}"><img src="${contextPath}/resources/images/${p.image}"
                                                                                       alt="blog"></a></div>
                             <div class="blog-content">
                                 <ul class="blog-meta">
                                     <li><i class="fas fa-user"></i><span>admin</span></li>
                                     <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
                                 </ul>
-                                <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident
-                                    Lorem ipsum dolor sit amet</a></h4>
-                                <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                    autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                               href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
+                                <h4 class="blog-title"><a href="${contextPath}/blog-detail/${p.id}">${p.name}</a></h4>
+                                <p class="blog-desc">${p.description}</p><a class="blog-btn"
+                                                                                               href="${contextPath}/blog-detail/${p.id}"><span>read more</span><i class="icofont-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/02.jpg"
-                                                                                      alt="blog"></a></div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fas fa-user"></i><span>admin</span></li>
-                                    <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                                </ul>
-                                <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident
-                                    Lorem ipsum dolor sit amet</a></h4>
-                                <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                    autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                               href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/03.jpg"
-                                                                                      alt="blog"></a></div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fas fa-user"></i><span>admin</span></li>
-                                    <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                                </ul>
-                                <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident
-                                    Lorem ipsum dolor sit amet</a></h4>
-                                <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                    autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                               href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/04.jpg"
-                                                                                      alt="blog"></a></div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fas fa-user"></i><span>admin</span></li>
-                                    <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                                </ul>
-                                <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident
-                                    Lorem ipsum dolor sit amet</a></h4>
-                                <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                    autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                               href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/05.jpg"
-                                                                                      alt="blog"></a></div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fas fa-user"></i><span>admin</span></li>
-                                    <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                                </ul>
-                                <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident
-                                    Lorem ipsum dolor sit amet</a></h4>
-                                <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                    autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                               href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/06.jpg"
-                                                                                      alt="blog"></a></div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fas fa-user"></i><span>admin</span></li>
-                                    <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                                </ul>
-                                <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident
-                                    Lorem ipsum dolor sit amet</a></h4>
-                                <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                    autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                               href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/07.jpg"
-                                                                                      alt="blog"></a></div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fas fa-user"></i><span>admin</span></li>
-                                    <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                                </ul>
-                                <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident
-                                    Lorem ipsum dolor sit amet</a></h4>
-                                <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                    autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                               href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-                        <div class="blog-card">
-                            <div class="blog-media"><a class="blog-img" href="#"><img src="resources/home/images/blog/08.jpg"
-                                                                                      alt="blog"></a></div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fas fa-user"></i><span>admin</span></li>
-                                    <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                                </ul>
-                                <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident
-                                    Lorem ipsum dolor sit amet</a></h4>
-                                <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                    autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                               href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
+        </c:forEach>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="bottom-paginate">
-                            <p class="page-info">Showing 12 of 60 Results</p>
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#"><i
-                                        class="fas fa-long-arrow-alt-left"></i></a></li>
-                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">...</li>
-                                <li class="page-item"><a class="page-link" href="#">60</a></li>
-                                <li class="page-item"><a class="page-link" href="#"><i
-                                        class="fas fa-long-arrow-alt-right"></i></a></li>
-                            </ul>
-                        </div>
+
+    <div class="bottom-paginate">
+        <p class="page-info">Show ${posts.content.size()} of ${posts.totalElements} results</p>
+        <ul class="pagination">
+            <c:choose>
+                <c:when test="${not posts.first}">
+                    <li class="page-item">
+                        <a class="page-link" href="?page=${posts.number - 1}&size=${posts.size}&postCt=${postCt}">
+                            <i class="fas fa-long-arrow-alt-left"></i>
+                        </a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="page-item disabled">
+                                        <span class="page-link">
+                                            <i class="fas fa-long-arrow-alt-left"></i>
+                                        </span>
+                    </li>
+                </c:otherwise>
+            </c:choose>
+            <c:forEach begin="0" end="${(posts.totalPages - 1)<0?0:(posts.totalPages -1 )}" step="1" varStatus="status">
+                <c:choose>
+                    <c:when test="${status.index == posts.number}">
+                        <li class="page-item active">
+                            <span class="page-link">${status.index + 1}</span>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=${status.index}&size=${posts.size}&sort=${sort}&postCt=${postCt}">
+                                    ${status.index + 1}
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+
+            <c:choose>
+                <c:when test="${not posts.last}">
+                    <li class="page-item">
+                        <a class="page-link" href="?page=${posts.number + 1}&size=${posts.size}&postId=${postCt}">
+                            <i class="fas fa-long-arrow-alt-right"></i>
+                        </a>
+                    </li>
+                </c:when>
+                <c:otherwise>
+                    <li class="page-item disabled">
+                                            <span class="page-link">
+                                                <i class="fas fa-long-arrow-alt-right"></i>
+                                            </span>
+                    </li>
+                </c:otherwise>
+            </c:choose>
+        </ul>
+    </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-7 col-lg-4">
                 <div class="blog-widget">
                     <h3 class="blog-widget-title">Find blogs</h3>
-                    <form class="blog-widget-form"><input type="text" placeholder="Search blogs"><button
+                    <form action="${contextPath}/searchp" method="get" class="blog-widget-form"><input type="text" value="${keyword}" name="s" placeholder="Search blogs"><button
                             class="icofont-search-1"></button></form>
                 </div>
-                <div class="blog-widget">
-                    <h3 class="blog-widget-title">popular feeds</h3>
-                    <ul class="blog-widget-feed">
-                        <li><a class="blog-widget-media" href="#"><img src="resources/home/images/blog-widget/01.jpg"
-                                                                       alt="blog-widget"></a>
-                            <h6 class="blog-widget-text"><a href="#">Lorem ipsum dolor sit amet
-                                consectetur</a><span>february 02, 2021</span></h6>
-                        </li>
-                        <li><a class="blog-widget-media" href="#"><img src="resources/home/images/blog-widget/02.jpg"
-                                                                       alt="blog-widget"></a>
-                            <h6 class="blog-widget-text"><a href="#">Lorem ipsum dolor sit amet
-                                consectetur</a><span>february 02, 2021</span></h6>
-                        </li>
-                        <li><a class="blog-widget-media" href="#"><img src="resources/home/images/blog-widget/03.jpg"
-                                                                       alt="blog-widget"></a>
-                            <h6 class="blog-widget-text"><a href="#">Lorem ipsum dolor sit amet
-                                consectetur</a><span>february 02, 2021</span></h6>
-                        </li>
-                        <li><a class="blog-widget-media" href="#"><img src="resources/home/images/blog-widget/04.jpg"
-                                                                       alt="blog-widget"></a>
-                            <h6 class="blog-widget-text"><a href="#">Lorem ipsum dolor sit amet
-                                consectetur</a><span>february 02, 2021</span></h6>
-                        </li>
-                        <li><a class="blog-widget-media" href="#"><img src="resources/home/images/blog-widget/05.jpg"
-                                                                       alt="blog-widget"></a>
-                            <h6 class="blog-widget-text"><a href="#">Lorem ipsum dolor sit amet
-                                consectetur</a><span>february 02, 2021</span></h6>
-                        </li>
-                    </ul>
-                </div>
+
                 <div class="blog-widget">
                     <h3 class="blog-widget-title">top categories</h3>
                     <ul class="blog-widget-category">
-                        <li><a href="#">farming <span>22</span></a></li>
-                        <li><a href="#">agriculture <span>14</span></a></li>
-                        <li><a href="#">organic food <span>35</span></a></li>
-                        <li><a href="#">vegetables <span>67</span></a></li>
-                        <li><a href="#">healthy life <span>89</span></a></li>
+
+<c:forEach var="pct" items="${postcategories}">
+                        <li><a href="${contextPath}/blogs?postCt=${pct.id}">${pct.name} <span>${pct.postCount}</span></a></li>
+
+</c:forEach>
                     </ul>
                 </div>
+
                 <div class="blog-widget">
-                    <h3 class="blog-widget-title">popular tags</h3>
-                    <ul class="blog-widget-tag">
-                        <li><a href="#">farming</a></li>
-                        <li><a href="#">organic</a></li>
-                        <li><a href="#">food</a></li>
-                        <li><a href="#">healthy</a></li>
-                        <li><a href="#">agriculture</a></li>
-                        <li><a href="#">vegetables</a></li>
-                        <li><a href="#">grocery</a></li>
-                        <li><a href="#">vegan</a></li>
-                        <li><a href="#">life</a></li>
-                        <li><a href="#">enjoy</a></li>
+                    <h3 class="blog-widget-title">popular feeds</h3>
+                    <ul class="blog-widget-feed">
+
+                        <c:forEach var="tp" items="${top8}">
+                            <li><a class="blog-widget-media" href="#"><img src="${contextPath}/resources/images/${tp.image}"
+                                                                           alt="blog-widget"></a>
+                                <h6 class="blog-widget-text"><a href="#">${tp.name}</a><span>february 02, 2021</span></h6>
+                            </li>
+                        </c:forEach>
+
                     </ul>
                 </div>
                 <div class="blog-widget">
@@ -268,3 +171,14 @@
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+    function submitPageSize() {
+        document.getElementById('submitForm').submit();
+    }
+
+    function submitSortForm() {
+        document.getElementById('submitForm').submit();
+    }
+
+</script>
