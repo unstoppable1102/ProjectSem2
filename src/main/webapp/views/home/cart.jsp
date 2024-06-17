@@ -71,6 +71,7 @@
                                                 </a>
                                             </td>
                                         </tr>
+
                                         <c:set var="total" value="${total+c.product.price*c.quantity}" />
                                     </c:forEach>
                                 </tbody>
@@ -93,13 +94,10 @@
                                    </ul>
                                </div>
                            </c:when>
-
                        </c:choose>
                     </div>
                 </div>
             </div>
-
-
             <c:choose>
                 <c:when test="${! empty cartItem}">
                     <div class="col-lg-3 m-auto">

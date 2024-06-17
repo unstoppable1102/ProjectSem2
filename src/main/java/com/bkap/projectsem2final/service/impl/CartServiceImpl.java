@@ -9,9 +9,8 @@ import com.bkap.projectsem2final.repository.ProductRepository;
 import com.bkap.projectsem2final.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -46,6 +45,21 @@ public class CartServiceImpl implements CartService {
             Product product = productRepository.findById(item.getProductId()).orElseThrow(()->new RuntimeException("Product not found"));
             return item.getQuantity() * product.getPrice();
         }).sum();
+    }
+
+    @Override
+    public void updateCartItems(Integer accountId, Map<String, String> quantities) {
+        Cart cart = cartRepository.findByAccountId(accountId);
+        List<CartItem> cartItems = cartItemRepository.findByCartId(cart.getId());
+        for (CartItem item : cartItems) {
+            String quantityStr = quantities.get(String.valueOf(item.getProduct().getId()));
+            if (quantityStr != null) {
+                int quantity = Integer.parseInt(quantityStr);
+                item.setQuantity(quantity);
+                cartItemRepository.save(item);
+            }
+
+        }
     }
 
 

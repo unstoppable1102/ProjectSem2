@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
+<c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application" />
 <!DOCTYPE html>
 <html lang="en">
 <!-- Mirrored from mironmahmud.com/greeny/assets/ltr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 May 2024 07:09:07 GMT -->
@@ -136,8 +136,7 @@
                         </a>
                         <a href="${contextPath}/login" class="header-widget header-cart" title="Cartlist">
                             <i class="fas fa-shopping-cart"></i>
-                            <sup>${countCartItem}</sup>
-                            <span>totalprice<small>$345.00</small></span>
+                            <span>totalprice<small>$0.0</small></span>
                         </a>
                     </c:otherwise>
                 </c:choose>
@@ -234,7 +233,8 @@
         </div>
         <ul class="nav-list">
             <li><a class="nav-link" href="#">Home</a></li>
-            <li><a class="nav-link dropdown-link" href="#"><i class="icofont-food-cart"></i>shop</a>
+            <li><a class="nav-link dropdown-link" href="#">
+                <i class="icofont-food-cart"></i>shop</a>
                 <ul class="dropdown-list">
                     <li><a href="shop-5column.html">shop 5 column</a></li>
                     <li><a href="shop-4column.html">shop 4 column</a></li>

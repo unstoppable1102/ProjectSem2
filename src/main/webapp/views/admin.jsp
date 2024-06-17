@@ -1,7 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="session" />
+<c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application" />
 <!DOCTYPE html>
 <html lang="en" dir="ltr" class="light">
 
@@ -19,7 +19,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
     <style>
         .ck-editor__editable_inline {
-            min-height: 300px; /* Thay đổi giá trị này theo ý bạn */
+            min-height: 300px;
         }
     </style>
 </head>
@@ -33,7 +33,9 @@
             <div class="side-nav side-nav-transparent side-nav-expand">
                 <div class="side-nav-header">
                     <div class="logo px-6">
-                        <a href="${contextPath}/admin/project/dashboard"><img src="${contextPath}/resources/admin/img/logo/logo-light-full.png" alt="Elstar logo"></a>
+                        <a href="${contextPath}/admin/project/dashboard">
+                            <img src="${contextPath}/resources/admin/img/logo/logo-light-full.png" alt="Elstar logo">
+                        </a>
                     </div>
                 </div>
                 <div class="side-nav-content relative side-nav-scroll">

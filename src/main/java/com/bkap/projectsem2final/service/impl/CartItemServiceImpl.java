@@ -13,9 +13,8 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CartItemServiceImpl implements CartItemService {
+
     private final CartItemRepository cartItemRepository;
-
-
 
     @Override
     public List<CartItem> findByCart(Cart cart) {
@@ -25,6 +24,11 @@ public class CartItemServiceImpl implements CartItemService {
     @Override
     public CartItem findByCartIdAndProductId(Integer cartId, Integer productId) {
         return cartItemRepository.findByCartIdAndProductId(cartId, productId);
+    }
+
+    @Override
+    public List<CartItem> findByCartId(Integer cartId) {
+        return cartItemRepository.findByCartId(cartId);
     }
 
 

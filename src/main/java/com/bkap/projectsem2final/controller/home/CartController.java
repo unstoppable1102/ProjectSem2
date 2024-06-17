@@ -10,8 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -61,6 +63,13 @@ public class CartController {
     public String deleteCart(@PathVariable int id) {
         cartItemService.delete(id);
         return "redirect:/";
+    }
+
+    @PostMapping("/updateCart")
+    public String updateCart(@RequestParam Map<String, String> quantities, @ModelAttribute("accountId") Integer accountId, RedirectAttributes redirectAttributes) {
+        cartService.updateCartItems(accountId, quantities);
+        redirectAttributes.addFlashAttribute("message", "Cart updated successfully!");
+        return "redirect:/cart";
     }
 
 }

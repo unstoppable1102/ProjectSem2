@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -8,7 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="mobile-menu">
-    <a href="index.html" title="Home Page">
+    <a href="${contextPath}" title="Home Page">
         <i class="fas fa-home"></i><span>Home</span>
     </a>
     <button class="cate-btn" title="Category List">
@@ -113,14 +114,20 @@
                         <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro
                             necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto
                             excepturi</p>
-                        <div class="banner-btn"><a class="btn btn-inline" href="shop-4column.html"><i
-                                class="fas fa-shopping-cart"></i><span>shop now</span></a><a
-                                class="btn btn-outline" href="offer.html"><i
-                                class="icofont-sale-discount"></i><span>get offer</span></a></div>
+                        <div class="banner-btn">
+                            <a class="btn btn-inline" href="${contextPath}/product">
+                                <i class="fas fa-shopping-cart"></i><span>shop now</span>
+                            </a>
+                            <a class="btn btn-outline" href="offer.html">
+                                <i class="icofont-sale-discount"></i><span>get offer</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
-                    <div class="banner-img"><img src="${contextPath}/resources/home/images/home/index/01.png" alt="index"></div>
+                    <div class="banner-img">
+                        <img src="${contextPath}/resources/home/images/home/index/01.png" alt="index">
+                    </div>
                 </div>
             </div>
         </div>
@@ -129,7 +136,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 col-lg-6">
-                    <div class="banner-img"><img src="${contextPath}/resources/home/images/home/index/02.png" alt="index"></div>
+                    <div class="banner-img">
+                        <img src="${contextPath}/resources/home/images/home/index/02.png" alt="index">
+                    </div>
                 </div>
                 <div class="col-md-6 col-lg-6">
                     <div class="banner-content">
@@ -137,7 +146,7 @@
                         <p>Lorem ipsum dolor consectetur adipisicing elit modi consequatur eaque expedita porro
                             necessitatibus eveniet voluptatum quis pariatur Laboriosam molestiae architecto
                             excepturi</p>
-                        <div class="banner-btn"><a class="btn btn-inline" href="shop-4column.html"><i
+                        <div class="banner-btn"><a class="btn btn-inline" href="${contextPath}/product"><i
                                 class="fas fa-shopping-cart"></i><span>shop now</span></a><a
                                 class="btn btn-outline" href="offer.html"><i
                                 class="icofont-sale-discount"></i><span>get offer</span></a>
@@ -164,13 +173,6 @@
 </section>
 <section class="section recent-part">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2> </h2>
-                </div>
-            </div>
-        </div>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
             <c:forEach var="t10p" items="${top10Products}">
                 <div class="col">
@@ -179,9 +181,13 @@
                             <div class="product-label">
                                 <label class="label-text sale">sale</label>
                             </div>
-                            <button class="product-wish wish">
-                                <i class="fas fa-heart"></i>
-                            </button>
+                            <f:form method="post" action="${contextPath}/wishlist/add" modelAttribute="wishlist">
+                                <f:hidden path="productId" value="${t10p.id}" />
+                                <f:hidden path="accountId" value="${sessionScope.userId}" />
+                                <button class="product-wish wish ${wishlistProductIds.contains(t10p.id) ? 'active' : ''} ">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </f:form>
                             <a class="product-image" href="${contextPath}/product/detail/${t10p.id}">
                                 <img src="${contextPath}/resources/images/${t10p.image}" alt="product">
                             </a>
@@ -202,11 +208,13 @@
                                 <del>$${t10p.priceOld}</del>
                                 <span>$${t10p.price}<small>/piece</small></span>
                             </h6>
-                            <button class="product-add" title="Add to Cart">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span>add</span>
-                            </button>
-
+                            <f:form method="get" action="${contextPath}/cart/add/${t10p.id}/${sessionScope.userId}" modelAttribute="cartItem">
+                                <f:hidden path="quantity" value="1" />
+                                <button class="product-add">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>add</span>
+                                </button>
+                            </f:form>
                         </div>
                     </div>
                 </div>
@@ -254,9 +262,13 @@
                             <div class="feature-label">
                                 <label class="label-text feat">feature</label>
                             </div>
-                            <button class="feature-wish wish">
-                                <i class="fas fa-heart"></i>
-                            </button>
+                            <f:form method="post" action="${contextPath}/wishlist/add" modelAttribute="wishlist">
+                                <f:hidden path="productId" value="${fp.id}" />
+                                <f:hidden path="accountId" value="${sessionScope.userId}" />
+                                <button class="product-wish wish ${wishlistProductIds.contains(fp.id) ? 'active' : ''} ">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </f:form>
                             <a class="feature-image" href="${contextPath}/product/detail/${fp.id}">
                                 <img src="${contextPath}/resources/images/${fp.image}" alt="product">
                             </a>
@@ -281,10 +293,13 @@
                                 <span>$${fp.price}</span>
                             </h6>
                             <p class="feature-desc">${fp.description}...</p>
-                            <button class="product-add" title="Add to Cart" type="submit">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span>add</span>
-                            </button>
+                            <f:form method="get" action="${contextPath}/cart/add/${fp.id}/${sessionScope.userId}" modelAttribute="cartItem">
+                                <f:hidden path="quantity" value="1" />
+                                <button class="product-add">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span>add</span>
+                                </button>
+                            </f:form>
                         </div>
                     </div>
                 </div>
@@ -305,7 +320,7 @@
                             class="countdown-time"><span>00</span><small>hours</small></span><span
                             class="countdown-time"><span>00</span><small>minutes</small></span><span
                             class="countdown-time"><span>00</span><small>seconds</small></span></div>
-                        <a href="shop-4column.html" class="btn btn-inline">
+                        <a href="${contextPath}/product" class="btn btn-inline">
                             <i class="fas fa-shopping-cart"></i><span>shop now</span>
                         </a>
                 </div>
@@ -330,60 +345,67 @@
         </div>
         <div class="row">
             <div class="col">
-                    <ul class="new-slider slider-arrow">
-                        <c:forEach var="na" items="${newArrivals}">
-                            <li>
-                                <div class="product-card">
-                                    <div class="product-media">
-                                        <div class="product-label">
-                                            <label class="label-text new">new</label>
-                                        </div>
-                                        <button class="product-wish wish"><i class="fas fa-heart"></i></button>
-                                        <a class="product-image" href="${contextPath}/product/detail/${na.id}">
-                                            <img src="${contextPath}/resources/images/${na.image}" alt="product">
-                                        </a>
-                                        <div class="product-widget">
-                                           <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
-                                        </div>
+                <ul class="new-slider slider-arrow">
+                    <c:forEach var="na" items="${newArrivals}">
+                        <li>
+                            <div class="product-card">
+                                <div class="product-media">
+                                    <div class="product-label">
+                                        <label class="label-text new">new</label>
                                     </div>
-                                    <div class="product-content">
-                                        <div class="product-rating">
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="active icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <a href="${contextPath}/product/detail/${na.id}">(3)</a>
-                                        </div>
-                                        <h6 class="product-name">
-                                            <a href="${contextPath}/product/detail/${na.id}">${na.productName}</a>
-                                        </h6>
-                                        <h6 class="product-price">
-                                            <del>$${na.priceOld}</del>
-                                            <span>$${na.price}</span>
-                                        </h6>
-                                        <button class="product-add" title="Add to Cart">
+                                    <f:form method="post" action="${contextPath}/wishlist/add" modelAttribute="wishlist">
+                                        <f:hidden path="productId" value="${na.id}" />
+                                        <f:hidden path="accountId" value="${sessionScope.userId}" />
+                                        <button class="product-wish wish ${wishlistProductIds.contains(na.id) ? 'active' : ''} ">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                    </f:form>
+                                    <a class="product-image" href="${contextPath}/product/detail/${na.id}">
+                                        <img src="${contextPath}/resources/images/${na.image}" alt="product">
+                                    </a>
+                                    <div class="product-widget">
+                                       <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <div class="product-rating">
+                                        <i class="active icofont-star"></i>
+                                        <i class="active icofont-star"></i>
+                                        <i class="active icofont-star"></i>
+                                        <i class="active icofont-star"></i>
+                                        <i class="icofont-star"></i>
+                                        <a href="${contextPath}/product/detail/${na.id}">(3)</a>
+                                    </div>
+                                    <h6 class="product-name">
+                                        <a href="${contextPath}/product/detail/${na.id}">${na.productName}</a>
+                                    </h6>
+                                    <h6 class="product-price">
+                                        <del>$${na.priceOld}</del>
+                                        <span>$${na.price}</span>
+                                    </h6>
+                                    <f:form method="get" action="${contextPath}/cart/add/${na.id}/${sessionScope.userId}" modelAttribute="cartItem">
+                                        <f:hidden path="quantity" value="1" />
+                                        <button class="product-add">
                                             <i class="fas fa-shopping-cart"></i>
                                             <span>add</span>
                                         </button>
-                                        <div class="product-action">
-                                            <button class="action-minus" title="Quantity Minus">
-                                                <i class="icofont-minus"></i>
-                                            </button>
-                                            <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                            <button class="action-plus" title="Quantity Plus">
-                                                <i class="icofont-plus"></i>
-                                            </button>
-                                        </div>
+                                    </f:form>
+                                    <div class="product-action">
+                                        <button class="action-minus" title="Quantity Minus">
+                                            <i class="icofont-minus"></i>
+                                        </button>
+                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                        <button class="action-plus" title="Quantity Plus">
+                                            <i class="icofont-plus"></i>
+                                        </button>
                                     </div>
                                 </div>
-                            </li>
-                        </c:forEach>
-                    </ul>
-
+                            </div>
+                        </li>
+                    </c:forEach>
+                </ul>
             </div>
         </div>
-
     </div>
 </section>
 <div class="section promo-part">
