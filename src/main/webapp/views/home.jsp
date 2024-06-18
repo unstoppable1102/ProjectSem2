@@ -125,7 +125,7 @@
                         <a href="${contextPath}/wishlist/${sessionScope.userId}" class="header-widget" title="Wishlist">
                             <i class="fas fa-heart"></i>
                         </a>
-                        <a href="${contextPath}/cart/${sessionScope.userId}" class="header-widget header-cart" title="Cartlist">
+                        <a href="${contextPath}/cart" class="header-widget header-cart" title="Cartlist">
                             <i class="fas fa-shopping-cart"></i>
                             <sup id="cartItemCount">${countCartItem}</sup>
                             <span>totalprice<small>$${totalPrice}</small></span>

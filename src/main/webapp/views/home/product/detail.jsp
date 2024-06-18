@@ -285,7 +285,7 @@
                                 <i class="icofont-star"></i>
                                 <a href="${contextPath}/product/detail/${pr.id}">(3)</a>
                             </div>
-                            <h6 class="product-name"><a href="${contextPath}/product/detail/${pr.id}">fresh green chilis</a></h6>
+                            <h6 class="product-name"><a href="${contextPath}/product/detail/${pr.id}">${pr.productName}</a></h6>
                             <h6 class="product-price"><del>$${pr.priceOld}</del><span>$${pr.price}<small>/piece</small></span></h6>
                             <button class="product-add" title="Add to Cart">
                                 <i class="fas fa-shopping-cart"></i><span>add</span>

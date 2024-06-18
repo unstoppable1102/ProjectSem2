@@ -55,8 +55,8 @@
                                                         <button class="action-minus" title="Quantity Minus">
                                                             <i class="icofont-minus"></i>
                                                         </button>
-                                                        <input class="action-input" title="Quantity Number"
-                                                               type="text" name="quantity" value="${c.quantity}" onchange="updateCart('${c.productId}', this.value)">
+                                                        <input class="action-input" title="Quantity Number" id="quantity"
+                                                               type="number" name="quantity" value="${c.quantity}" onchange="updateCart('${c.product.id}', this.value)"/>
                                                         <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
                                                     </div>
                                                 </div>
@@ -112,4 +112,12 @@
         </div>
     </div>
 </section>
+<script>
+    function updateCart(id , quantity) {
+        $.get("${contextPath}/cart/updateCart/" + id + "/" + quantity, function() {
+            window.location.reload();
+            // document.getElementById('submitForm').submit();
+        });
+    }
+</script>
 

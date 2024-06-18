@@ -98,7 +98,7 @@
                                 </span>
                             </c:otherwise>
                         </c:choose>
-                        <c:forEach begin="0" end="${posts.totalPages - 1}" step="1" varStatus="status">
+                        <c:forEach begin="0" end="${(posts.totalPages - 1<0) ? 1 : (posts.totalPages - 1)}" step="1" varStatus="status">
                             <c:choose>
                                 <c:when test="${status.index == posts.number}">
                                     <li class="pagination-pager active">${status.index + 1}</li>

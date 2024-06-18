@@ -31,6 +31,11 @@ public class CartItemServiceImpl implements CartItemService {
         return cartItemRepository.findByCartId(cartId);
     }
 
+    @Override
+    public CartItem findByProductId(Integer productId) {
+        return cartItemRepository.findByProductId(productId);
+    }
+
 
     @Override
     public List<CartItem> findAll() {

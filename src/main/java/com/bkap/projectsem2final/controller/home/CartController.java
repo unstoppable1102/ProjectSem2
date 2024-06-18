@@ -35,9 +35,9 @@ public class CartController {
     }
 
 
-    @GetMapping("/{id}")
-    public String showCart(Model model, @PathVariable int id) {
-        model.addAttribute("cartItem", cartItemService.findByCart(cartService.findByAccountId(id)));
+    @GetMapping
+    public String showCart(Model model, @ModelAttribute("userId") int userId) {
+        model.addAttribute("cartItem", cartItemService.findByCart(cartService.findByAccountId(userId)));
         model.addAttribute("page", "cart");
         return "home";
     }
@@ -65,10 +65,11 @@ public class CartController {
         return "redirect:/";
     }
 
-    @PostMapping("/updateCart")
-    public String updateCart(@RequestParam Map<String, String> quantities, @ModelAttribute("accountId") Integer accountId, RedirectAttributes redirectAttributes) {
-        cartService.updateCartItems(accountId, quantities);
-        redirectAttributes.addFlashAttribute("message", "Cart updated successfully!");
+    @GetMapping("updateCart/{productId}/{quantity}")
+    public String updateCart(@PathVariable("productId") Integer productId, @PathVariable("quantity") int quantity, Model model) {
+        var data = cartItemService.findByProductId(productId);
+        data.setQuantity(quantity);
+        cartItemService.update(data);
         return "redirect:/cart";
     }
 

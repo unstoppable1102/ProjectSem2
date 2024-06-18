@@ -12,4 +12,5 @@ public interface CartItemService extends GenericService<CartItem, Integer>{
     List<CartItem> findByCart(Cart cart);
     CartItem findByCartIdAndProductId(Integer cartId, Integer productId);
     List<CartItem> findByCartId(Integer cartId);
+    CartItem findByProductId(Integer productId);
 }
