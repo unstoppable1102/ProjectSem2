@@ -38,24 +38,25 @@ public class AuthenticationFilter extends HttpFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
         String uri = req.getRequestURI();
-        if((session == null || session.getAttribute("admId") == null) && !uri.contains("admin/login")) {
+        if((session == null || session.getAttribute("admId") == null) && !uri.contains("admin/login") && !uri.contains("/admin/register")) {
             res.sendRedirect(req.getContextPath() + "/admin/login");
         }
 
         if((session == null || session.getAttribute("userId") == null)) {
-            if (uri.startsWith(req.getContextPath() + "/cart")) {
+            if (uri.startsWith(req.getContextPath() + "/cart") ) {
                 res.sendRedirect(req.getContextPath() + "/login");
                 return;
             }
+
         }
 
         if (req.getRequestURI().equals("/logout")) {
-           req.getSession(false);
-           if (session != null){
-               session.invalidate();
-           }
-           res.sendRedirect("/");
-           return;
+            req.getSession(false);
+            if (session != null){
+                session.invalidate();
+            }
+            res.sendRedirect("/");
+            return;
         }
         // pass the request along the filter chain
         chain.doFilter(request, response);

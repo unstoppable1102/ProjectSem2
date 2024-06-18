@@ -131,6 +131,16 @@
                                                 <span>Product List</span>
                                             </a>
                                         </li>
+                                        <li data-menu-item="modern-product-list" class="menu-item">
+                                            <a class="h-full w-full flex items-center" href="${contextPath}/admin/postcategory/list">
+                                                <span>Post Category List</span>
+                                            </a>
+                                        </li>
+                                        <li data-menu-item="modern-product-list" class="menu-item">
+                                            <a class="h-full w-full flex items-center" href="${contextPath}/admin/post/list">
+                                                <span>Post List</span>
+                                            </a>
+                                        </li>
                                         <li data-menu-item="modern-order-list" class="menu-item">
                                             <a class="h-full w-full flex items-center" href="${contextPath}/admin/order/list">
                                                 <span>Order List</span>
