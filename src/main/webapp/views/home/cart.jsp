@@ -52,12 +52,15 @@
                                             <td class="table-quantity ">
                                                 <div class="cart-action-group ">
                                                     <div class="product-action m-auto">
-                                                        <button class="action-minus" title="Quantity Minus">
+                                                        <button class="action-minus decrease" title="Quantity Minus" >
                                                             <i class="icofont-minus"></i>
                                                         </button>
-                                                        <input class="action-input" title="Quantity Number" id="quantity"
-                                                               type="number" name="quantity" value="${c.quantity}" onchange="updateCart('${c.product.id}', this.value)"/>
-                                                        <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                                        <input class="action-input quantity" title="Quantity Number" min="1"
+                                                               type="text" name="quantity" value="${c.quantity}" readonly>
+                                                        <input type="hidden" class="proId" value="${c.productId}">
+                                                        <button class="action-plus increase" title="Quantity Plus">
+                                                            <i class="icofont-plus "></i>
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -103,7 +106,7 @@
                     <div class="col-lg-3 m-auto">
                         <div class="account-card mb-0">
                             <div class="checkout-proced">
-                                <a href="invoice.html" class="btn btn-inline">proced to checkout</a>
+                                <a href="" class="btn btn-inline">proceed to checkout</a>
                             </div>
                         </div>
                     </div>
@@ -119,5 +122,38 @@
             // document.getElementById('submitForm').submit();
         });
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Lấy tất cả các nút tăng và giảm số lượng sản phẩm
+        const increaseButtons = document.querySelectorAll('.increase');
+        const decreaseButtons = document.querySelectorAll('.decrease');
+
+        // Thêm sự kiện click cho từng nút tăng
+        increaseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const product = button.parentElement;
+                const quantityElement = product.querySelector('.quantity');
+                const proId = product.querySelector('.proId').value;
+                let currentQuantity = parseInt(quantityElement.value);
+                quantityElement.value = currentQuantity ++;
+                updateCart(proId,quantityElement.value);
+            });
+        });
+
+        // Thêm sự kiện click cho từng nút giảm
+        decreaseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const product = button.parentElement;
+                const quantityElement = product.querySelector('.quantity');
+                let currentQuantity = parseInt(quantityElement.value);
+                if (currentQuantity >= 1) {
+                    quantityElement.value = currentQuantity --;
+                    const proId = product.querySelector('.proId').value;
+                    updateCart(proId,quantityElement.value);
+                }
+            });
+        });
+    });
 </script>
+
 

@@ -15,15 +15,16 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/wishlist")
+@SessionAttributes("userId")
 public class WishlistController {
 
     private final WishlistService wishlistService;
     private final ProductService productService;
 
-    @GetMapping("/{id}")
-    public String wishlist(Model model,@PathVariable int id){
-        model.addAttribute("wishlists" , wishlistService.findWishlistsByAccountId(id));
-        List<Integer> wishlistProductIds = wishlistService.getWishlistProductIds(id);
+    @GetMapping
+    public String wishlist(Model model,@ModelAttribute("userId") Integer userId){
+        model.addAttribute("wishlists" , wishlistService.findWishlistsByAccountId(userId));
+        List<Integer> wishlistProductIds = wishlistService.getWishlistProductIds(userId);
         model.addAttribute("wishlistProductIds", wishlistProductIds);
         model.addAttribute("page" , "wishlist");
         return "home";

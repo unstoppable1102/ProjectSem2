@@ -55,14 +55,14 @@ public class CartController {
             cartItemService.update(findCart);
         }
         cartItemService.save(cartItem);
-        return "redirect:/";
+        return "redirect:/cart";
     }
 
 
     @GetMapping("delete/{id}")
     public String deleteCart(@PathVariable int id) {
         cartItemService.delete(id);
-        return "redirect:/";
+        return "redirect:/cart";
     }
 
     @GetMapping("updateCart/{productId}/{quantity}")

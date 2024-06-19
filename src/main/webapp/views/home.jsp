@@ -122,7 +122,7 @@
             <div class="header-widget-group">
                 <c:choose>
                     <c:when test="${!empty sessionScope.userId}">
-                        <a href="${contextPath}/wishlist/${sessionScope.userId}" class="header-widget" title="Wishlist">
+                        <a href="${contextPath}/wishlist" class="header-widget" title="Wishlist">
                             <i class="fas fa-heart"></i>
                         </a>
                         <a href="${contextPath}/cart" class="header-widget header-cart" title="Cartlist">

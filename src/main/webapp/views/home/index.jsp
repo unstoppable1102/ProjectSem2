@@ -84,9 +84,12 @@
                                     <li><a href="#" class="icofont-instagram" title="Instagram"></a></li>
                                 </ul>
                             </div>
-                            <div class="view-add-group"><button class="product-add" title="Add to Cart"><i
+                            <div class="view-add-group">
+                                <button class="product-add" title="Add to Cart"><i
                                     class="fas fa-shopping-cart"></i><span>add to cart</span></button>
-                                <div class="product-action"><button class="action-minus" title="Quantity Minus"><i
+
+                                <div class="product-action">
+                                    <button class="action-minus" title="Quantity Minus"><i
                                         class="icofont-minus"></i></button><input class="action-input"
                                                                                   title="Quantity Number" type="text" name="quantity" value="1"><button
                                         class="action-plus" title="Quantity Plus"><i
@@ -293,7 +296,8 @@
                                 <span>$${fp.price}</span>
                             </h6>
                             <p class="feature-desc">${fp.description}...</p>
-                            <f:form method="get" action="${contextPath}/cart/add/${fp.id}/${sessionScope.userId}" modelAttribute="cartItem">
+                            <f:form method="get" action="${contextPath}/cart/add/${fp.id}/${sessionScope.userId}"
+                                    modelAttribute="cartItem">
                                 <f:hidden path="quantity" value="1" />
                                 <button class="product-add">
                                     <i class="fas fa-shopping-cart"></i>
