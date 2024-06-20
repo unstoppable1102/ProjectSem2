@@ -55,7 +55,7 @@
                 </article>
 
                 <div class="blog-details-comment">
-                    <h3 class="comment-title">02 Comments</h3>
+                    <h3 class="comment-title">${counter} Comments</h3>
                     <ul class="comment-list">
 
                         <c:forEach var="cm" items="${comments}">
