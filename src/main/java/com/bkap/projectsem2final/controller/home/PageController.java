@@ -143,9 +143,11 @@ public class PageController {
     @GetMapping("/blog-detail/{id}")
     public String blogDetail(Model model, @PathVariable Integer id) {
         List<Comment> comments = commentRepository.findCommentByPostId(id);
+        int counter = commentRepository.countCommentByPostId(id);
 
 
         model.addAttribute("comments", comments);
+        model.addAttribute("counter", counter);
         model.addAttribute("page", "page/blog-detail");
         model.addAttribute("post", postService.findById(id));
         return "home";

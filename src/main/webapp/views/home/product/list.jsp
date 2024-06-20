@@ -12,7 +12,7 @@
 <div class="modal fade" id="product-view">
     <div class="modal-dialog">
         <div class="modal-content">
-            <button class="modal-close icofont-close" data-bs-dismiss="modal"></button>
+            <button class="modal-close icofont-close"  onclick="closeModel()" id="productModal" data-bs-dismiss="modal"></button>
             <div class="product-view">
                 <div class="row">
                     <div class="col-md-6 col-lg-6">
@@ -20,17 +20,17 @@
                             <div class="view-label-group"><label class="view-label new">new</label><label
                                     class="view-label off">-10%</label></div>
                             <ul class="preview-slider slider-arrow">
-                                <li><img src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
+                                <li><img id="productImage" src="${contextPath}/resources/home/images/product/01.jpg" alt="product"></li>
 
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <div class="view-details">
-                            <h3 class="view-name">existing product name</h3>
+                            <h3 class="view-name" id="productName"></h3>
                             <div class="view-meta">
                                 <p>SKU:<span>1234567</span></p>
-                                <p>BRAND:<a href="#">radhuni</a></p>
+                                <p>BRAND:<a href="#" id="productBrand">radhuni</a></p>
                             </div>
                             <div class="view-rating">
                                 <i class="active icofont-star"></i>
@@ -40,8 +40,8 @@
                                 <i class="icofont-star">
 
                                 </i>(3 reviews)</div>
-                            <h3 class="view-price"><del>$38.00</del><span>$24.00</span></h3>
-                            <p class="view-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora
+                            <h3 class="view-price"><del id="productPrice">$38.00</del><span id="productSalePrice">$24.00</span></h3>
+                            <p class="view-desc" id="productDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit non tempora
                                 magni repudiandae sint suscipit tempore quis maxime explicabo veniam eos
                                 reprehenderit fuga</p>
                             <div class="view-list-group"><label class="view-list-title">Share:</label>
@@ -209,7 +209,7 @@
                                         <img src="${contextPath}/resources/images/${p.image}" alt="product">
                                     </a>
                                     <div class="product-widget">
-                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                        <a title="Product View" href="#" onclick="handleDetail(${p.id})" class="fas fa-eye"  data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -318,6 +318,40 @@
 
         return false; // Prevent form submission
     }
+    function  handleDetail(id){
+        var contextPath = '<%= request.getContextPath() %>';
+        $.ajax({
+            url: contextPath+ '/product/' + id,
+            type: 'GET',
+            success: function(product) {
+                $('#productBrand').text(product.brand.name);
+                $('#productName').text(product.productName);
+                var tempElement = $("<div>").html(product.description);
+                var plainText = tempElement.text();
+                console.log(plainText);  // Output: abc
+                $('#productDescription').text(plainText);
+                $('#productPrice').text("$" + product.priceOld);
+                $('#productSalePrice').text("$" +product.price);
+                $('#productImage').attr('src', contextPath + '/resources/images/' + product.image);
+
+
+            },
+            error: function() {
+              console.log("Hello")
+            }
+        });
+    }
+
+    function closeModel() {
+        // Clear the modal content
+        $('#productName').text('');
+        $('#productDescription').text('');
+        $('#productPrice').text('');
+        $('#productSalePrice').text('');
+        $('#productImage').attr('src', '');
+    }
+
+
 </script>
 <script>
     function filterCategories() {
@@ -338,6 +372,7 @@
 
         return false; // Prevent form submission
     }
+
 </script>
 <script type="text/javascript">
     function submitPageSize() {
@@ -351,5 +386,6 @@
     function submitSearchForm() {
         document.getElementById('searchForm').submit();
     }
+
 </script>
 

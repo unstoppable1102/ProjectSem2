@@ -1,5 +1,6 @@
 package com.bkap.projectsem2final.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,5 +28,6 @@ public class Wishlist {
 
     @ManyToOne
     @JoinColumn(name = "productId", referencedColumnName = "id", insertable = false, updatable = false)
+    @JsonBackReference
     private Product product;
 }

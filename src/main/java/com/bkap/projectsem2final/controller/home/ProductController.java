@@ -8,6 +8,8 @@ import com.bkap.projectsem2final.service.BrandService;
 import com.bkap.projectsem2final.service.CartService;
 import com.bkap.projectsem2final.service.CategoryService;
 import com.bkap.projectsem2final.service.ProductService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -15,6 +17,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -171,4 +175,11 @@ public class ProductController {
         return "home";
     }
 
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Product getProduct(@PathVariable Integer id) {
+        Product product = productService.findById(id);
+        return product;
+    }
 }
