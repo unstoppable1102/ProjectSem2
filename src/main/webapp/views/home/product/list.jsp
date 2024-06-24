@@ -225,7 +225,7 @@
                                         <del>$${p.priceOld}</del>
                                         <span>$${p.price}<small>/piece</small></span>
                                     </h6>
-                                    <f:form method="get" action="${contextPath}/cart/add/${p.id}/${sessionScope.userId}" modelAttribute="cartItem">
+                                    <f:form method="get" action="${contextPath}/cart/add/${p.id}" modelAttribute="cartItem">
                                         <f:hidden path="quantity" value="1" />
                                         <button class="product-add">
                                             <i class="fas fa-shopping-cart"></i>

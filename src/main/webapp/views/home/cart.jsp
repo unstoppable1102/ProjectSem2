@@ -6,7 +6,7 @@
   Time: 15:12
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>cart</h2>
@@ -52,12 +52,11 @@
                                             <td class="table-quantity ">
                                                 <div class="cart-action-group ">
                                                     <div class="product-action m-auto">
-                                                        <button class="action-minus decrease" title="Quantity Minus" >
+                                                        <button class="action-minus decrease" >
                                                             <i class="icofont-minus"></i>
                                                         </button>
-                                                        <input class="action-input quantity" title="Quantity Number" min="1"
-                                                               type="text" name="quantity" value="${c.quantity}" readonly>
-                                                        <input type="hidden" class="proId" value="${c.productId}">
+                                                        <input type="hidden" class="proId" value="${c.productId}"/>
+                                                        <input class="action-input quantity" min="1" type="text" name="quantity" value="${c.quantity}" readonly/>
                                                         <button class="action-plus increase" title="Quantity Plus">
                                                             <i class="icofont-plus "></i>
                                                         </button>
@@ -106,7 +105,7 @@
                     <div class="col-lg-3 m-auto">
                         <div class="account-card mb-0">
                             <div class="checkout-proced">
-                                <a href="" class="btn btn-inline">proceed to checkout</a>
+                                <a href="${contextPath}/orders" class="btn btn-inline">proceed to checkout</a>
                             </div>
                         </div>
                     </div>
@@ -116,13 +115,6 @@
     </div>
 </section>
 <script>
-    function updateCart(id , quantity) {
-        $.get("${contextPath}/cart/updateCart/" + id + "/" + quantity, function() {
-            window.location.reload();
-            // document.getElementById('submitForm').submit();
-        });
-    }
-
     document.addEventListener("DOMContentLoaded", function() {
         // Lấy tất cả các nút tăng và giảm số lượng sản phẩm
         const increaseButtons = document.querySelectorAll('.increase');
@@ -131,11 +123,11 @@
         // Thêm sự kiện click cho từng nút tăng
         increaseButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const product = button.parentElement;
+                const product = button.closest('.product-action');
                 const quantityElement = product.querySelector('.quantity');
                 const proId = product.querySelector('.proId').value;
                 let currentQuantity = parseInt(quantityElement.value);
-                quantityElement.value = currentQuantity ++;
+                quantityElement.value = currentQuantity++;
                 updateCart(proId,quantityElement.value);
             });
         });
@@ -143,17 +135,25 @@
         // Thêm sự kiện click cho từng nút giảm
         decreaseButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const product = button.parentElement;
+                const product = button.closest('.product-action');
                 const quantityElement = product.querySelector('.quantity');
                 let currentQuantity = parseInt(quantityElement.value);
                 if (currentQuantity >= 1) {
-                    quantityElement.value = currentQuantity --;
+                    quantityElement.value = currentQuantity--;
                     const proId = product.querySelector('.proId').value;
                     updateCart(proId,quantityElement.value);
                 }
             });
         });
     });
+</script>
+<script>
+    function updateCart(id , quantity) {
+        $.get("${contextPath}/cart/updateCart/" + id + "/" + quantity, function() {
+            window.location.reload();
+        });
+    }
+
 </script>
 
 

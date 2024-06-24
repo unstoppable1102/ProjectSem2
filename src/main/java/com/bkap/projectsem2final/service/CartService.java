@@ -12,4 +12,5 @@ public interface CartService extends GenericService<Cart, Integer>{
     Integer countItemsInCart(Integer accountId);
     Double calculateTotalPrice(Integer accountId);
     void updateCartItems(Integer accountId, Map<String, String> quantities);
+    void clearCart(Integer accountId);
 }

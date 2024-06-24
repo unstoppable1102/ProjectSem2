@@ -38,10 +38,12 @@
     <link rel="stylesheet" href="${contextPath}/resources/home/css/product-details.css">
     <link rel="stylesheet" href="${contextPath}/resources/home/css/checkout.css">
     <link rel="stylesheet" href="${contextPath}/resources/home/css/blog-details.css">
+    <link rel="stylesheet" href="${contextPath}/resources/home/css/invoice.css">
 </head>
 
 <body>
-<div class="backdrop"></div><a class="backtop fas fa-arrow-up" href="#"></a>
+<div class="backdrop"></div>
+<a class="backtop fas fa-arrow-up" href="#"></a>
 <div class="header-top">
     <div class="container">
         <div class="row">

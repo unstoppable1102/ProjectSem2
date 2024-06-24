@@ -211,7 +211,7 @@
                                 <del>$${t10p.priceOld}</del>
                                 <span>$${t10p.price}<small>/piece</small></span>
                             </h6>
-                            <f:form method="get" action="${contextPath}/cart/add/${t10p.id}/${sessionScope.userId}" modelAttribute="cartItem">
+                            <f:form method="get" action="${contextPath}/cart/add/${t10p.id}" modelAttribute="cartItem">
                                 <f:hidden path="quantity" value="1" />
                                 <button class="product-add">
                                     <i class="fas fa-shopping-cart"></i>
@@ -296,7 +296,7 @@
                                 <span>$${fp.price}</span>
                             </h6>
                             <p class="feature-desc">${fp.description}...</p>
-                            <f:form method="get" action="${contextPath}/cart/add/${fp.id}/${sessionScope.userId}"
+                            <f:form method="get" action="${contextPath}/cart/add/${fp.id}"
                                     modelAttribute="cartItem">
                                 <f:hidden path="quantity" value="1" />
                                 <button class="product-add">
@@ -387,7 +387,7 @@
                                         <del>$${na.priceOld}</del>
                                         <span>$${na.price}</span>
                                     </h6>
-                                    <f:form method="get" action="${contextPath}/cart/add/${na.id}/${sessionScope.userId}" modelAttribute="cartItem">
+                                    <f:form method="get" action="${contextPath}/cart/add/${na.id}" modelAttribute="cartItem">
                                         <f:hidden path="quantity" value="1" />
                                         <button class="product-add">
                                             <i class="fas fa-shopping-cart"></i>
@@ -416,10 +416,18 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                <div class="promo-img"><a href="#"><img src="${contextPath}/resources/home/images/promo/home/01.jpg" alt="promo"></a></div>
+                <div class="promo-img">
+                    <a href="#">
+                        <img src="${contextPath}/resources/home/images/promo/home/01.jpg" alt="promo">
+                    </a>
+                </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                <div class="promo-img"><a href="#"><img src="${contextPath}/resources/home/images/promo/home/02.jpg" alt="promo"></a></div>
+                <div class="promo-img">
+                    <a href="#">
+                        <img src="${contextPath}/resources/home/images/promo/home/02.jpg" alt="promo">
+                    </a>
+                </div>
             </div>
         </div>
     </div>

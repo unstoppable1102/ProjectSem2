@@ -72,7 +72,6 @@
                 <div class="user-form-footer">
                     <p>Greeny | &COPY; Copyright by <a href="https://www.facebook.com/unstoppable1102">Unstoppable</a></p>
                 </div>
-            </div>
         </div>
     </div>
 </section>

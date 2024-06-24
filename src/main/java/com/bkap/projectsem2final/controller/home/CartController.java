@@ -1,19 +1,16 @@
 package com.bkap.projectsem2final.controller.home;
 
-import com.bkap.projectsem2final.entities.Account;
+import com.bkap.projectsem2final.entities.Cart;
 import com.bkap.projectsem2final.entities.CartItem;
 import com.bkap.projectsem2final.service.CartItemService;
 import com.bkap.projectsem2final.service.CartService;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -42,14 +39,14 @@ public class CartController {
         return "home";
     }
 
-    @GetMapping("add/{proId}/{accId}")
-    public String showAddCart(@PathVariable int proId, @PathVariable int accId,
+    @GetMapping("add/{proId}")
+    public String showAddCart(@PathVariable int proId, @ModelAttribute("userId") int userId,
                               @ModelAttribute CartItem cartItem) {
-        int cartId = cartService.findByAccountId(accId).getId();
+        int cartId = cartService.findByAccountId(userId).getId();
         var findCart = cartItemService.findByCartIdAndProductId(cartId, proId);
         if (findCart == null) {
             cartItem.setProductId(proId);
-            cartItem.setCartId(cartService.findByAccountId(accId).getId());
+            cartItem.setCartId(cartService.findByAccountId(userId).getId());
         }else {
             findCart.setQuantity(findCart.getQuantity() + cartItem.getQuantity());
             cartItemService.update(findCart);
@@ -65,9 +62,10 @@ public class CartController {
         return "redirect:/cart";
     }
 
-    @GetMapping("updateCart/{productId}/{quantity}")
-    public String updateCart(@PathVariable("productId") Integer productId, @PathVariable("quantity") int quantity, Model model) {
-        var data = cartItemService.findByProductId(productId);
+    @GetMapping("updateCart/{proId}/{quantity}")
+    public String updateCart(@PathVariable Integer proId, @ModelAttribute("userId") Integer userId, @PathVariable int quantity, Model model) {
+        Cart cart = cartService.findByAccountId(userId);
+        var data = cartItemService.findByCartIdAndProductId(cart.getId(), proId);
         data.setQuantity(quantity);
         cartItemService.update(data);
         return "redirect:/cart";

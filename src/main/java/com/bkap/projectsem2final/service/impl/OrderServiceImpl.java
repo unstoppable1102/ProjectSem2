@@ -1,7 +1,7 @@
 package com.bkap.projectsem2final.service.impl;
 
 import com.bkap.projectsem2final.entities.Order;
-import com.bkap.projectsem2final.entities.OrderDetail;
+import com.bkap.projectsem2final.entities.OrderItem;
 import com.bkap.projectsem2final.enums.OrderStatus;
 import com.bkap.projectsem2final.repository.OrderRepository;
 import com.bkap.projectsem2final.service.OrderService;
@@ -17,26 +17,37 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
 
     @Override
-    public List<Order> getOrdersByAccountId(Integer accountId) {
+    public List<Order> findAll() {
         return orderRepository.findAll();
     }
 
     @Override
-    public Order createOrder(Integer accountId, List<OrderDetail> orderDetails) {
-        Order order = new Order();
-        order.setAccountId(accountId);
-        order.setOrderStatus(OrderStatus.NEW);
-        order.setOrderDetails(orderDetails);
-
-        for (OrderDetail orderDetail : orderDetails) {
-            orderDetail.setOrder(order);
-        }
-        return orderRepository.save(order);
+    public Order findById(Integer id) {
+        return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Order not found"));
     }
 
     @Override
-    public Order getOrderById(Integer orderId) {
-        return orderRepository.findById(orderId)
-                .orElseThrow(() -> new RuntimeException("Order not found"));
+    public boolean save(Order order) {
+        try {
+            orderRepository.save(order);
+            return true;
+        }catch (Exception e) {
+            throw new RuntimeException("Order not saved");
+        }
+    }
+
+    @Override
+    public boolean update(Order order) {
+        try {
+            orderRepository.save(order);
+            return true;
+        }catch (Exception e) {
+            throw new RuntimeException("Order not updated");
+        }
+    }
+
+    @Override
+    public void delete(Integer id) {
+        orderRepository.deleteById(id);
     }
 }
