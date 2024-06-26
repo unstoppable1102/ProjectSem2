@@ -6,6 +6,9 @@ import com.bkap.projectsem2final.enums.OrderStatus;
 import com.bkap.projectsem2final.repository.OrderRepository;
 import com.bkap.projectsem2final.service.OrderService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -50,4 +53,28 @@ public class OrderServiceImpl implements OrderService {
     public void delete(Integer id) {
         orderRepository.deleteById(id);
     }
+
+    @Override
+    public Page<Order> findAll(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return orderRepository.findAll(pageable);
+    }
+
+    @Override
+    public Order findById(int orderId) {
+        return orderRepository.findOrderById(orderId);
+    }
+
+    @Override
+    public Integer countByAccountId(Integer accountId) {
+        return orderRepository.countByAccountId(accountId);
+    }
+
+    @Override
+    public Page<Order> findByAccountId(int page, int size,int accountId) {
+        Pageable pageable = PageRequest.of(page, size);
+        return orderRepository.findByAccountId(accountId, pageable);
+    }
+
+
 }

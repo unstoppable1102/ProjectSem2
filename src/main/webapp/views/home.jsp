@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/home/css/checkout.css">
     <link rel="stylesheet" href="${contextPath}/resources/home/css/blog-details.css">
     <link rel="stylesheet" href="${contextPath}/resources/home/css/invoice.css">
+    <link rel="stylesheet" href="${contextPath}/resources/home/css/orderlist.css">
 </head>
 
 <body>
@@ -173,7 +174,15 @@
                         <li class="navbar-item"><a class="navbar-link" href="${contextPath}/product">Shop</a></li>
                         <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="#">pages</a>
                             <ul class="dropdown-position-list">
-                                <li><a href="faq.html">faqs</a></li>
+
+                                <c:choose>
+                                    <c:when test="${!empty sessionScope.userId}">
+                                        <li><a href="${contextPath}/orders/list">Order'${sessionScope.fullName}</a></li>
+                                    </c:when>
+                                    <c:otherwise>
+
+                                    </c:otherwise>
+                                </c:choose>
                                 <li><a href="offer.html">offers</a></li>
                                 <li><a href="profile.html">my profile</a></li>
                                 <li><a href="wallet.html">my wallet</a></li>
