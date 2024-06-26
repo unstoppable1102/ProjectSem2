@@ -23,7 +23,7 @@ public class Category {
     @Column(name = "id")
     private Integer id;
 
-    @NotBlank(message = "Tên danh mục không được để trống")
+    @NotBlank(message = "The category name is required")
     @Column(name = "name", columnDefinition = "NVARCHAR(50)")
     private String name;
 

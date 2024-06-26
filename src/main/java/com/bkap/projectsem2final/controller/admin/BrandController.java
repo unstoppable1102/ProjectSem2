@@ -4,9 +4,11 @@ import com.bkap.projectsem2final.entities.Brand;
 import com.bkap.projectsem2final.service.BrandService;
 import com.bkap.projectsem2final.service.ProductService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,23 +39,29 @@ public class BrandController {
     }
 
     @PostMapping("save")
-    public String save(@ModelAttribute Brand brand , Model model,
+    public String save(@Valid @ModelAttribute Brand brand, BindingResult result, Model model,
                        @RequestParam("file") MultipartFile file, HttpServletRequest request) {
-        //upload 1 ảnh
-        if (file != null && !file.isEmpty()) {
-            String uploadRootPath = request.getServletContext().getRealPath("resources/images");
-            File f = new File(uploadRootPath);
+        if (result.hasErrors()) {
+            model.addAttribute("page", "brand/add");
+            model.addAttribute("brand", brand);
+            return "admin";
+        }else {
+            //upload 1 ảnh
+            if (file != null && !file.isEmpty()) {
+                String uploadRootPath = request.getServletContext().getRealPath("resources/images");
+                File f = new File(uploadRootPath);
 
-            File destination = new File(f.getAbsolutePath() + "/"+ file.getOriginalFilename());
-            try {
-                file.transferTo(destination);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                File destination = new File(f.getAbsolutePath() + "/"+ file.getOriginalFilename());
+                try {
+                    file.transferTo(destination);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                brand.setImage(file.getOriginalFilename());
+                brandService.save(brand);
             }
-            brand.setImage(file.getOriginalFilename());
-            brandService.save(brand);
+            return "redirect:/admin/brand/list";
         }
-        return "redirect:/admin/brand/list";
     }
 
     @GetMapping("edit/{id}")
@@ -64,35 +72,41 @@ public class BrandController {
     }
 
     @PostMapping("update")
-    public String update(@ModelAttribute Brand brand, Model model,
+    public String update(@Valid @ModelAttribute Brand brand, BindingResult result, Model model,
                          @RequestParam("file") MultipartFile file, HttpServletRequest request) {
-        //nếu tải ảnh mới
-        if (file != null && !file.isEmpty()) {
-            String uploadRootPath = request.getServletContext().getRealPath("resources/images");
-            String imagePath = uploadRootPath + "/"+ file.getOriginalFilename();
+        if (result.hasErrors()) {
+            model.addAttribute("page", "brand/edit");
+            model.addAttribute("brand", brand);
+            return "admin";
+        }else{
+            //nếu tải ảnh mới
+            if (file != null && !file.isEmpty()) {
+                String uploadRootPath = request.getServletContext().getRealPath("resources/images");
+                String imagePath = uploadRootPath + "/"+ file.getOriginalFilename();
 
-            try {
-                File destination = new File(imagePath);
-                file.transferTo(destination);
-                brand.setImage(file.getOriginalFilename());
-            } catch (IOException e) {
-                model.addAttribute("error", e.getMessage());
-                model.addAttribute("brand", brand);
-                model.addAttribute("page", "brand/edit");
-                return "admin";
+                try {
+                    File destination = new File(imagePath);
+                    file.transferTo(destination);
+                    brand.setImage(file.getOriginalFilename());
+                } catch (IOException e) {
+                    model.addAttribute("error", e.getMessage());
+                    model.addAttribute("brand", brand);
+                    model.addAttribute("page", "brand/edit");
+                    return "admin";
+                }
+            }else {
+                var brandOld = brandService.findById(brand.getId());
+                brand.setImage(brandOld.getImage());
             }
-        }else {
-            var brandOld = brandService.findById(brand.getId());
-            brand.setImage(brandOld.getImage());
+            brandService.update(brand);
+            return "redirect:/admin/brand/list";
         }
-        brandService.update(brand);
-        return "redirect:/admin/brand/list";
     }
 
     @GetMapping("delete/{id}")
     public String delete(@PathVariable int id, Model model) {
         if( productService.findByBrand(id) != null) {
-            model.addAttribute("msg", "Không thể xoá nhãn khi có sản phẩm");
+            model.addAttribute("msg", "Brands cannot be removed when the product is present");
             model.addAttribute("brands", brandService.findAll());
             model.addAttribute("page", "brand/list");
             return"admin";

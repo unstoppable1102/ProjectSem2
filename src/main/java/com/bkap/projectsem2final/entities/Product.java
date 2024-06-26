@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,20 +30,24 @@ public class Product {
     private Integer id;
 
     @Column(name = "productName", columnDefinition = "NVARCHAR(50)")
-    @NotBlank(message = "Tên sản phẩm không được để trống")
+    @NotBlank(message = "ProductName is required")
     private String productName;
 
 
     @Column(name = "quantity")
+    @NotNull(message = "Quantity is required")
     private Integer quantity;
 
     @Column(name = "price")
+    @NotNull(message = "Price is required")
     private float price;
 
     @Column(name = "priceOld")
+    @NotNull(message = "Price is required")
     private float priceOld;
 
     @Column(name = "description", columnDefinition = "TEXT")
+    @NotBlank(message = "Description must be not null")
     private String description;
 
     @Column(name = "image")

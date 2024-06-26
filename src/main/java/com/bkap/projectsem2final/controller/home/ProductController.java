@@ -179,7 +179,6 @@ public class ProductController {
     @GetMapping("/{id}")
     @ResponseBody
     public Product getProduct(@PathVariable Integer id) {
-        Product product = productService.findById(id);
-        return product;
+        return productService.findById(id);
     }
 }

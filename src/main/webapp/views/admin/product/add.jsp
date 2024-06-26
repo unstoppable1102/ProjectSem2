@@ -17,11 +17,13 @@
                                     <label class="form-label mb-2">Product Name</label>
                                     <div>
                                         <f:input class="input" type="text" path="productName" />
+                                        <span style="color:red" class="mt-3"><f:errors cssClass="error" path="productName" /></span>
                                     </div>
                                 </div>
                                 <div class="form-item vertical" >
                                     <label class="form-label mb-2">Description</label>
                                     <f:textarea id="editor" path="description"/>
+                                    <span style="color:red" class="mt-3"><f:errors cssClass="error" path="description" /></span>
                                 </div>
                             </div>
                         </div>
@@ -35,6 +37,7 @@
                                             <label class="form-label mb-2">Quantity</label>
                                             <div>
                                                 <f:input class="input" type="text" path="quantity" />
+                                                <span style="color:red" class="mt-3"><f:errors cssClass="error" path="quantity" /></span>
                                             </div>
                                         </div>
                                     </div>
@@ -45,6 +48,7 @@
 												<span class="input-wrapper undefined">
 													<span class="input-suffix-start">$</span>
 													<f:input class="input pl-8" type="text" path="priceOld" />
+                                                    <span style="color:red" class="mt-3"><f:errors cssClass="error" path="priceOld" /></span>
 												</span>
                                             </div>
                                         </div>
@@ -58,6 +62,7 @@
 												<span class="input-wrapper undefined">
 													<span class="input-suffix-start">$</span>
 													<f:input class="input pl-8" type="text" path="price" />
+                                                    <span style="color:red" class="mt-3"><f:errors cssClass="error" path="price" /></span>
 												</span>
                                             </div>
                                         </div>

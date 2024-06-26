@@ -63,7 +63,7 @@
                                     </li>
                                     <li>
                                         <h6>Order Time</h6>
-                                        <p>1.00pm 10-12-2021</p>
+                                        <p>${order.orderDate}</p>
                                     </li>
                                     <li>
                                         <h6>Email: </h6>

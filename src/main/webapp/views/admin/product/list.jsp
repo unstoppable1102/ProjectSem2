@@ -27,7 +27,7 @@
 
                 </div>
                 <div class="overflow-x-auto">
-                    <table   class="table-default table-hover data-table">
+                    <table class="table-default table-hover data-table">
                         <thead>
                         <tr>
                             <th>STT</th>

@@ -31,7 +31,7 @@ public class ProductController {
     @GetMapping("list")
     public String list(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "6") int size,
+            @RequestParam(defaultValue = "7") int size,
             Model model) {
         Page<Product> products = productService.findAll(page, size);
 
@@ -54,9 +54,9 @@ public class ProductController {
     }
 
     @PostMapping("/save")
-    public String save(@Valid @ModelAttribute Product product,
+    public String save(@Valid @ModelAttribute Product product, BindingResult result,
                        @RequestParam("file") MultipartFile file, Model model,
-                       HttpServletRequest request, BindingResult result) {
+                       HttpServletRequest request ) {
 
         //upload 1 ảnh
         if (result.hasErrors()) {
@@ -91,9 +91,9 @@ public class ProductController {
     }
 
     @PostMapping("update")
-    public String updatePro(@Valid @ModelAttribute Product product, Model model,
-                             @RequestParam(value="file") MultipartFile file,
-                             HttpServletRequest req, BindingResult result) {
+    public String updatePro(@Valid @ModelAttribute Product product, BindingResult result, Model model,
+                             @RequestParam("file") MultipartFile file,
+                             HttpServletRequest req) {
         if (result.hasErrors()) {
             model.addAttribute("product", product);
             model.addAttribute("category", categoryService.findAll());
