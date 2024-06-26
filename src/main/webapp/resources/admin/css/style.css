@@ -10128,3 +10128,7 @@ hr{
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
+
+.dataTables_footer{
+  display: none !important;
+}
