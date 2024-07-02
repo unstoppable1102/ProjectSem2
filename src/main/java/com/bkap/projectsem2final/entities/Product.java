@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,14 +38,17 @@ public class Product {
 
     @Column(name = "quantity")
     @NotNull(message = "Quantity is required")
+    @Min(value = 1, message = "Quantity must be greater than 1")
     private Integer quantity;
 
     @Column(name = "price")
     @NotNull(message = "Price is required")
+    @Min(value = 0, message = "Price must be greater than 0.0")
     private float price;
 
     @Column(name = "priceOld")
     @NotNull(message = "Price is required")
+    @Min(value = 0, message = "Price must be greater than 0.0")
     private float priceOld;
 
     @Column(name = "description", columnDefinition = "TEXT")

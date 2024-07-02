@@ -209,7 +209,7 @@
                     </div>
                 </div>
                 <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4">
-                    <c:forEach var="pc" items="${proCategory}">
+                    <c:forEach var="pc" items="${proCategory.content}">
                         <div class="col">
                             <div class="product-card">
                                 <div class="product-media">
@@ -254,6 +254,64 @@
                             </div>
                         </div>
                     </c:forEach>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="bottom-paginate">
+                            <p class="page-info">Show ${products.content.size()} of ${products.totalElements} results</p>
+                            <ul class="pagination">
+                                <c:choose>
+                                    <c:when test="${not products.first}">
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=${products.number - 1}&size=${products.size}&sort=${sort}">
+                                                <i class="fas fa-long-arrow-alt-left"></i>
+                                            </a>
+                                        </li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li class="page-item disabled">
+                                        <span class="page-link">
+                                            <i class="fas fa-long-arrow-alt-left"></i>
+                                        </span>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
+                                <c:forEach begin="0" end="${products.totalPages - 1}" step="1" varStatus="status">
+                                    <c:choose>
+                                        <c:when test="${status.index == products.number}">
+                                            <li class="page-item active">
+                                                <span class="page-link">${status.index + 1}</span>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page=${status.index}&size=${products.size}&sort=${sort}">
+                                                        ${status.index + 1}
+                                                </a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+
+                                <c:choose>
+                                    <c:when test="${not products.last}">
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=${products.number + 1}&size=${products.size}&sort=${sort}">
+                                                <i class="fas fa-long-arrow-alt-right"></i>
+                                            </a>
+                                        </li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li class="page-item disabled">
+                                            <span class="page-link">
+                                                <i class="fas fa-long-arrow-alt-right"></i>
+                                            </span>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

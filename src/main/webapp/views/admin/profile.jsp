@@ -1,4 +1,4 @@
-<%--
+    <%--
   Created by IntelliJ IDEA.
   User: ADMIN
   Date: 24/05/2024
@@ -152,7 +152,7 @@
                                                                 name="title"
                                                                 autocomplete="off"
                                                                 placeholder="Title"
-                                                                value="UI/UX Designer"
+                                                                value="N/A"
                                                         >
                                                     </span>
                                                 </div>
@@ -168,12 +168,14 @@
                                         <div class="col-span-2">
                                             <div class="form-item vertical mb-0 max-w-[700px]">
                                                 <label class="form-label"></label>
-                                                <select class="input">
-                                                    <option selected value="en">English (US)</option>
-                                                    <option value="ch">Chinese</option>
-                                                    <option value="es">Espanol</option>
-                                                    <option value="ar">Arabic</option>
-                                                </select>
+                                                <label>
+                                                    <select class="input">
+                                                        <option selected value="en">English (US)</option>
+                                                        <option value="ch">Chinese</option>
+                                                        <option value="vn">VietNam</option>
+                                                        <option value="ar">Arabic</option>
+                                                    </select>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -199,15 +201,17 @@
                                                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
                                                             </svg>
                                                         </div>
-                                                        <input
-                                                                class="input pl-8"
-                                                                type="text"
-                                                                name="timeZone"
-                                                                readonly=""
-                                                                autocomplete="off"
-                                                                placeholder="Time Zone"
-                                                                value="GMT+8"
-                                                        >
+                                                        <label>
+                                                            <input
+                                                                    class="input pl-8"
+                                                                    type="text"
+                                                                    name="timeZone"
+                                                                    readonly=""
+                                                                    autocomplete="off"
+                                                                    placeholder="Time Zone"
+                                                                    value="GMT+8"
+                                                            >
+                                                        </label>
                                                     </span>
                                                 </div>
                                             </div>

@@ -158,10 +158,22 @@ public class ProductController {
     }
 
     @GetMapping("categories/{categoryId}")
-    public String productCategory(Model model, @PathVariable Integer categoryId) {
-        model.addAttribute("proCategory", productService.findProductsByCategoryId(categoryId));
+    public String productCategory(@RequestParam(defaultValue = "0") int page,
+                                  @RequestParam(defaultValue = "8") int size,
+                                  Model model, @PathVariable Integer categoryId) {
+        //Phân trang
+        Pageable pageable = PageRequest.of(page, size);
+
+        //search and paginate
+        Page<Product> productPage = productService.findProductsByCategoryId(categoryId, pageable);
+
+        model.addAttribute("proCategory", productPage);
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("brands", brandService.findAll());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("size", size);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("totalItems", productPage.getTotalElements());
         model.addAttribute("page", "product/category");
         return "home";
     }

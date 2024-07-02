@@ -183,16 +183,7 @@
 
                                     </c:otherwise>
                                 </c:choose>
-                                <li><a href="offer.html">offers</a></li>
-                                <li><a href="profile.html">my profile</a></li>
-                                <li><a href="wallet.html">my wallet</a></li>
-                                <li><a href="about.html">about us</a></li>
-                                <li><a href="contact.html">contact us</a></li>
-                                <li><a href="privacy.html">privacy policy</a></li>
-                                <li><a href="coming-soon.html">coming soon</a></li>
-                                <li><a href="blank-page.html">blank page</a></li>
-                                <li><a href="error.html">404 Error</a></li>
-                                <li><a href="email-template.html">email template</a></li>
+
                             </ul>
                         </li>
 

@@ -30,8 +30,8 @@
                                 <div class="form-item vertical">
                                     <label class="form-label mb-2">Category Name</label>
                                     <div>
-                                        <f:input class="input" type="text" path="name"
-                                                 placeholder="Name" />
+                                        <f:input class="input" type="text" path="name" placeholder="Name" />
+                                        <span style="color:red" class="mt-3"><f:errors cssClass="error" path="name" /></span>
                                     </div>
                                 </div>
                                 <div class="form-item vertical">

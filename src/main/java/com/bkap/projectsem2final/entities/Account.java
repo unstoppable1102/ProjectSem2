@@ -1,6 +1,7 @@
 package com.bkap.projectsem2final.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,13 +23,17 @@ public class Account implements Serializable {
     private Integer id;
 
     @Column(name = "username")
+    @NotNull(message = "Username is required")
     private String username;
 
     private String password;
     @Column(name = "fullName", columnDefinition = "nvarchar(50)")
+    @NotNull(message = "FullName is required")
     private String fullName;
+    @NotNull(message = "Email is required")
     private String email;
     private String phone;
+    @NotNull(message = "Address is required")
     private String address;
     private boolean role;
     private String avatar;

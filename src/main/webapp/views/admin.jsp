@@ -147,11 +147,6 @@
                                         <span class="menu-item-text">Knowledge Base</span>
                                     </div>
                                     <ul>
-                                        <li data-menu-item="modern-help-center" class="menu-item">
-                                            <a class="h-full w-full flex items-center" href="modern-help-center.html">
-                                                <span>Help Center</span>
-                                            </a>
-                                        </li>
                                         <li data-menu-item="modern-product-list" class="menu-item">
                                             <a class="h-full w-full flex items-center" href="${contextPath}/admin/postcategory/list">
                                                 <span>Post Category List</span>
@@ -173,7 +168,7 @@
                                     </div>
                                     <ul>
                                         <li data-menu-item="modern-settings" class="menu-item">
-                                            <a class="h-full w-full flex items-center" href="modern-settings.html">
+                                            <a class="h-full w-full flex items-center" href="${contextPath}/admin/profile">
                                                 <span>Settings</span>
                                             </a>
                                         </li>
@@ -183,7 +178,7 @@
                                             </a>
                                         </li>
                                         <li data-menu-item="modern-activity-log" class="menu-item">
-                                            <a class="h-full w-full flex items-center" href="modern-activity-log.html">
+                                            <a class="h-full w-full flex items-center" href="${contextPath}/admin/activity-log">
                                                 <span>Activity Log</span>
                                             </a>
                                         </li>
@@ -581,7 +576,7 @@
                                         </a>
                                     </li>
                                     <li class="menu-item menu-item-hoverable mb-1 h-[35px]">
-                                        <a class="flex gap-2 items-center" href="modern-activity-log.html">
+                                        <a class="flex gap-2 items-center" href="${contextPath}/admin/activity-log">
 													<span class="text-xl opacity-50">
 														<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
 															<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
@@ -1009,11 +1004,6 @@
                                                             <span class="menu-item-text">Knowledge Base</span>
                                                         </div>
                                                         <ul>
-                                                            <li data-menu-item="modern-help-center" class="menu-item">
-                                                                <a class="h-full w-full flex items-center" href="stacked-side-help-center.html">
-                                                                    <span>Help Center</span>
-                                                                </a>
-                                                            </li>
                                                             <li data-menu-item="stacked-side-article" class="menu-item">
                                                                 <a class="h-full w-full flex items-center" href="stacked-side-article.html">
                                                                     <span>Article</span>

@@ -6,8 +6,7 @@
 <div class="h-full flex flex-auto flex-col justify-between">
     <!-- Content start -->
     <main class="h-full">
-        <div
-                class="page-container relative h-full flex flex-auto flex-col px-4 sm:px-6 md:px-8 py-4 sm:py-6">
+        <div class="page-container relative h-full flex flex-auto flex-col px-4 sm:px-6 md:px-8 py-4 sm:py-6">
             <div class="container mx-auto">
                 <div class="mb-6">
                     <div class="flex items-center mb-2">
@@ -15,27 +14,25 @@
                             <span>Order</span>
                             <span class="ltr:ml-2 rtl:mr-2">#${order.id}</span>
                         </h3>
-                        <div
-                                class="tag border-0 rounded-md ltr:ml-2 rtl:mr-2 bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-100">
+                        <div class="tag border-0 rounded-md ltr:ml-2 rtl:mr-2 bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-100">
                             Paid
                         </div>
-                        <div
-                                class="tag border-0 rounded-md ltr:ml-2 rtl:mr-2 bg-cyan-100 text-cyan-600 dark:bg-cyan-500/20 dark:text-cyan-100">
+                        <div class="tag border-0 rounded-md ltr:ml-2 rtl:mr-2 bg-cyan-100 text-cyan-600 dark:bg-cyan-500/20 dark:text-cyan-100">
                             Fulfilled
                         </div>
                     </div>
                     <span class="flex items-center">
-											<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
-                                                 aria-hidden="true" class="text-lg" height="1em" width="1em"
-                                                 xmlns="http://www.w3.org/2000/svg">
-												<path stroke-linecap="round" stroke-linejoin="round"
-                                                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-												</path>
-											</svg>
-											<span class="ltr:ml-1 rtl:mr-1">
-                                                 <f:formatDate value="${order.orderDate}" pattern="EEE dd-MMM-yyyy, hh:mm a" />
-                                                </span>
-										</span>
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                             aria-hidden="true" class="text-lg" height="1em" width="1em"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        <span class="ltr:ml-1 rtl:mr-1">
+                             <f:formatDate value="${order.orderDate}" pattern="EEE dd-MMM-yyyy, hh:mm a" />
+                            </span>
+                    </span>
                 </div>
                 <div class="xl:flex gap-4">
                     <div class="w-full">
@@ -53,32 +50,27 @@
                                         </thead>
                                         <tbody>
                                         <c:forEach var="od" varStatus="loop" items="${order.orderItems}" >
-
                                         <tr>
                                             <td>
                                                 <div class="flex">
-																			<span
-                                                                                    class="avatar avatar-rounded avatar-lg"
-                                                                                    data-avatar-size="90">
-																				<img class="avatar-img avatar-rounded"
-                                                                                     src="${contextPath}/resources/images/${od.product.image}"
-                                                                                     loading="lazy">
-																			</span>
+                                                    <span class="avatar avatar-rounded avatar-lg" data-avatar-size="90">
+                                                        <img class="avatar-img avatar-rounded"
+                                                             src="${contextPath}/resources/images/${od.product.image}"
+                                                             loading="lazy">
+                                                    </span>
                                                     <div class="ltr:ml-2 rtl:mr-2 " style="display: flex;align-items: center">
                                                         <h6 class="mb-2">${od.product.productName}</h6>
-
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <span><f:formatNumber value="${od.product.price}" type="currency" /></span>
+                                                <span>$${od.product.price}</span>
                                             </td>
                                             <td>${od.quantity}</td>
                                             <td>
-                                                <span><f:formatNumber value="${od.price}" type="currency" /></span>
+                                                <span>$${od.price}</span>
                                             </td>
                                         </tr>
-
                                         </c:forEach>
                                         </tbody>
                                     </table>
@@ -86,7 +78,6 @@
                             </div>
                         </div>
                         <div class="xl:grid grid-cols-2 gap-4">
-
                             <div class="card-layout-frame">
                                 <div class="card-body">
                                     <h5 class="mb-4">Payment Summary</h5>
@@ -94,33 +85,32 @@
                                         <li class="flex items-center justify-between mb-3">
                                             <span>Subtotal</span>
                                             <span class="font-semibold">
-																	<span><f:formatNumber value="${order.total}" type="currency" /></span>
-																</span>
+                                                <span>$${order.total}</span>
+                                            </span>
                                         </li>
                                         <li class="flex items-center justify-between mb-3">
                                             <span>Delivery fee</span>
                                             <span class="font-semibold">
-																	<span>$0</span>
-																</span>
+                                                <span>$0</span>
+                                            </span>
                                         </li>
                                         <li class="flex items-center justify-between mb-3">
                                             <span>Tax(0%)</span>
                                             <span class="font-semibold">
-																	<span>$0</span>
-																</span>
+                                                <span>$0</span>
+                                            </span>
                                         </li>
                                         <hr class="mb-3">
                                         <li class="flex items-center justify-between">
                                             <span>Total</span>
                                             <span class="font-semibold">
-																	<span><f:formatNumber value="${order.total}" type="currency" /></span>
-																</span>
+                                                <span>$${order.total}</span>
+                                            </span>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="xl:max-w-[360px] w-full">
                         <div class="card card-layout-frame" role="presentation">

@@ -92,4 +92,10 @@ public class AdminController {
         model.addAttribute("page", "profile");
         return "admin";
     }
+
+    @GetMapping("activity-log")
+    public String activityLog(Model model) {
+        model.addAttribute("page", "activity-log");
+        return "admin";
+    }
 }

@@ -22,6 +22,8 @@ public interface ProductService extends GenericService<Product, Integer> {
 
     List<Product> findProductsByCategoryId(Integer categoryId);
 
+    Page<Product> findProductsByCategoryId(Integer categoryId, Pageable pageable);
+
     List<Product> findProductsByBrandId(Integer brandId);
 
     List<Product> findProductsByCategoryIdExcludingProductId(Integer categoryId, Integer productId);

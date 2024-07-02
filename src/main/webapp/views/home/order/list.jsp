@@ -40,14 +40,18 @@
                             <div class="col-lg-12">
                                 <div class="order-track">
                                     <ul class="order-track-list">
-                                        <li class="order-track-item active"><i class="icofont-check"></i><span>order
-                                                    recieved</span></li>
-                                        <li class="order-track-item"><i class="icofont-close"></i><span>order
-                                                    processed</span></li>
-                                        <li class="order-track-item"><i class="icofont-close"></i><span>order
-                                                    shipped</span></li>
-                                        <li class="order-track-item"><i class="icofont-close"></i><span>order
-                                                    delivered</span></li>
+                                        <li class="order-track-item active">
+                                            <i class="icofont-check"></i><span>order received</span>
+                                        </li>
+                                        <li class="order-track-item">
+                                            <i class="icofont-close"></i><span>order processed</span>
+                                        </li>
+                                        <li class="order-track-item">
+                                            <i class="icofont-close"></i><span>order shipped</span>
+                                        </li>
+                                        <li class="order-track-item">
+                                            <i class="icofont-close"></i><span>order delivered</span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -75,7 +79,7 @@
                                 <ul class="orderlist-details">
                                     <li>
                                         <h6>Sub Total</h6>
-                                        <p><fmt:formatNumber value="${o.total}" type="currency" /></p>
+                                        <p>$${o.total}</p>
                                     </li>
                                     <li>
                                         <h6>discount</h6>
@@ -87,7 +91,7 @@
                                     </li>
                                     <li>
                                         <h6>Total<small>(Incl. VAT)</small></h6>
-                                        <p><fmt:formatNumber value="${o.total}" type="currency" /></p>
+                                        <p>$${o.total}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -123,7 +127,7 @@
                                                 <h6>${or1.product.productName}</h6>
                                             </td>
                                             <td class="table-price">
-                                                <h6><fmt:formatNumber value="${or1.product.price}" type="currency" /></h6>
+                                                <h6>$${or1.product.price}</h6>
                                             </td>
                                             <td class="table-brand">
                                                 <h6>Fresh Company</h6>
@@ -175,7 +179,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <li class="page-item">
-                                        <a class="page-link" href="?page=${status.index}&size=${orders.size}&sort=${sort}">
+                                        <a class="page-link" href="?page=${status.index}&size=${orders.size}">
                                                 ${status.index + 1}
                                         </a>
                                     </li>

@@ -85,6 +85,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findProductsByCategoryId(categoryId);
     }
 
+    @Override
+    public Page<Product> findProductsByCategoryId(Integer categoryId, Pageable pageable) {
+        return productRepository.findProductsByCategoryId(categoryId, pageable);
+    }
+
     // List product by brand
     @Override
     public List<Product> findProductsByBrandId(Integer brandId) {

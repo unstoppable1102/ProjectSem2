@@ -62,6 +62,8 @@ public class ProductController {
         if (result.hasErrors()) {
             model.addAttribute("page", "product/add");
             model.addAttribute("product", product);
+            model.addAttribute("category", categoryService.findAll());
+            model.addAttribute("brand", brandService.findAll());
             return "admin";
         } else {
             if (file != null && !file.isEmpty()) {
@@ -122,7 +124,6 @@ public class ProductController {
                 var productOld = productService.findById(product.getId());
                 product.setImage(productOld.getImage());
             }
-
             var productOld = productService.findById(product.getId());
             product.setCreateDate(productOld.getCreateDate());
             productService.update(product);

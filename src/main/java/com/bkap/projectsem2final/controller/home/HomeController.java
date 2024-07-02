@@ -9,6 +9,7 @@ import com.bkap.projectsem2final.service.*;
 import com.bkap.projectsem2final.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,7 +64,7 @@ public class HomeController {
     }
 
     @PostMapping("register")
-    public String register(@ModelAttribute Account account, Model model) {
+    public String register (@ModelAttribute Account account, Model model) {
         if (accountService.existsByUsername(account.getUsername())) {
             model.addAttribute("error", "This username is already existed");
             return "home/register";

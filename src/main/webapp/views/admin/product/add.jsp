@@ -48,8 +48,8 @@
 												<span class="input-wrapper undefined">
 													<span class="input-suffix-start">$</span>
 													<f:input class="input pl-8" type="text" path="priceOld" />
-                                                    <span style="color:red" class="mt-3"><f:errors cssClass="error" path="priceOld" /></span>
 												</span>
+                                                <span style="color:red" class="mt-3"><f:errors cssClass="error" path="priceOld" /></span>
                                             </div>
                                         </div>
                                     </div>
@@ -62,8 +62,8 @@
 												<span class="input-wrapper undefined">
 													<span class="input-suffix-start">$</span>
 													<f:input class="input pl-8" type="text" path="price" />
-                                                    <span style="color:red" class="mt-3"><f:errors cssClass="error" path="price" /></span>
 												</span>
+                                                <span style="color:red" class="mt-3"><f:errors cssClass="error" path="price" /></span>
                                             </div>
                                         </div>
                                     </div>

@@ -10,78 +10,102 @@
             <div class="card adaptable-card">
                 <h3 class="mb-4">Orders</h3>
                 <div class="overflow-x-auto">
-                    <table id="order-list-table" class="table-default table-hover">
+                    <table  class="table-default table-hover">
                         <thead>
-                        <th>STT</th>
-                        <th>Date</th>
-                        <th>Customer</th>
-                        <th>Status</th>
-                        <th>Payment Method</th>
-                        <th>Total</th>
-                        <th></th>
+                            <th>STT</th>
+                            <th>Date</th>
+                            <th>Customer</th>
+                            <th>Status</th>
+                            <th>Payment Method</th>
+                            <th>Total</th>
+                            <th></th>
                         </thead>
                         <tbody>
-        <c:forEach var="o" varStatus="loop" items="${orders.content}" >
-                        <tr>
-                            <td>
-                                <span class="cursor-pointer select-none font-semibold hover:text-indigo-600">${loop.count}</span>
-                            </td>
-                            <td>
-                                <span><f:formatDate value="${o.orderDate}" pattern="dd/MM/yyyy" /></span>
-                            </td>
-                            <td>
-                                ${o.account.username}
-                            </td>
-                            <td>
-                                <div class="flex items-center">
-                                    <span class="badge-dot bg-emerald-500"></span>
-                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">Pending</span>
-                                </div>
-                            </td>
-                            <td>
-                                                          Khi nhận hang
-                            </td>
-                            <td>
-                                <span><f:formatNumber value="${o.total}" type="currency" /></span>
-                            </td>
-                            <td>
-                                <div class="flex justify-between text-lg">
-                                    <a href="${contextPath}/admin/order/detail/${o.id}">  <span class="cursor-pointer p-2 hover:text-indigo-600"
-                                               data-bs-toggle="tooltip" data-bs-title="View">
-                                                                    <svg stroke="currentColor" fill="none"
-                                                                         stroke-width="2" viewBox="0 0 24 24"
-                                                                         aria-hidden="true" height="1em" width="1em"
-                                                                         xmlns="http://www.w3.org/2000/svg">
-                                                                        <path stroke-linecap="round"
-                                                                              stroke-linejoin="round"
-                                                                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                                                        <path stroke-linecap="round"
-                                                                              stroke-linejoin="round"
-                                                                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
-                                                                        </path>
-                                                                    </svg>
-                                                                </span></a>
-                                    <a href="${contextPath}/admin/order/delete/${o.id}">
-                                        <span class="cursor-pointer p-2 hover:text-red-500" data-bs-toggle="tooltip"
-                                              data-bs-title="Delete">
-                                                                    <svg stroke="currentColor" fill="none"
-                                                                         stroke-width="2" viewBox="0 0 24 24"
-                                                                         aria-hidden="true" height="1em" width="1em"
-                                                                         xmlns="http://www.w3.org/2000/svg">
-                                                                        <path stroke-linecap="round"
-                                                                              stroke-linejoin="round"
-                                                                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                                                    </svg>
-                                                                </span>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                            <c:forEach var="o" varStatus="loop" items="${orders.content}" >
+                                <tr>
+                                    <td>
+                                        <span class="cursor-pointer select-none font-semibold hover:text-indigo-600">${loop.count}</span>
+                                    </td>
+                                    <td>
+                                        <span><f:formatDate value="${o.orderDate}" pattern="dd/MM/yyyy" /></span>
+                                    </td>
+                                    <td>
+                                        ${o.account.username}
+                                    </td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${o.orderStatus == 'NEW'}">
+                                                <div class="flex items-center">
+                                                    <span class="badge-dot bg-emerald-500"></span>
+                                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">NEW</span>
+                                                </div>
+                                            </c:when>
+                                            <c:when test="${o.orderStatus == 'PROCESSING'}">
+                                                <div class="flex items-center">
+                                                    <span class="badge-dot bg-emerald-500"></span>
+                                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">PROCESSING</span>
+                                                </div>
+                                            </c:when>
+                                            <c:when test="${o.orderStatus == 'SHIPPING'}">
+                                                <div class="flex items-center">
+                                                    <span class="badge-dot bg-emerald-500"></span>
+                                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">SHIPPING</span>
+                                                </div>
+                                            </c:when>
+                                            <c:when test="${o.orderStatus == 'DELIVERED'}">
+                                                <div class="flex items-center">
+                                                    <span class="badge-dot bg-emerald-500"></span>
+                                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">DELIVERED</span>
+                                                </div>
+                                            </c:when>
 
-        </c:forEach>
+                                            <c:otherwise>
+                                                <div class="flex items-center">
+                                                    <span class="badge-dot bg-emerald-500"></span>
+                                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">COMPLETED</span>
+                                                </div>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                    <td>Cash On Delivery</td>
+                                    <td><span>$${o.total}</span></td>
+                                    <td>
+                                        <div class="flex justify-between text-lg">
+                                            <a href="${contextPath}/admin/order/detail/${o.id}">
+                                                <span class="cursor-pointer p-2 hover:text-indigo-600" data-bs-toggle="tooltip" data-bs-title="View">
+                                                    <svg stroke="currentColor" fill="none"
+                                                         stroke-width="2" viewBox="0 0 24 24"
+                                                         aria-hidden="true" height="1em" width="1em"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round"
+                                                              stroke-linejoin="round"
+                                                              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                        <path stroke-linecap="round"
+                                                              stroke-linejoin="round"
+                                                              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                                        </path>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                            <a href="${contextPath}/admin/order/delete/${o.id}">
+                                                <span class="cursor-pointer p-2 hover:text-red-500" data-bs-toggle="tooltip" data-bs-title="Delete">
+                                                    <svg stroke="currentColor" fill="none"
+                                                         stroke-width="2" viewBox="0 0 24 24"
+                                                         aria-hidden="true" height="1em" width="1em"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round"
+                                                              stroke-linejoin="round"
+                                                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                                        </path>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                         </tbody>
                     </table>
-
                     <div class="pagination">
                         <c:choose>
                             <c:when test="${not orders.first}">
@@ -140,5 +164,4 @@
         </div>
     </main>
     <!-- Content end -->
-
 </div>

@@ -193,7 +193,7 @@
                 </div>
             </div>
             <div class="col-lg-9">
-                <div class="row">
+                <div class="row mb-5">
                     <div class="col-lg-12">
                         <div class="">
                             <form id="submitForm" method="get" action="${contextPath}/product" class="d-flex justify-content-between">
@@ -208,13 +208,13 @@
                                 <div class="filter-short">
                                     <label class="filter-label">Sort by :</label>
 
-                                    <select id="sortSelect" name="sort" class="form-select filter-select" onchange="submitSortForm()">
-                                        <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Mặc định</option>
-                                        <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Tên từ A-Z</option>
-                                        <option value="name_desc" <c:if test="${sort == 'name_desc'}">selected</c:if>>Tên từ Z-A</option>
-                                        <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Giá tăng dần</option>
-                                        <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Giá giảm dần</option>
-                                    </select>
+                                    <label for="sortSelect"></label><select id="sortSelect" name="sort" class="form-select filter-select" onchange="submitSortForm()">
+                                    <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Default</option>
+                                    <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Name A-Z</option>
+                                    <option value="name_desc" <c:if test="${sort == 'name_desc'}">selected</c:if>>Name Z-A</option>
+                                    <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Price ASC</option>
+                                    <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Price DESC</option>
+                                </select>
                                 </div>
                                 <input type="hidden" name="page" value="${currentPage}" />
                             </form>
@@ -271,7 +271,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bottom-paginate">
-                            <p class="page-info">Hiển thị ${products.content.size()} của ${products.totalElements} kết quả</p>
+                            <p class="page-info"> Show ${products.content.size()} of ${products.totalElements} results</p>
                             <ul class="pagination">
                                 <c:choose>
                                     <c:when test="${not products.first}">

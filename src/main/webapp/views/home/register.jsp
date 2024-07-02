@@ -81,7 +81,6 @@
                     <p>Greeny | &COPY; Copyright by <a href="#">Unstoppable</a></p>
                 </div>
             </div>
-        </div>
     </div>
 </section>
 <script src="${contextPath}/resources/home/vendor/bootstrap/jquery-1.12.4.min.js"></script>

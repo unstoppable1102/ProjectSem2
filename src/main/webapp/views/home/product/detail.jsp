@@ -11,11 +11,6 @@
 <section class="single-banner inner-section" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>product detail</h2>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="shop-4column.html">shop</a></li>
-            <li class="breadcrumb-item active" aria-current="page">product detail</li>
-        </ol>
     </div>
 </section>
 <section class="inner-section">

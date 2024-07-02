@@ -54,9 +54,7 @@ public class CategoryController {
                 String uploadRootPath = request.getServletContext().getRealPath("resources/images");
                 File f = new File(uploadRootPath);
                 File destination = new File(f.getAbsolutePath() + "/" + file.getOriginalFilename());
-
                 try {
-
                     file.transferTo(destination);
 
                 } catch (IllegalStateException | IOException e) {

@@ -235,19 +235,6 @@
         </div>
     </div>
 </section>
-<div class="section promo-part">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="promo-img">
-                    <a href="#">
-                        <img src="${contextPath}/resources/home/images/promo/home/03.jpg" alt="promo">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <section class="section feature-part">
     <div class="container">
         <div class="row">
@@ -311,33 +298,7 @@
         </div>
     </div>
 </section>
-<section class="section countdown-part">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mx-auto">
-                <div class="countdown-content">
-                    <h3>special discount offer for vegetable items</h3>
-                    <p>Reprehenderit sed quod autem molestiae aut modi minus veritatis iste dolorum suscipit quis
-                        voluptatum fugiat mollitia quia minima</p>
-                    <div class="countdown countdown-clock" data-countdown="2022/12/22"><span
-                            class="countdown-time"><span>00</span><small>days</small></span><span
-                            class="countdown-time"><span>00</span><small>hours</small></span><span
-                            class="countdown-time"><span>00</span><small>minutes</small></span><span
-                            class="countdown-time"><span>00</span><small>seconds</small></span></div>
-                        <a href="${contextPath}/product" class="btn btn-inline">
-                            <i class="fas fa-shopping-cart"></i><span>shop now</span>
-                        </a>
-                </div>
-            </div>
-            <div class="col-lg-1"></div>
-            <div class="col-lg-5">
-                <div class="countdown-img"><img src="${contextPath}/resources/home/images/countdown.png" alt="countdown">
-                    <div class="countdown-off"><span>20%</span><span>off</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 <section class="section newitem-part">
     <div class="container">
         <div class="row">
@@ -412,26 +373,7 @@
         </div>
     </div>
 </section>
-<div class="section promo-part">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                <div class="promo-img">
-                    <a href="#">
-                        <img src="${contextPath}/resources/home/images/promo/home/01.jpg" alt="promo">
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6 px-xl-3">
-                <div class="promo-img">
-                    <a href="#">
-                        <img src="${contextPath}/resources/home/images/promo/home/02.jpg" alt="promo">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 <section class="section brand-part">
     <div class="container">
         <div class="row">
@@ -457,89 +399,4 @@
     </div>
 </section>
 
-<section class="section blog-part">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-heading">
-                    <h2>Read our blogs</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="blog-slider slider-arrow">
-                    <div class="blog-card">
-                        <div class="blog-media">
-                            <a class="blog-img" href="#">
-                                <img src="${contextPath}/resources/home/images/blog/01.jpg" alt="blog">
-                            </a>
-                        </div>
-                        <div class="blog-content">
-                            <ul class="blog-meta">
 
-                                <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                            </ul>
-                            <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident Lorem
-                                ipsum dolor sit amet</a></h4>
-                            <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                           href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-card">
-                        <div class="blog-media"><a class="blog-img" href="#"><img src="${contextPath}/resources/home/images/blog/02.jpg"
-                                                                                  alt="blog"></a></div>
-                        <div class="blog-content">
-                            <ul class="blog-meta">
-                                <li><i class="fas fa-user"></i><span>admin</span></li>
-                                <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                            </ul>
-                            <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident Lorem
-                                ipsum dolor sit amet</a></h4>
-                            <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                           href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-card">
-                        <div class="blog-media"><a class="blog-img" href="#"><img src="${contextPath}/resources/home/images/blog/03.jpg"
-                                                                                  alt="blog"></a></div>
-                        <div class="blog-content">
-                            <ul class="blog-meta">
-                                <li><i class="fas fa-user"></i><span>admin</span></li>
-                                <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                            </ul>
-                            <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident Lorem
-                                ipsum dolor sit amet</a></h4>
-                            <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                           href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-card">
-                        <div class="blog-media"><a class="blog-img" href="#"><img src="${contextPath}/resources/home/images/blog/04.jpg"
-                                                                                  alt="blog"></a></div>
-                        <div class="blog-content">
-                            <ul class="blog-meta">
-                                <li><i class="fas fa-user"></i><span>admin</span></li>
-                                <li><i class="fas fa-calendar-alt"></i><span>february 02, 2021</span></li>
-                            </ul>
-                            <h4 class="blog-title"><a href="blog-details.html">Voluptate blanditiis provident Lorem
-                                ipsum dolor sit amet</a></h4>
-                            <p class="blog-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias
-                                autem recusandae deleniti nam dignissimos sequi ... </p><a class="blog-btn"
-                                                                                           href="#"><span>read more</span><i class="icofont-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-btn-25"><a href="${contextPath}/blogs" class="btn btn-outline"><i
-                        class="fas fa-eye"></i><span>view all blog</span></a></div>
-            </div>
-        </div>
-    </div>
-</section>
