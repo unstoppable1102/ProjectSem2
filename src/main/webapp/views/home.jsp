@@ -130,8 +130,11 @@
                         </a>
                         <a href="${contextPath}/cart" class="header-widget header-cart" title="Cartlist">
                             <i class="fas fa-shopping-cart"></i>
-                            <sup id="cartItemCount">${countCartItem}</sup>
-                            <span>totalprice<small>$${totalPrice}</small></span>
+                            <c:if test="${countCartItem != 0}">
+                                <sup id="cartItemCount">${countCartItem}</sup>
+                                <span>totalprice<small>$${totalPrice}</small></span>
+                            </c:if>
+
                         </a>
                     </c:when>
                     <c:otherwise>
@@ -172,27 +175,8 @@
                             </ul>
                         </li>
                         <li class="navbar-item"><a class="navbar-link" href="${contextPath}/product">Shop</a></li>
-                        <li class="navbar-item dropdown"><a class="navbar-link dropdown-arrow" href="#">pages</a>
-                            <ul class="dropdown-position-list">
-
-                                <c:choose>
-                                    <c:when test="${!empty sessionScope.userId}">
-                                        <li><a href="${contextPath}/orders/list">Order'${sessionScope.fullName}</a></li>
-                                    </c:when>
-                                    <c:otherwise>
-
-                                    </c:otherwise>
-                                </c:choose>
-
-                            </ul>
-                        </li>
-
-                        <li class="navbar-item dropdown"><a class="navbar-link" href="${contextPath}/blogs">blogs</a>
-
-                        </li>
-                        <li class="navbar-item dropdown"><a class="navbar-link" href="${contextPath}/about">about</a>
-
-                        </li>
+                        <li class="navbar-item dropdown"><a class="navbar-link" href="${contextPath}/blogs">blogs</a></li>
+                        <li class="navbar-item dropdown"><a class="navbar-link" href="${contextPath}/about">about</a></li>
                     </ul>
                     <div class="navbar-info-group">
                         <div class="navbar-info"><i class="icofont-ui-touch-phone"></i>

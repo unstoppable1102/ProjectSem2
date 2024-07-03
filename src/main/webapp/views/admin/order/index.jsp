@@ -33,39 +33,20 @@
                                         ${o.account.username}
                                     </td>
                                     <td>
-                                        <c:choose>
-                                            <c:when test="${o.orderStatus == 'NEW'}">
-                                                <div class="flex items-center">
-                                                    <span class="badge-dot bg-emerald-500"></span>
-                                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">NEW</span>
-                                                </div>
-                                            </c:when>
-                                            <c:when test="${o.orderStatus == 'PROCESSING'}">
-                                                <div class="flex items-center">
-                                                    <span class="badge-dot bg-emerald-500"></span>
-                                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">PROCESSING</span>
-                                                </div>
-                                            </c:when>
-                                            <c:when test="${o.orderStatus == 'SHIPPING'}">
-                                                <div class="flex items-center">
-                                                    <span class="badge-dot bg-emerald-500"></span>
-                                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">SHIPPING</span>
-                                                </div>
-                                            </c:when>
-                                            <c:when test="${o.orderStatus == 'DELIVERED'}">
-                                                <div class="flex items-center">
-                                                    <span class="badge-dot bg-emerald-500"></span>
-                                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">DELIVERED</span>
-                                                </div>
-                                            </c:when>
-
-                                            <c:otherwise>
-                                                <div class="flex items-center">
-                                                    <span class="badge-dot bg-emerald-500"></span>
-                                                    <span class="ml-2 rtl:mr-2 capitalize font-semibold text-emerald-500">COMPLETED</span>
-                                                </div>
-                                            </c:otherwise>
-                                        </c:choose>
+                                        <form id="updateStatusForm" action="${contextPath}/admin/order/updateOrderStatus/${o.id}" method="post">
+                                            <div class="flex items-center">
+                                                <label>
+                                                    <select name="orderStatus" class="input form-select"
+                                                            onchange="document.getElementById('updateStatusForm').submit()">
+                                                        <option value="NEW" ${o.orderStatus == 'NEW' ? 'selected' : ''}>NEW</option>
+                                                        <option value="PROCESSING" ${o.orderStatus == 'PROCESSING' ? 'selected' : ''}>PROCESSING</option>
+                                                        <option value="SHIPPED" ${o.orderStatus == 'SHIPPED' ? 'selected' : ''}>SHIPPED</option>
+                                                        <option value="DELIVERED" ${o.orderStatus == 'DELIVERED' ? 'selected' : ''}>DELIVERED</option>
+                                                        <option value="COMPLETED" ${o.orderStatus == 'COMPLETED' ? 'selected' : ''}>COMPLETED</option>
+                                                    </select>
+                                                </label>
+                                            </div>
+                                        </form>
                                     </td>
                                     <td>Cash On Delivery</td>
                                     <td><span>$${o.total}</span></td>
@@ -165,3 +146,8 @@
     </main>
     <!-- Content end -->
 </div>
+<script>
+    function submitForm() {
+        document.getElementById("updateStatusForm").submit();
+    }
+</script>

@@ -172,26 +172,15 @@
                                                 <span>Settings</span>
                                             </a>
                                         </li>
-                                        <li data-menu-item="modern-invoice" class="menu-item">
-                                            <a class="h-full w-full flex items-center" href="modern-invoice.html">
-                                                <span>Invoice</span>
-                                            </a>
-                                        </li>
                                         <li data-menu-item="modern-activity-log" class="menu-item">
                                             <a class="h-full w-full flex items-center" href="${contextPath}/admin/activity-log">
                                                 <span>Activity Log</span>
-                                            </a>
-                                        </li>
-                                        <li data-menu-item="modern-kyc-form" class="menu-item">
-                                            <a class="h-full w-full flex items-center"  href="modern-kyc-form.html">
-                                                <span>KYC Form</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
-
                         <div class="menu-group">
                             <div class="menu-title">Authentication</div>
                             <ul>
@@ -301,7 +290,6 @@
                 </div>
             </div>
             <!-- Side Nav end-->
-
             <!-- Header Nav start-->
             <div class="flex flex-col flex-auto min-h-screen min-w-0 relative w-full bg-white dark:bg-gray-800 border-l border-gray-200 dark:border-gray-700">
                 <header class="header border-b border-gray-200 dark:border-gray-700">
@@ -328,8 +316,7 @@
                             <div class="header-search header-action-item header-action-item-hoverable text-2xl" data-bs-toggle="modal" data-bs-target="#dialog-search">
                                 <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24"
                                      height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                 </svg>
                             </div>
                         </div>
@@ -340,54 +327,46 @@
                             <div class="dropdown">
                                 <div class="dropdown-toggle" id="nav-lang-dropdown" data-bs-toggle="dropdown">
                                     <div class="header-action-item header-action-item-hoverable flex items-center">
-												<span class="avatar avatar-circle" data-avatar-size="24">
-													<img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/countries/us.png"
-                                                         loading="lazy" alt="">
-												</span>
+                                        <span class="avatar avatar-circle" data-avatar-size="24">
+                                            <img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/countries/us.png" loading="lazy" alt="">
+                                        </span>
                                     </div>
                                 </div>
                                 <ul class="dropdown-menu bottom-end">
                                     <li class="menu-item menu-item-hoverable mb-1 justify-between h-[35px]">
-												<span class="flex items-center">
-													<span class="avatar avatar-circle" data-avatar-size="18">
-														<img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/countries/us.png"
-                                                             loading="lazy" alt="">
-													</span>
-													<span class="ltr:ml-2 rtl:mr-2">English</span>
-												</span>
+                                        <span class="flex items-center">
+                                            <span class="avatar avatar-circle" data-avatar-size="18">
+                                                <img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/countries/us.png" loading="lazy" alt="">
+                                            </span>
+                                            <span class="ltr:ml-2 rtl:mr-2">English</span>
+                                        </span>
                                         <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" class="text-emerald-500 text-lg" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                         </svg>
                                     </li>
                                     <li class="menu-item menu-item-hoverable mb-1 justify-between h-[35px]">
-												<span class="flex items-center">
-													<span class="avatar avatar-circle" data-avatar-size="18">
-														<img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/countries/cn.png" loading="lazy" alt="">
-													</span>
-													<span class="ltr:ml-2 rtl:mr-2">
-														Chinese
-													</span>
-												</span>
+                                        <span class="flex items-center">
+                                            <span class="avatar avatar-circle" data-avatar-size="18">
+                                                <img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/countries/cn.png" loading="lazy" alt="">
+                                            </span>
+                                            <span class="ltr:ml-2 rtl:mr-2">Chinese</span>
+                                        </span>
                                     </li>
                                     <li class="menu-item menu-item-hoverable mb-1 justify-between h-[35px]">
-												<span class="flex items-center">
-													<span class="avatar avatar-circle" data-avatar-size="18">
-														<img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/countries/sp.png" loading="lazy" alt="">
-													</span>
-													<span class="ltr:ml-2 rtl:mr-2">
-														Espanol
-													</span>
-												</span>
+                                        <span class="flex items-center">
+                                            <span class="avatar avatar-circle" data-avatar-size="18">
+                                                <img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/countries/sp.png" loading="lazy" alt="">
+                                            </span>
+                                            <span class="ltr:ml-2 rtl:mr-2">Espanol</span>
+                                        </span>
                                     </li>
                                     <li class="menu-item menu-item-hoverable mb-1 justify-between h-[35px]">
-												<span class="flex items-center">
-													<span class="avatar avatar-circle" data-avatar-size="18">
-														<img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/countries/ar.png" loading="lazy" alt="">
-													</span>
-													<span class="ltr:ml-2 rtl:mr-2">
-														Arabic
-													</span>
-												</span>
+                                        <span class="flex items-center">
+                                            <span class="avatar avatar-circle" data-avatar-size="18">
+                                                <img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/countries/ar.png" loading="lazy" alt="">
+                                            </span>
+                                            <span class="ltr:ml-2 rtl:mr-2">Arabic</span>
+                                        </span>
                                     </li>
                                 </ul>
                             </div>
@@ -395,12 +374,12 @@
                             <div class="dropdown">
                                 <div class="dropdown-toggle" id="nav-notification-dropdown" data-bs-toggle="dropdown">
                                     <div class="text-2xl header-action-item header-action-item-hoverable">
-												<span class="badge-wrapper">
-													<span class="badge-dot badge-inner" style="top: 3px; right: 6px;"></span>
-													<svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-													</svg>
-												</span>
+                                        <span class="badge-wrapper">
+                                            <span class="badge-dot badge-inner" style="top: 3px; right: 6px;"></span>
+                                            <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                                            </svg>
+                                        </span>
                                     </div>
                                 </div>
                                 <ul class="dropdown-menu p-0 min-w-[280px] md:min-w-[340px]">
@@ -408,21 +387,21 @@
                                         <div class="border-b border-gray-200 dark:border-gray-600 px-4 py-2 flex items-center justify-between">
                                             <h6>Notifications</h6>
                                             <span class="tooltip-wrapper">
-														<button class="button bg-transparent border border-transparent hover:bg-gray-50 dark:hover:bg-gray-600 active:bg-gray-100 dark:active:bg-gray-500 dark:active:border-gray-500 text-gray-600 dark:text-gray-100 radius-circle h-9 w-9 inline-flex items-center justify-center text-lg">
-															<svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-																<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path>
-															</svg>
-														</button>
-													</span>
+                                                <button class="button bg-transparent border border-transparent hover:bg-gray-50 dark:hover:bg-gray-600 active:bg-gray-100 dark:active:bg-gray-500 dark:active:border-gray-500 text-gray-600 dark:text-gray-100 radius-circle h-9 w-9 inline-flex items-center justify-center text-lg">
+                                                    <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"></path>
+                                                    </svg>
+                                                </button>
+                                            </span>
                                         </div>
                                     </li>
                                     <li class="relative">
                                         <div class="max-h-[288px] overflow-y-auto relative notification-scroll">
                                             <div class="relative flex px-4 py-4 cursor-pointer hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-black dark:hover:bg-opacity-20  border-b border-gray-200 dark:border-gray-600">
                                                 <div>
-															<span class="avatar avatar-circle avatar-md">
-																<img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/avatars/thumb-8.jpg" loading="lazy" alt="">
-															</span>
+                                                    <span class="avatar avatar-circle avatar-md">
+                                                        <img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/avatars/thumb-8.jpg" loading="lazy" alt="">
+                                                    </span>
                                                 </div>
                                                 <div class="ltr:ml-3 rtl:mr-3">
                                                     <div>
@@ -435,9 +414,9 @@
                                             </div>
                                             <div class="relative flex px-4 py-4 cursor-pointer hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-black dark:hover:bg-opacity-20  border-b border-gray-200 dark:border-gray-600">
                                                 <div>
-															<span class="avatar avatar-circle avatar-md bg-primary-600 dark:bg-primary-600">
-																<span class="avatar-string avatar-inner-md">VK</span>
-															</span>
+                                                    <span class="avatar avatar-circle avatar-md bg-primary-600 dark:bg-primary-600">
+                                                        <span class="avatar-string avatar-inner-md">VK</span>
+                                                    </span>
                                                 </div>
                                                 <div class="ltr:ml-3 rtl:mr-3">
                                                     <div>
@@ -450,15 +429,15 @@
                                             </div>
                                             <div class="relative flex px-4 py-4 cursor-pointer hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-black dark:hover:bg-opacity-20  border-b border-gray-200 dark:border-gray-600">
                                                 <div>
-															<span class="avatar avatar-circle avatar-md bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-100">
-																<span class="avatar-icon avatar-icon-md">
-																	<svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-																		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-																		</path>
-																	</svg>
-																</span>
-															</span>
+                                                    <span class="avatar avatar-circle avatar-md bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-100">
+                                                        <span class="avatar-icon avatar-icon-md">
+                                                            <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                                                </path>
+                                                            </svg>
+                                                        </span>
+                                                    </span>
                                                 </div>
                                                 <div class="ltr:ml-3 rtl:mr-3">
                                                     <div>
@@ -470,13 +449,13 @@
                                             </div>
                                             <div class="relative flex px-4 py-4 cursor-pointer hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-black dark:hover:bg-opacity-20  border-b border-gray-200 dark:border-gray-600">
                                                 <div>
-															<span class="avatar avatar-circle avatar-md bg-red-100 text-red-600 dark:bg-red-500/20 dark:text-red-100">
-																<span class="avatar-icon avatar-icon-md">
-																	<svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-																		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
-																	</svg>
-																</span>
-															</span>
+                                                    <span class="avatar avatar-circle avatar-md bg-red-100 text-red-600 dark:bg-red-500/20 dark:text-red-100">
+                                                        <span class="avatar-icon avatar-icon-md">
+                                                            <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                                                            </svg>
+                                                        </span>
+                                                    </span>
                                                 </div>
                                                 <div class="ltr:ml-3 rtl:mr-3">
                                                     <div>
@@ -488,9 +467,9 @@
                                             </div>
                                             <div class="relative flex px-4 py-4 cursor-pointer hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-black dark:hover:bg-opacity-20  border-b border-gray-200 dark:border-gray-600">
                                                 <div>
-															<span class="avatar avatar-circle avatar-md">
-																<img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/avatars/thumb-4.jpg" loading="lazy" alt="">
-															</span>
+                                                    <span class="avatar avatar-circle avatar-md">
+                                                        <img class="avatar-img avatar-circle" src="${contextPath}/resources/admin/img/avatars/thumb-4.jpg" loading="lazy" alt="">
+                                                    </span>
                                                 </div>
                                                 <div class="ltr:ml-3 rtl:mr-3">
                                                     <div>
@@ -503,13 +482,13 @@
                                             </div>
                                             <div class="relative flex px-4 py-4 cursor-pointer hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-black dark:hover:bg-opacity-20">
                                                 <div>
-															<span class="avatar avatar-circle avatar-md bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-100">
-																<span class="avatar-icon avatar-icon-md">
-																	<svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-																		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-																	</svg>
-																</span>
-															</span>
+                                                    <span class="avatar avatar-circle avatar-md bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-100">
+                                                        <span class="avatar-icon avatar-icon-md">
+                                                            <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                                                            </svg>
+                                                        </span>
+                                                    </span>
                                                 </div>
                                                 <div class="ltr:ml-3 rtl:mr-3">
                                                     <div>
@@ -567,32 +546,32 @@
                                     <li class="menu-item-divider"></li>
                                     <li class="menu-item menu-item-hoverable mb-1 h-[35px]">
                                         <a class="flex gap-2 items-center" href="${contextPath}/admin/profile">
-													<span class="text-xl opacity-50">
-														<svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-															<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-														</svg>
-													</span>
+                                            <span class="text-xl opacity-50">
+                                                <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                                </svg>
+                                            </span>
                                             <span>Profile</span>
                                         </a>
                                     </li>
                                     <li class="menu-item menu-item-hoverable mb-1 h-[35px]">
                                         <a class="flex gap-2 items-center" href="${contextPath}/admin/activity-log">
-													<span class="text-xl opacity-50">
-														<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-															<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-														</svg>
-													</span>
+                                            <span class="text-xl opacity-50">
+                                                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                                </svg>
+                                            </span>
                                             <span>Activity Log</span>
                                         </a>
                                     </li>
                                     <li id="menu-item-29-2VewETdxAb" class="menu-item-divider"></li>
                                     <li class="menu-item menu-item-hoverable gap-2 h-[35px]">
-												<a class="text-xl opacity-50" href="${contextPath}/admin/logout">
-													<svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-														<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
-													</svg>
-												</a>
-                                                <a href="${contextPath}/admin/logout">Log Out</a>
+                                        <a class="text-xl opacity-50" href="${contextPath}/admin/logout">
+                                            <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                            </svg>
+                                        </a>
+                                        <a href="${contextPath}/admin/logout">Log Out</a>
                                     </li>
                                 </ul>
                             </div>
@@ -607,10 +586,10 @@
                             <div class="drawer-header">
                                 <h4>Theme Config</h4>
                                 <span class="close-btn close-btn-default" role="button" data-bs-dismiss="modal">
-											<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-												<path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-											</svg>
-										</span>
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </span>
                             </div>
                             <div class="drawer-body">
                                 <div class="flex flex-col h-full justify-between">
@@ -676,7 +655,7 @@
                                                 <option value="rose">Rose</option>
                                             </select>
                                         </div>
-                                        <div>
+                                    <div>
                                             <h6 class="mb-3">Layout</h6>
                                             <div class="segment w-full">
                                                 <div class="grid grid-cols-3 gap-4 w-full">

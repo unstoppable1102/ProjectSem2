@@ -103,13 +103,13 @@
             <div class="col-lg-3">
                 <div class="shop-widget">
                     <h6 class="shop-widget-title">Filter by Price</h6>
-                    <form>
+                    <form action="${contextPath}/product/searchPrice">
                         <div class="shop-widget-group">
                             <label>
-                                <input type="text" placeholder="Min - 00">
+                                <input type="text" placeholder="Min - 00" name="min">
                             </label>
                             <label>
-                                <input type="text" placeholder="Max - 5k">
+                                <input type="text" placeholder="Max - 5k" name="max">
                             </label>
                         </div>
                         <button class="shop-widget-btn">
@@ -186,25 +186,29 @@
             </div>
             <div class="col-lg-9">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="top-filter">
-                            <div class="filter-show"><label class="filter-label">Show :</label>
-                                <select class="form-select filter-select">
-                                <option value="1">8</option>
-                                <option value="2">12</option>
-                                <option value="3">16</option>
-                            </select></div>
-                            <div class="filter-short"><label class="filter-label">Sort by :</label>
-                                <label>
-                                    <select class="form-select filter-select">
-                                        <option selected>default</option>
-                                        <option value="3">trending</option>
-                                        <option value="1">featured</option>
-                                        <option value="2">recommend</option>
+                    <div class="col-lg-12 mb-5">
+                        <div class="">
+                            <form id="submitForm" method="get" action="${contextPath}/product" class="d-flex justify-content-between">
+                                <div class="filter-show">
+                                    <label class="filter-label">Show :</label>
+                                    <select id="pageSizeSelect" name="size" class="form-select filter-select" onchange="submitPageSize()">
+                                        <option value="8" <c:if test="${size == 8}">selected</c:if>>8</option>
+                                        <option value="12" <c:if test="${size == 12}">selected</c:if>>12</option>
+                                        <option value="16" <c:if test="${size == 16}">selected</c:if>>16</option>
                                     </select>
-                                </label>
-                            </div>
-
+                                </div>
+                                <div class="filter-short">
+                                    <label class="filter-label">Sort by :</label>
+                                    <label for="sortSelect"></label><select id="sortSelect" name="sort" class="form-select filter-select" onchange="submitSortForm()">
+                                    <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Default</option>
+                                    <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Name A-Z</option>
+                                    <option value="name_desc" <c:if test="${sort == 'name_desc'}">selected</c:if>>Name Z-A</option>
+                                    <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Price ASC</option>
+                                    <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Price DESC</option>
+                                </select>
+                                </div>
+                                <input type="hidden" name="page" value="${currentPage}" />
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -258,12 +262,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="bottom-paginate">
-                            <p class="page-info">Show ${products.content.size()} of ${products.totalElements} results</p>
+                            <p class="page-info">Show ${proCategory.content.size()} of ${proCategory.totalElements} results</p>
                             <ul class="pagination">
                                 <c:choose>
-                                    <c:when test="${not products.first}">
+                                    <c:when test="${not proCategory.first}">
                                         <li class="page-item">
-                                            <a class="page-link" href="?page=${products.number - 1}&size=${products.size}&sort=${sort}">
+                                            <a class="page-link" href="?page=${proCategory.number - 1}&size=${proCategory.size}&sort=${sort}">
                                                 <i class="fas fa-long-arrow-alt-left"></i>
                                             </a>
                                         </li>
@@ -276,16 +280,16 @@
                                         </li>
                                     </c:otherwise>
                                 </c:choose>
-                                <c:forEach begin="0" end="${products.totalPages - 1}" step="1" varStatus="status">
+                                <c:forEach begin="0" end="${proCategory.totalPages - 1}" step="1" varStatus="status">
                                     <c:choose>
-                                        <c:when test="${status.index == products.number}">
+                                        <c:when test="${status.index == proCategory.number}">
                                             <li class="page-item active">
                                                 <span class="page-link">${status.index + 1}</span>
                                             </li>
                                         </c:when>
                                         <c:otherwise>
                                             <li class="page-item">
-                                                <a class="page-link" href="?page=${status.index}&size=${products.size}&sort=${sort}">
+                                                <a class="page-link" href="?page=${status.index}&size=${proCategory.size}&sort=${sort}">
                                                         ${status.index + 1}
                                                 </a>
                                             </li>
@@ -294,9 +298,9 @@
                                 </c:forEach>
 
                                 <c:choose>
-                                    <c:when test="${not products.last}">
+                                    <c:when test="${not proCategory.last}">
                                         <li class="page-item">
-                                            <a class="page-link" href="?page=${products.number + 1}&size=${products.size}&sort=${sort}">
+                                            <a class="page-link" href="?page=${proCategory.number + 1}&size=${proCategory.size}&sort=${sort}">
                                                 <i class="fas fa-long-arrow-alt-right"></i>
                                             </a>
                                         </li>

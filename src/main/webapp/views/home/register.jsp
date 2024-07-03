@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.servletContext.contextPath}" scope="application" />
 <!DOCTYPE html>
 <html lang="en">
 <!-- Mirrored from mironmahmud.com/greeny/assets/ltr/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 May 2024 07:10:27 GMT -->
@@ -48,31 +50,35 @@
                         <h2>Join Now!</h2>
                         <p>Setup A New Account In A Minute</p>
                     </div>
-
-                        <f:form class="user-form w-50 m-auto" modelAttribute="account">
-                            <div class="form-group">
-                                <f:input type="text" class="form-control" placeholder="Enter your fullName" path="fullName"/>
-                            </div>
-                            <div class="form-group">
-                                <f:input type="email" class="form-control" placeholder="Enter your email" path="email"/>
-                            </div>
-                            <div class="form-group">
-                                <f:input type="text" class="form-control" placeholder="Enter your username" path="username"/>
-                                <span style="color: red">${error}</span>
-                            </div>
-                            <div class="form-group">
-                                <f:input type="password" class="form-control" placeholder="Enter password" path="password"/>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" value="" id="check">
-                                <label class="form-check-label" for="check">Accept all the
-                                    <a href="#">Terms & Conditions</a>
-                                </label>
-                            </div>
-                            <div class="form-button">
-                                <button type="submit">register</button></div>
-                        </f:form>
-                    </div>
+                    <f:form modelAttribute="account" method="post" action="${contextPath}/register" class="user-form w-50 m-auto" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <f:input type="text" class="form-control" path="fullName" placeholder="Enter your fullName" />
+                            <span style="color:red" class="mt-3"><f:errors cssClass="error" path="fullName" /></span>
+                        </div>
+                        <div class="form-group">
+                            <f:input type="email" class="form-control" path="email" placeholder="Enter your email"/>
+                            <span style="color:red" class="mt-3"><f:errors cssClass="error" path="email" /></span>
+                        </div>
+                        <div class="form-group">
+                            <f:input type="text" class="form-control" path="username" placeholder="Enter your username"/>
+                            <span style="color:red" class="mt-3"><f:errors cssClass="error" path="username" /></span>
+                            <span style="color: red">${error}</span>
+                        </div>
+                        <div class="form-group">
+                            <f:input type="password" class="form-control" path="password" placeholder="Enter password"/>
+                            <span style="color:red" class="mt-3"><f:errors cssClass="error" path="password" /></span>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" value="" id="check">
+                            <label class="form-check-label" for="check">Accept all the
+                                <a href="#">Terms & Conditions</a>
+                            </label>
+                        </div>
+                        <div class="form-button">
+                            <button type="submit">register</button>
+                        </div>
+                    </f:form>
+                </div>
                 </div>
                 <div class="user-form-remind">
                     <p>Already Have An Account?<a href="${contextPath}/login">login here</a></p>
@@ -97,6 +103,4 @@
 <script src="${contextPath}/resources/home/js/slick.js"></script>
 <script src="${contextPath}/resources/home/js/main.js"></script>
 </body>
-<!-- Mirrored from mironmahmud.com/greeny/assets/ltr/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 May 2024 07:10:27 GMT -->
-
 </html>

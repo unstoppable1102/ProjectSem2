@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
+    @Query("select o from Order o order by o.orderDate DESC")
     Page<Order> findAll(Pageable pageable);
     Order findOrderById(int id);
     @Query("SELECT COUNT(o) FROM Order o WHERE o.account.id = :accountId")

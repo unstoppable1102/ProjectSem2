@@ -10,8 +10,8 @@ import org.springframework.context.event.EventListener;
 @SpringBootApplication
 public class ProjectSem2FinalApplication {
 
-    @Autowired
-    private EmailSender emailSender;
+//    @Autowired
+//    private EmailSender emailSender;
 
     public static void main(String[] args) {
         SpringApplication.run(ProjectSem2FinalApplication.class, args);

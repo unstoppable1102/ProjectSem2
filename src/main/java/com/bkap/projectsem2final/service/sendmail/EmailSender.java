@@ -11,7 +11,7 @@ public class EmailSender {
 
     private final JavaMailSender emailSender;
 
-//    public void sendMail(String toEmail, String subject, String body) {
+    public void sendMail(String toEmail, String subject, String body) {
 //        SimpleMailMessage message = new SimpleMailMessage();
 //        message.setFrom("minh14091997@gmail.com");
 //        message.setTo(toEmail);
@@ -21,5 +21,5 @@ public class EmailSender {
 //        emailSender.send(message);
 //
 //        System.out.println("Email send ok");
-//    }
+    }
 }

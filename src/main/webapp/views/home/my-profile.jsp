@@ -143,7 +143,9 @@
         </div>
       </div>
     </div>
-  </div>
+    <div class="row">
+      <a href="${contextPath}/orders/list" class="btn btn-success m-auto w-25 mt-3" >Your Order</a>
+    </div>
 </section>
 <div class="modal fade" id="contact-add">
   <div class="modal-dialog modal-dialog-centered">
@@ -183,8 +185,9 @@
           <option value="academy">academy</option>
           <option value="others">others</option>
         </select></div>
-        <div class="form-group"><label class="form-label">address</label><textarea class="form-control"
-                                                                                   placeholder="Enter your address"></textarea></div><button class="form-btn"
+        <div class="form-group">
+          <label class="form-label">address</label>
+          <textarea class="form-control" placeholder="Enter your address"></textarea></div><button class="form-btn"
                                                                                                                                              type="submit">save address info</button>
       </form>
     </div>
@@ -259,8 +262,9 @@
           <option value="academy">academy</option>
           <option value="others">others</option>
         </select></div>
-        <div class="form-group"><label class="form-label">address</label><textarea class="form-control"
-                                                                                   placeholder="jalkuri, fatullah, narayanganj-1420. word no-09, road no-17/A"></textarea>
+        <div class="form-group">
+          <label class="form-label">address</label>
+          <textarea class="form-control" placeholder="jalkuri, fatullah, narayanganj-1420. word no-09, road no-17/A"></textarea>
         </div><button class="form-btn" type="submit">save address info</button>
       </form>
     </div>

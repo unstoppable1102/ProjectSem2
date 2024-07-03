@@ -342,7 +342,7 @@
         });
 
         if (brandIds.length > 0) {
-            var url = 'product/brands/' + brandIds.join(',');
+            var url = 'brands/' + brandIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one brand.");
@@ -362,7 +362,7 @@
         });
 
         if (categoryIds.length > 0) {
-            var url = 'product/categories/' + categoryIds.join(',');
+            var url = 'categories/' + categoryIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one category.");

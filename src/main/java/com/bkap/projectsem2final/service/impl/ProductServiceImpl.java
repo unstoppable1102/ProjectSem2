@@ -96,6 +96,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findProductsByBrandId(brandId);
     }
 
+    @Override
+    public Page<Product> findProductsByBrandId(Integer brandId, Pageable pageable) {
+        return productRepository.findProductsByBrandId(brandId, pageable);
+    }
+
     // List product by category except product detail
     @Override
     public List<Product> findProductsByCategoryIdExcludingProductId(Integer categoryId, Integer productId) {

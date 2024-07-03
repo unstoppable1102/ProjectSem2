@@ -25,7 +25,6 @@ public class Wishlist {
     private Account account;
 
     private Integer productId;
-
     @ManyToOne
     @JoinColumn(name = "productId", referencedColumnName = "id", insertable = false, updatable = false)
 //    @JsonBackReference

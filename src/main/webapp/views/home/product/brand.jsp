@@ -95,7 +95,6 @@
 <section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>Shop by brand</h2>
-
     </div>
 </section>
 <section class="inner-section shop-part">
@@ -104,13 +103,13 @@
             <div class="col-lg-3">
                 <div class="shop-widget">
                     <h6 class="shop-widget-title">Filter by Price</h6>
-                    <form>
+                    <form action="${contextPath}/product/searchPrice">
                         <div class="shop-widget-group">
                             <label>
-                                <input type="text" placeholder="Min - 00">
+                                <input type="text" placeholder="Min - 00" name="min">
                             </label>
                             <label>
-                                <input type="text" placeholder="Max - 5k">
+                                <input type="text" placeholder="Max - 5k" name="max">
                             </label>
                         </div>
                         <button class="shop-widget-btn">
@@ -183,82 +182,143 @@
                             <span>filter</span>
                         </button>
                     </form>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-9">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="top-filter">
-                        <div class="filter-show"><label class="filter-label">Show :</label><select
-                                class="form-select filter-select">
-                            <option value="1">8</option>
-                            <option value="2">12</option>
-                            <option value="3">16</option>
-                        </select></div>
-                        <div class="filter-short"><label class="filter-label">Sort by :</label>
-                            <label>
-                                <select class="form-select filter-select">
-                                    <option selected>default</option>
-                                    <option value="3">trending</option>
-                                    <option value="1">featured</option>
-                                    <option value="2">recommend</option>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-12 mb-5">
+                        <div class="">
+                            <form id="submitForm" method="get" action="${contextPath}/product" class="d-flex justify-content-between">
+                                <div class="filter-show">
+                                    <label class="filter-label">Show :</label>
+                                    <select id="pageSizeSelect" name="size" class="form-select filter-select" onchange="submitPageSize()">
+                                        <option value="8" <c:if test="${size == 8}">selected</c:if>>8</option>
+                                        <option value="12" <c:if test="${size == 12}">selected</c:if>>12</option>
+                                        <option value="16" <c:if test="${size == 16}">selected</c:if>>16</option>
+                                    </select>
+                                </div>
+                                <div class="filter-short">
+                                    <label class="filter-label">Sort by :</label>
+                                    <label for="sortSelect"></label><select id="sortSelect" name="sort" class="form-select filter-select" onchange="submitSortForm()">
+                                    <option value="default" <c:if test="${sort == 'default'}">selected</c:if>>Default</option>
+                                    <option value="name_asc" <c:if test="${sort == 'name_asc'}">selected</c:if>>Name A-Z</option>
+                                    <option value="name_desc" <c:if test="${sort == 'name_desc'}">selected</c:if>>Name Z-A</option>
+                                    <option value="price_asc" <c:if test="${sort == 'price_asc'}">selected</c:if>>Price ASC</option>
+                                    <option value="price_desc" <c:if test="${sort == 'price_desc'}">selected</c:if>>Price DESC</option>
                                 </select>
-                            </label>
+                                </div>
+                                <input type="hidden" name="page" value="${currentPage}" />
+                            </form>
                         </div>
+                    </div>
+                </div>
+                <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4">
+                    <c:forEach var="pb" items="${products.content}">
+                        <div class="col">
+                            <div class="product-card">
+                                <div class="product-media">
+                                    <div class="product-label"><label class="label-text sale">sale</label></div>
+                                    <button class="product-wish wish">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                    <a class="product-image" href="#">
+                                        <img src="${contextPath}/resources/images/${pb.image}" alt="product">
+                                    </a>
+                                    <div class="product-widget">
+                                        <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <div class="product-rating">
+                                        <i class="active icofont-star"></i>
+                                        <i class="active icofont-star"></i>
+                                        <i class="active icofont-star"></i>
+                                        <i class="active icofont-star"></i>
+                                        <i class="icofont-star"></i>
+                                        <a href="#">(3)</a></div>
+                                    <h6 class="product-name"><a href="${contextPath}/product/detail/${pb.id}">${pb.productName}</a></h6>
+                                    <h6 class="product-price">
+                                        <del>$${pb.priceOld}</del>
+                                        <span>$${pb.price}<small>/piece</small></span>
+                                    </h6>
+                                    <button class="product-add" title="Add to Cart">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <span>add</span>
+                                    </button>
+                                    <div class="product-action">
+                                        <button class="action-minus" title="Quantity Minus">
+                                            <i class="icofont-minus"></i>
+                                        </button>
+                                        <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                        <button class="action-plus" title="Quantity Plus">
+                                            <i class="icofont-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="bottom-paginate">
+                            <p class="page-info">Show ${products.content.size()} of ${products.totalElements} results</p>
+                            <ul class="pagination">
+                                <c:choose>
+                                    <c:when test="${not products.first}">
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=${products.number - 1}&size=${products.size}&sort=${sort}">
+                                                <i class="fas fa-long-arrow-alt-left"></i>
+                                            </a>
+                                        </li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li class="page-item disabled">
+                                        <span class="page-link">
+                                            <i class="fas fa-long-arrow-alt-left"></i>
+                                        </span>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
+                                <c:forEach begin="0" end="${products.totalPages - 1}" step="1" varStatus="status">
+                                    <c:choose>
+                                        <c:when test="${status.index == products.number}">
+                                            <li class="page-item active">
+                                                <span class="page-link">${status.index + 1}</span>
+                                            </li>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li class="page-item">
+                                                <a class="page-link" href="?page=${status.index}&size=${products.size}">
+                                                        ${status.index + 1}
+                                                </a>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
 
+                                <c:choose>
+                                    <c:when test="${not products.last}">
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=${products.number + 1}&size=${products.size}&sort=${sort}">
+                                                <i class="fas fa-long-arrow-alt-right"></i>
+                                            </a>
+                                        </li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li class="page-item disabled">
+                                            <span class="page-link">
+                                                <i class="fas fa-long-arrow-alt-right"></i>
+                                            </span>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4">
-                <c:forEach var="pb" items="${proBrand}">
-                    <div class="col">
-                        <div class="product-card">
-                            <div class="product-media">
-                                <div class="product-label"><label class="label-text sale">sale</label></div>
-                                <button class="product-wish wish">
-                                    <i class="fas fa-heart"></i>
-                                </button>
-                                <a class="product-image" href="#">
-                                    <img src="${contextPath}/resources/images/${pb.image}" alt="product">
-                                </a>
-                                <div class="product-widget">
-                                    <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
-                                </div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-rating">
-                                    <i class="active icofont-star"></i>
-                                    <i class="active icofont-star"></i>
-                                    <i class="active icofont-star"></i>
-                                    <i class="active icofont-star"></i>
-                                    <i class="icofont-star"></i>
-                                    <a href="#">(3)</a></div>
-                                <h6 class="product-name"><a href="${contextPath}/product/detail/${pb.id}">${pb.productName}</a></h6>
-                                <h6 class="product-price">
-                                    <del>$${pb.priceOld}</del>
-                                    <span>$${pb.price}<small>/piece</small></span>
-                                </h6>
-                                <button class="product-add" title="Add to Cart">
-                                    <i class="fas fa-shopping-cart"></i>
-                                    <span>add</span>
-                                </button>
-                                <div class="product-action">
-                                    <button class="action-minus" title="Quantity Minus">
-                                        <i class="icofont-minus"></i>
-                                    </button>
-                                    <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                    <button class="action-plus" title="Quantity Plus">
-                                        <i class="icofont-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </div>
-
         </div>
-    </div>
     </div>
 </section>
 <script>

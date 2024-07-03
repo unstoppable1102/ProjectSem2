@@ -2,6 +2,7 @@ package com.bkap.projectsem2final.controller.admin;
 
 
 import com.bkap.projectsem2final.entities.Order;
+import com.bkap.projectsem2final.enums.OrderStatus;
 import com.bkap.projectsem2final.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -41,6 +42,13 @@ public class OrderController {
         return "redirect:/admin/order/list";
     }
 
+    @PostMapping("updateOrderStatus/{id}")
+    public String updateOrderStatus(@PathVariable int id ,
+                                    @RequestParam String orderStatus) {
+        Order order = orderService.findById(id);
+        order.setOrderStatus(OrderStatus.valueOf(orderStatus));
+        orderService.update(order);
 
-
+        return "redirect:/admin/order/list";
+    }
 }

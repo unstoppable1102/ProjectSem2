@@ -127,29 +127,31 @@
             <div class="col-md-7 col-lg-4">
                 <div class="blog-widget">
                     <h3 class="blog-widget-title">Find blogs</h3>
-                    <form action="${contextPath}/searchp" method="get" class="blog-widget-form"><input type="text" value="${keyword}" name="s" placeholder="Search blogs"><button
-                            class="icofont-search-1"></button></form>
+                    <form action="${contextPath}/searchp" method="get" class="blog-widget-form">
+                        <input type="text" value="${keyword}" name="s" placeholder="Search blogs">
+                        <button class="icofont-search-1"></button>
+                    </form>
                 </div>
-
                 <div class="blog-widget">
                     <h3 class="blog-widget-title">top categories</h3>
                     <ul class="blog-widget-category">
-
-<c:forEach var="pct" items="${postcategories}">
+                    <c:forEach var="pct" items="${postcategories}">
                         <li><a href="${contextPath}/blogs?postCt=${pct.id}">${pct.name} <span>${pct.postCount}</span></a></li>
-
-</c:forEach>
+                    </c:forEach>
                     </ul>
                 </div>
-
                 <div class="blog-widget">
                     <h3 class="blog-widget-title">popular feeds</h3>
                     <ul class="blog-widget-feed">
 
                         <c:forEach var="tp" items="${top8}">
-                            <li><a class="blog-widget-media" href="#"><img src="${contextPath}/resources/images/${tp.image}"
-                                                                           alt="blog-widget"></a>
-                                <h6 class="blog-widget-text"><a href="#">${tp.name}</a><span>february 02, 2021</span></h6>
+                            <li>
+                                <a class="blog-widget-media" href="#">
+                                    <img src="${contextPath}/resources/images/${tp.image}" alt="blog-widget">
+                                </a>
+                                <h6 class="blog-widget-text">
+                                    <a href="#">${tp.name}</a><span>february 02, 2021</span>
+                                </h6>
                             </li>
                         </c:forEach>
 
@@ -165,8 +167,7 @@
                         <li><a href="#" class="icofont-instagram"></a></li>
                     </ul>
                 </div>
-                <div class="blog-widget"><a href="#"><img class="img-fluid" src="resources/home/images/promo/blog/01.jpg"
-                                                          alt="promo"></a></div>
+
             </div>
         </div>
     </div>

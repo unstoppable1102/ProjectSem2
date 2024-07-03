@@ -1,13 +1,18 @@
 package com.bkap.projectsem2final.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -23,21 +28,30 @@ public class Account implements Serializable {
     private Integer id;
 
     @Column(name = "username")
-    @NotNull(message = "Username is required")
+    @NotBlank(message = "Username is required")
     private String username;
-
+    @NotBlank(message = "Password is required")
     private String password;
     @Column(name = "fullName", columnDefinition = "nvarchar(50)")
-    @NotNull(message = "FullName is required")
+    @NotBlank(message = "FullName is required")
     private String fullName;
-    @NotNull(message = "Email is required")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email is invalid")
     private String email;
     private String phone;
-    @NotNull(message = "Address is required")
+    @NotBlank(message = "Address is required")
     private String address;
     private boolean role;
     private String avatar;
     private boolean status;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updateDate;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
     private List<Wishlist> wishlists;

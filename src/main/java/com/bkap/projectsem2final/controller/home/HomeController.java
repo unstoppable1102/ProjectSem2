@@ -10,9 +10,11 @@ import com.bkap.projectsem2final.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -26,22 +28,6 @@ public class HomeController {
     private final BrandService brandService;
     private final AccountService accountService;
     private final CartService cartService;
-
-    @ModelAttribute("totalPrice")
-    public Double getTotalPrice(HttpServletRequest req) {
-        Integer id = (Integer) req.getSession().getAttribute("userId");
-        if (id == null) return 0.0;
-        return cartService.calculateTotalPrice(id);
-    }
-
-    @ModelAttribute("countCartItem")
-    public Integer getCountCartItem(HttpServletRequest req) {
-        Integer id = (Integer) req.getSession().getAttribute("userId");
-        if (id == null) {
-            return null;
-        }
-        return cartService.countItemsInCart(id);
-    }
 
     @GetMapping
     public String home(Model model) {
@@ -64,18 +50,23 @@ public class HomeController {
     }
 
     @PostMapping("register")
-    public String register (@ModelAttribute Account account, Model model) {
-        if (accountService.existsByUsername(account.getUsername())) {
-            model.addAttribute("error", "This username is already existed");
+    public String registerProcess (@Valid @ModelAttribute("account") Account account, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("account", account);
             return "home/register";
-        }else{
-            String password = Cipher.GenerateMD5(account.getPassword());
-            account.setPassword(password);
-            account.setRole(false);
-            account.setStatus(true);
-            account.setAvatar("user.png");
-            accountService.save(account);
-            return "redirect:/login";
+        }else {
+            if (accountService.existsByUsername(account.getUsername())) {
+                model.addAttribute("error", "This username is already existed");
+                return "home/register";
+            } else {
+                String password = Cipher.GenerateMD5(account.getPassword());
+                account.setPassword(password);
+                account.setRole(false);
+                account.setStatus(true);
+                account.setAvatar("user.png");
+                accountService.save(account);
+                return "redirect:/login";
+            }
         }
     }
 
@@ -132,5 +123,20 @@ public class HomeController {
         return "home";
     }
 
+    @ModelAttribute("totalPrice")
+    public Double getTotalPrice(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("userId");
+        if (id == null) return 0.0;
+        return cartService.calculateTotalPrice(id);
+    }
+
+    @ModelAttribute("countCartItem")
+    public Integer getCountCartItem(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("userId");
+        if (id == null) {
+            return null;
+        }
+        return cartService.countItemsInCart(id);
+    }
 
 }

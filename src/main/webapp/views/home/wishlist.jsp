@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -7,14 +8,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<section class="inner-section single-banner" style="background: url(${contextPath}/resources/images/single-banner.jpg) no-repeat center;">
+<section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>wishlist</h2>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="shop-4column.html">shop grid</a></li>
-            <li class="breadcrumb-item active" aria-current="page">wishlist</li>
-        </ol>
     </div>
 </section>
 <section class="inner-section wishlist-part">
@@ -52,17 +48,23 @@
                                     <c:choose>
                                         <c:when test="${w.product.status}">
                                             <td class="table-status">
-                                                <h6 class="stock-in">stock In</h6>
+                                                <h6 class="stock-in">In Stock</h6>
                                             </td>
                                         </c:when>
                                         <c:otherwise>
                                             <td class="table-status">
-                                                <h6 class="stock-out">stock out</h6>
+                                                <h6 class="stock-out">Out Of Stock</h6>
                                             </td>
                                         </c:otherwise>
                                     </c:choose>
                                     <td class="table-shop">
-                                        <button class="product-add" title="Add to Cart">add to cart</button>
+                                        <f:form method="get" action="${contextPath}/cart/add/${w.product.id}" modelAttribute="cartItem">
+                                            <f:hidden path="quantity" value="1" />
+                                            <button class="product-add">
+                                                <i class="fas fa-shopping-cart"></i>
+                                                <span>add</span>
+                                            </button>
+                                        </f:form>
                                     </td>
                                     <td class="table-action">
                                         <a onclick="return confirm('Are you sure want to remove from wishlist?')" class="trash" href="${contextPath}/wishlist/delete/${w.id}" title="Remove Wishlist">

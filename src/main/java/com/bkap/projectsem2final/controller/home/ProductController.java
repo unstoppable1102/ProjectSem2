@@ -153,6 +153,7 @@ public class ProductController {
             model.addAttribute("productInSameCategoryId", productInSameCategoryId);
         }
         model.addAttribute("wishlist" , new Wishlist());
+        model.addAttribute("cartItem", new CartItem());
         model.addAttribute("page", "product/detail");
         return "home";
     }
@@ -179,10 +180,23 @@ public class ProductController {
     }
 
     @GetMapping("brands/{brandId}")
-    public String productBrand(Model model, @PathVariable Integer brandId) {
-        model.addAttribute("proBrand", productService.findProductsByBrandId(brandId));
+    public String productBrand(@RequestParam(defaultValue = "0") int page,
+                               @RequestParam(defaultValue = "8") int size,
+                               Model model, @PathVariable Integer brandId) {
+
+        //Phân trang
+        Pageable pageable = PageRequest.of(page, size);
+
+        //find brand and paginate
+        Page<Product> productPage = productService.findProductsByBrandId(brandId, pageable);
+
+        model.addAttribute("products", productPage);
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("brands", brandService.findAll());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("size", size);
+        model.addAttribute("totalPages", productPage.getTotalPages());
+        model.addAttribute("totalItems", productPage.getTotalElements());
         model.addAttribute("page", "product/brand");
         return "home";
     }

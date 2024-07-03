@@ -245,7 +245,9 @@
                                         <i class="active icofont-star"></i>
                                         <i class="icofont-star"></i>
                                         <a href="#">(3)</a></div>
-                                    <h6 class="product-name"><a href="${contextPath}/product/detail/${p.id}">${p.productName}</a></h6>
+                                    <h6 class="product-name">
+                                        <a href="${contextPath}/product/detail/${p.id}">${p.productName}</a>
+                                    </h6>
                                     <h6 class="product-price">
                                         <del>$${p.priceOld}</del>
                                         <span>$${p.price}<small>/piece</small></span>
@@ -342,7 +344,7 @@
         });
 
         if (brandIds.length > 0) {
-            var url = 'product/brands/' + brandIds.join(',');
+            var url = 'brands/' + brandIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one brand.");
@@ -362,7 +364,7 @@
         });
 
         if (categoryIds.length > 0) {
-            var url = 'product/categories/' + categoryIds.join(',');
+            var url = 'categories/' + categoryIds.join(',');
             window.location.href = url;
         } else {
             alert("Please select at least one category.");

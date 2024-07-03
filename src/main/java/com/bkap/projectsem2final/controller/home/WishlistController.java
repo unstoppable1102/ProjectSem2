@@ -1,5 +1,6 @@
 package com.bkap.projectsem2final.controller.home;
 
+import com.bkap.projectsem2final.entities.CartItem;
 import com.bkap.projectsem2final.entities.Wishlist;
 import com.bkap.projectsem2final.service.ProductService;
 import com.bkap.projectsem2final.service.WishlistService;
@@ -26,6 +27,7 @@ public class WishlistController {
         model.addAttribute("wishlists" , wishlistService.findWishlistsByAccountId(userId));
         List<Integer> wishlistProductIds = wishlistService.getWishlistProductIds(userId);
         model.addAttribute("wishlistProductIds", wishlistProductIds);
+        model.addAttribute("cartItem", new CartItem());
         model.addAttribute("page" , "wishlist");
         return "home";
     }

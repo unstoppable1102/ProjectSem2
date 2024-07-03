@@ -15,10 +15,10 @@
                             <span class="ltr:ml-2 rtl:mr-2">#${order.id}</span>
                         </h3>
                         <div class="tag border-0 rounded-md ltr:ml-2 rtl:mr-2 bg-emerald-100 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-100">
-                            Paid
+                            ${order.orderStatus}
                         </div>
                         <div class="tag border-0 rounded-md ltr:ml-2 rtl:mr-2 bg-cyan-100 text-cyan-600 dark:bg-cyan-500/20 dark:text-cyan-100">
-                            Fulfilled
+                            Cash On Delivery
                         </div>
                     </div>
                     <span class="flex items-center">

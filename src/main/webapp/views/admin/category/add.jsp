@@ -24,8 +24,8 @@
                                 <div class="form-item vertical">
                                     <label class="form-label mb-2">Category Name</label>
                                     <div>
-                                        <f:input class="input" type="text" path="name" placeholder="Name" value="" />
-                                        <span style="color:red" class="mt-3"><f:errors cssClass="error" path="name" /></span>
+                                        <f:input class="input" type="text" path="name" placeholder="Name"/>
+                                        <span style="color:red" class="mt-3"><f:errors cssClass="error" path="name"/></span>
                                     </div>
                                 </div>
                                 <div class="form-item vertical">
@@ -44,7 +44,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="lg:col-span-1">
                         <div class="card adaptable-card mb-4">
@@ -64,31 +63,26 @@
                                                     <span class="text-blue-500">browse</span>
                                                 </p>
                                                 <p class="mt-1 opacity-60 dark:text-white">Support:jpeg, png</p>
-
                                             </div>
-
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="stickyFooter"
-                     class="sticky -bottom-1 -mx-8 px-8 flex items-center justify-end py-4">
+                <div id="stickyFooter" class="sticky -bottom-1 -mx-8 px-8 flex items-center justify-end py-4">
                     <div class="md:flex items-center">
-                        <button class="btn btn-default btn-sm ltr:mr-2 rtl:ml-2"
-                                type="button">Discard</button>
+                        <button class="btn btn-default btn-sm ltr:mr-2 rtl:ml-2" type="button">Discard</button>
                         <button class="btn btn-solid btn-sm" type="submit">
-							<span class="flex items-center justify-center"> <span
-                                    class="text-lg"> <svg stroke="currentColor"
-                                                          fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024"
+							<span class="flex items-center justify-center">
+                                <span class="text-lg">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024"
                                                           height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path
-                                                                                d="M893.3 293.3L730.7 130.7c-7.5-7.5-16.7-13-26.7-16V112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V338.5c0-17-6.7-33.2-18.7-45.2zM384 184h256v104H384V184zm456 656H184V184h136v136c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V205.8l136 136V840zM512 442c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 224c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z"></path>
-                                                                    </svg>
-							</span> <span class="ltr:ml-1 rtl:mr-1">Save</span>
+                                        <path d="M893.3 293.3L730.7 130.7c-7.5-7.5-16.7-13-26.7-16V112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V338.5c0-17-6.7-33.2-18.7-45.2zM384 184h256v104H384V184zm456 656H184V184h136v136c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V205.8l136 136V840zM512 442c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 224c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z"></path>
+                                    </svg>
+							    </span>
+                                <span class="ltr:ml-1 rtl:mr-1">Save</span>
 							</span>
                         </button>
                     </div>

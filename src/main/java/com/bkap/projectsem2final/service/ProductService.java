@@ -26,6 +26,8 @@ public interface ProductService extends GenericService<Product, Integer> {
 
     List<Product> findProductsByBrandId(Integer brandId);
 
+    Page<Product> findProductsByBrandId(Integer brandId, Pageable pageable);
+
     List<Product> findProductsByCategoryIdExcludingProductId(Integer categoryId, Integer productId);
 
     Page<Product> findAll(int page, int size, Sort sort);
