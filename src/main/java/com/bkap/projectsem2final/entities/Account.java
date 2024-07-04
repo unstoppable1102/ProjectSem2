@@ -21,7 +21,7 @@ import java.util.List;
 @Table(name = "accounts")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account implements Serializable {
+public class Account{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -30,17 +30,22 @@ public class Account implements Serializable {
     @Column(name = "username")
     @NotBlank(message = "Username is required")
     private String username;
+
     @NotBlank(message = "Password is required")
     private String password;
+
     @Column(name = "fullName", columnDefinition = "nvarchar(50)")
     @NotBlank(message = "FullName is required")
     private String fullName;
+
     @NotBlank(message = "Email is required")
     @Email(message = "Email is invalid")
     private String email;
+
     private String phone;
     @NotBlank(message = "Address is required")
     private String address;
+
     private boolean role;
     private String avatar;
     private boolean status;

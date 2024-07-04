@@ -20,8 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="template" content="greeny">
     <meta name="title" content="greeny - Ecommerce Food Store HTML Template">
-    <meta name="keywords"
-          content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online">
+    <meta name="keywords" content="organic, food, shop, ecommerce, store, html, bootstrap, template, agriculture, vegetables, products, farm, grocery, natural, online">
     <title>Greeny - Register</title>
     <link rel="icon" href="${contextPath}/resources/home/images/favicon.png">
     <link rel="stylesheet" href="${contextPath}/resources/home/fonts/flaticon/flaticon.css">
@@ -50,7 +49,8 @@
                         <h2>Join Now!</h2>
                         <p>Setup A New Account In A Minute</p>
                     </div>
-                    <f:form modelAttribute="account" method="post" action="${contextPath}/register" class="user-form w-50 m-auto" enctype="multipart/form-data">
+                    <f:form modelAttribute="account" method="post" action="register" class="user-form w-50 m-auto" >
+
                         <div class="form-group">
                             <f:input type="text" class="form-control" path="fullName" placeholder="Enter your fullName" />
                             <span style="color:red" class="mt-3"><f:errors cssClass="error" path="fullName" /></span>

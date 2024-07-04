@@ -19,7 +19,7 @@ public class PostCategory {
     private int id;
 
     @NotEmpty(message = "Tên danh mục bài viết không được trống")
-    @Size(min = 5, max = 50, message = "Name must be between 5 and 50 characters long")
+    @Size(min = 5, max = 50, message = "Name must be between 5 and 50 characters")
     @Column(name = "name", columnDefinition = "NVARCHAR(50)")
     private String name;
 

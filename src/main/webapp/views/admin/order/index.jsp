@@ -36,8 +36,7 @@
                                         <form id="updateStatusForm" action="${contextPath}/admin/order/updateOrderStatus/${o.id}" method="post">
                                             <div class="flex items-center">
                                                 <label>
-                                                    <select name="orderStatus" class="input form-select"
-                                                            onchange="document.getElementById('updateStatusForm').submit()">
+                                                    <select name="orderStatus" class="input form-select" onchange="submitForm()">
                                                         <option value="NEW" ${o.orderStatus == 'NEW' ? 'selected' : ''}>NEW</option>
                                                         <option value="PROCESSING" ${o.orderStatus == 'PROCESSING' ? 'selected' : ''}>PROCESSING</option>
                                                         <option value="SHIPPED" ${o.orderStatus == 'SHIPPED' ? 'selected' : ''}>SHIPPED</option>

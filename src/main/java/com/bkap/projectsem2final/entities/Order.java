@@ -38,6 +38,6 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
 
-    @Column(name = "total", nullable = true)
+    @Column(name = "total")
     private double total = 0.0;
 }

@@ -2,6 +2,7 @@ package com.bkap.projectsem2final.controller.home;
 
 import com.bkap.projectsem2final.entities.CartItem;
 import com.bkap.projectsem2final.entities.Wishlist;
+import com.bkap.projectsem2final.service.CartService;
 import com.bkap.projectsem2final.service.ProductService;
 import com.bkap.projectsem2final.service.WishlistService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +21,7 @@ import java.util.List;
 public class WishlistController {
 
     private final WishlistService wishlistService;
-    private final ProductService productService;
+    private final CartService cartService;
 
     @GetMapping
     public String wishlist(Model model,@ModelAttribute("userId") Integer userId){
@@ -51,4 +52,19 @@ public class WishlistController {
         return wishlistService.getWishlistProductIds(accountId);
     }
 
+    @ModelAttribute("totalPrice")
+    public Double getTotalPrice(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("userId");
+        if (id == null) return 0.0;
+        return cartService.calculateTotalPrice(id);
+    }
+
+    @ModelAttribute("countCartItem")
+    public Integer getCountCartItem(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("userId");
+        if (id == null) {
+            return null;
+        }
+        return cartService.countItemsInCart(id);
+    }
 }

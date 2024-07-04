@@ -4,9 +4,9 @@ import com.bkap.projectsem2final.entities.*;
 import com.bkap.projectsem2final.repository.CommentRepository;
 import com.bkap.projectsem2final.repository.PostRepository;
 import com.bkap.projectsem2final.service.AccountService;
+import com.bkap.projectsem2final.service.CartService;
 import com.bkap.projectsem2final.service.PostCategoryService;
 import com.bkap.projectsem2final.service.PostService;
-import jakarta.persistence.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -16,27 +16,22 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@SessionAttributes("userId")
 public class PageController {
 
     private final PostService postService;
-
-    private  final PostCategoryService postCategoryService;
+    private final PostCategoryService postCategoryService;
     private final PostRepository postRepository;
-
     private final AccountService accountService;
     private final CommentRepository commentRepository;
+    private final CartService cartService;
 
     @GetMapping("/contact")
     public String contact(Model model) {
@@ -68,7 +63,6 @@ public class PageController {
             case "name_desc":
                 sorting = Sort.by("name").descending();
                 break;
-
         }
 
         List<Post> top8 = postService.findTop4ByOrderByNameAsc();
@@ -199,6 +193,21 @@ public class PageController {
 //        return "redirect:/blogs";
 //    }
 
+    @ModelAttribute("totalPrice")
+    public Double getTotalPrice(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("userId");
+        if (id == null) return 0.0;
+        return cartService.calculateTotalPrice(id);
+    }
+
+    @ModelAttribute("countCartItem")
+    public Integer getCountCartItem(HttpServletRequest req) {
+        Integer id = (Integer) req.getSession().getAttribute("userId");
+        if (id == null) {
+            return null;
+        }
+        return cartService.countItemsInCart(id);
+    }
 
 
 

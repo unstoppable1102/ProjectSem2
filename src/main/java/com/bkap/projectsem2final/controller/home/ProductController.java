@@ -8,8 +8,6 @@ import com.bkap.projectsem2final.service.BrandService;
 import com.bkap.projectsem2final.service.CartService;
 import com.bkap.projectsem2final.service.CategoryService;
 import com.bkap.projectsem2final.service.ProductService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,8 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -169,6 +165,7 @@ public class ProductController {
         Page<Product> productPage = productService.findProductsByCategoryId(categoryId, pageable);
 
         model.addAttribute("proCategory", productPage);
+        model.addAttribute("cate", categoryService.findById(categoryId));
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("brands", brandService.findAll());
         model.addAttribute("currentPage", page);
@@ -191,6 +188,7 @@ public class ProductController {
         Page<Product> productPage = productService.findProductsByBrandId(brandId, pageable);
 
         model.addAttribute("products", productPage);
+        model.addAttribute("br", brandService.findById(brandId));
         model.addAttribute("categories", categoryService.findAll());
         model.addAttribute("brands", brandService.findAll());
         model.addAttribute("currentPage", page);

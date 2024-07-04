@@ -93,22 +93,15 @@
         </div>
     </div>
 </div>
-<section class="inner-section single-banner" style="background: url(${contextPath}/resources/images/single-banner.jpg) no-repeat center;">
+<section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>Shop</h2>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="${contextPath}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">shop</li>
-        </ol>
     </div>
 </section>
 <section class="inner-section shop-part">
     <div class="container">
         <div class="row content-reverse">
             <div class="col-lg-3">
-                <div class="shop-widget-promo">
-                    <a href="#"><img src="${contextPath}/resources/home/images/promo/shop/01.jpg" alt="promo"></a>
-                </div>
                 <div class="shop-widget">
                     <h6 class="shop-widget-title">Filter by Price</h6>
                     <form>

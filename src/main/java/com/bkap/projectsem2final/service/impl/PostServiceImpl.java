@@ -75,7 +75,6 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public boolean update(Post post) {
-        System.out.println("Vao update service");
         try {
             this.postRepository.save(post);
             return true;

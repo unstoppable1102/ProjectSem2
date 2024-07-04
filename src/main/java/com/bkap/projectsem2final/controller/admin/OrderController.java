@@ -18,8 +18,9 @@ public class OrderController {
     private final OrderService orderService;
 
     @GetMapping("list")
-    public String listOrders(Model model, @RequestParam(defaultValue = "0", required = false) int page,
-                             @RequestParam(defaultValue = "6", required = false) int size) {
+    public String listOrders(@RequestParam(defaultValue = "0", required = false) int page,
+                             @RequestParam(defaultValue = "6", required = false) int size,
+                             Model model) {
         Page<Order> orders = orderService.findAll(page, size);
 
         model.addAttribute("page", "order/index");
@@ -44,10 +45,12 @@ public class OrderController {
 
     @PostMapping("updateOrderStatus/{id}")
     public String updateOrderStatus(@PathVariable int id ,
-                                    @RequestParam String orderStatus) {
+                                    @RequestParam("orderStatus") OrderStatus orderStatus) {
         Order order = orderService.findById(id);
-        order.setOrderStatus(OrderStatus.valueOf(orderStatus));
-        orderService.update(order);
+        if (order != null){
+            order.setOrderStatus(orderStatus);
+            orderService.update(order);
+        }
 
         return "redirect:/admin/order/list";
     }

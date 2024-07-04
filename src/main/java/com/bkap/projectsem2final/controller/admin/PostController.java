@@ -95,8 +95,8 @@ public class PostController {
     }
 
     @PostMapping("update")
-    public String updatePro(@Valid @ModelAttribute Post post, BindingResult result,Model model
-                            ,@RequestParam(value="file") MultipartFile file,
+    public String updatePost(@Valid @ModelAttribute Post post, BindingResult result,Model model
+                            ,@RequestParam("file") MultipartFile file,
                             HttpServletRequest req) {
         if (result.hasErrors()) {
             Post ps1 = postService.findById(post.getId());

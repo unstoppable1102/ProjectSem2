@@ -92,11 +92,25 @@
         </div>
     </div>
 </div>
-<section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
+<section class="single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
-        <h2>Shop by brand</h2>
+        <h2>Shop By Brand</h2>
+
     </div>
 </section>
+<div class="brand-single">
+    <a href="#"><img src="${contextPath}/resources/images/${br.image}" alt="brand"></a><a href="#">
+    <h3>${br.name}</h3>
+</a>
+    <ul>
+        <li class="fas fa-star active"></li>
+        <li class="fas fa-star active"></li>
+        <li class="fas fa-star active"></li>
+        <li class="fas fa-star active"></li>
+        <li class="fas fa-star"></li>
+    </ul>
+    <p>(${br.productCount} items)</p>
+</div>
 <section class="inner-section shop-part">
     <div class="container">
         <div class="row content-reverse">
