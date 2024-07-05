@@ -76,5 +76,10 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findByAccountId(accountId, pageable);
     }
 
+    @Override
+    public List<Order> findByAccountId(int accountId) {
+        return orderRepository.findByAccountId(accountId);
+    }
+
 
 }

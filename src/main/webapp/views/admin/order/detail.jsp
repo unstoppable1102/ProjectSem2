@@ -128,9 +128,9 @@
                                                 ${order.account.username}
                                             </div>
                                             <span>
-																	<span class="font-semibold">11 </span>
-																	previous orders
-																</span>
+                                                <span class="font-semibold">${order.account.orderCount - 1}</span>
+                                                previous orders
+                                            </span>
                                         </div>
                                     </div>
                                     <svg stroke="currentColor" fill="currentColor" stroke-width="0"

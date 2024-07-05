@@ -73,7 +73,6 @@ public class HomeController {
     @GetMapping("logout")
     public String logout(HttpServletRequest req, SessionStatus sessionStatus) {
         HttpSession session = req.getSession();
-
         session.removeAttribute("userId");
         session.invalidate();
         sessionStatus.setComplete();
@@ -89,7 +88,6 @@ public class HomeController {
     public String loginProcess(String username, String password, Model model, HttpServletRequest req) {
         Account ac = accountService.findByUsername(username);
         String passwordMD5 = Cipher.GenerateMD5(password);
-
         if (ac == null || !ac.getPassword().equals(passwordMD5)) {
             model.addAttribute("error", "Invalid username or password");
             return "home/login";

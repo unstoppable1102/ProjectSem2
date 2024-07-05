@@ -12,5 +12,6 @@ public interface OrderService extends GenericService<Order, Integer>{
     Order findById(int orderId);
     Integer countByAccountId(Integer accountId);
     Page<Order> findByAccountId (int page, int size,int accountId);
+    List<Order> findByAccountId(int accountId);
 
 }

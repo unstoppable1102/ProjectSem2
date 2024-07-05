@@ -12,6 +12,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -43,12 +44,17 @@ public class Account{
     private String email;
 
     private String phone;
-    @NotBlank(message = "Address is required")
     private String address;
 
     private boolean role;
     private String avatar;
     private boolean status;
+
+    @Temporal(TemporalType.DATE)
+    private Date birthday;
+
+    @Transient
+    private Integer orderCount;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)

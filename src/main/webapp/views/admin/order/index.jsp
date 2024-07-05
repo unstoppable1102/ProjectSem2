@@ -10,9 +10,14 @@
             <div class="card adaptable-card">
                 <h3 class="mb-4">Orders</h3>
                 <div class="overflow-x-auto">
-                    <table  class="table-default table-hover">
+                    <table id="order-list-table"  class="table-default table-hover">
                         <thead>
-                            <th>STT</th>
+                            <th>
+                                <label class="checkbox-label mb-0">
+                                    <input id="indeterminate-checkbox" class="checkbox" type="checkbox" value="">
+                                </label>
+                            </th>
+                            <th>Order</th>
                             <th>Date</th>
                             <th>Customer</th>
                             <th>Status</th>
@@ -24,7 +29,12 @@
                             <c:forEach var="o" varStatus="loop" items="${orders.content}" >
                                 <tr>
                                     <td>
-                                        <span class="cursor-pointer select-none font-semibold hover:text-indigo-600">${loop.count}</span>
+                                        <label class="checkbox-label mb-0">
+                                            <input class="checkbox order-checkbox" type="checkbox" value="">
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <span class="cursor-pointer select-none font-semibold hover:text-indigo-600">#${o.id}</span>
                                     </td>
                                     <td>
                                         <span><f:formatDate value="${o.orderDate}" pattern="dd/MM/yyyy" /></span>
@@ -33,10 +43,10 @@
                                         ${o.account.username}
                                     </td>
                                     <td>
-                                        <form id="updateStatusForm" action="${contextPath}/admin/order/updateOrderStatus/${o.id}" method="post">
+                                        <form id="updateStatusForm${loop.index}" action="${contextPath}/admin/order/updateOrderStatus/${o.id}" method="post">
                                             <div class="flex items-center">
                                                 <label>
-                                                    <select name="orderStatus" class="input form-select" onchange="submitForm()">
+                                                    <select name="orderStatus" class="input form-select" onchange="submitForm(${loop.index})">
                                                         <option value="NEW" ${o.orderStatus == 'NEW' ? 'selected' : ''}>NEW</option>
                                                         <option value="PROCESSING" ${o.orderStatus == 'PROCESSING' ? 'selected' : ''}>PROCESSING</option>
                                                         <option value="SHIPPED" ${o.orderStatus == 'SHIPPED' ? 'selected' : ''}>SHIPPED</option>
@@ -146,7 +156,7 @@
     <!-- Content end -->
 </div>
 <script>
-    function submitForm() {
-        document.getElementById("updateStatusForm").submit();
+    function submitForm(index) {
+        document.getElementById("updateStatusForm" + index).submit();
     }
 </script>

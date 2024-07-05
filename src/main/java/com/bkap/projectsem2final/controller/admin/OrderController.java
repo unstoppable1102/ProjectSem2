@@ -1,6 +1,7 @@
 package com.bkap.projectsem2final.controller.admin;
 
 
+import com.bkap.projectsem2final.entities.Account;
 import com.bkap.projectsem2final.entities.Order;
 import com.bkap.projectsem2final.enums.OrderStatus;
 import com.bkap.projectsem2final.service.OrderService;
@@ -32,8 +33,18 @@ public class OrderController {
 
     @GetMapping("detail/{id}")
     public String orderDetail(@PathVariable int id, Model model) {
-        model.addAttribute("order", orderService.findById(id));
-        model.addAttribute("page", "order/detail");
+        Order order = orderService.findById(id);
+        if (order != null) {
+            Account account = order.getAccount();
+            Integer orderCount = orderService.countByAccountId(account.getId());
+
+            account.setOrderCount(orderCount);
+
+            model.addAttribute("order", order);
+            model.addAttribute("account", account);
+            model.addAttribute("page", "order/detail");
+        }
+
         return "admin";
     }
 

@@ -1,3 +1,5 @@
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ADMIN
@@ -15,26 +17,56 @@
                     <div class="flex flex-col xl:justify-between h-full 2xl:min-w-[360px] mx-auto">
                         <div class="flex xl:flex-col items-center gap-4">
                             <span class="avatar avatar-circle avatar-lg" data-avatar-size="90">
-                                <img class="avatar-img avatar-circle" src="${contextPath}/resources/images/${account.avatar}" loading="lazy">
+                                <img class="avatar-img avatar-circle" src="${contextPath}/resources/images/${account.avatar}" loading="lazy" alt="">
                             </span>
                             <h4 class="font-bold">${account.fullName}</h4>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-y-7 gap-x-4 mt-8">
                             <div>
                                 <span>Email</span>
-                                <p class="text-gray-700 dark:text-gray-200 font-semibold">${account.email}</p>
+                                <c:choose>
+                                    <c:when test="${account.email != null}">
+                                        <p class="text-gray-700 dark:text-gray-200 font-semibold">${account.email}</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p class="text-gray-700 dark:text-gray-200 font-semibold">N/A</p>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                             <div>
                                 <span>Phone</span>
-                                <p class="text-gray-700 dark:text-gray-200 font-semibold">${account.phone}</p>
+                                <c:choose>
+                                    <c:when test="${account.phone != null}">
+                                        <p class="text-gray-700 dark:text-gray-200 font-semibold">${account.phone}</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p class="text-gray-700 dark:text-gray-200 font-semibold">N/A</p>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                             <div>
-                                <span>Location</span>
-                                <p class="text-gray-700 dark:text-gray-200 font-semibold">London, UK</p>
+                                <span>Address</span>
+                                <c:choose>
+                                    <c:when test="${account.address != null}">
+                                        <p class="text-gray-700 dark:text-gray-200 font-semibold">${account.address}</p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p class="text-gray-700 dark:text-gray-200 font-semibold">N/A</p>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                             <div>
                                 <span>Date of birth</span>
-                                <p class="text-gray-700 dark:text-gray-200 font-semibold">14/09/1997</p>
+                                <c:choose>
+                                    <c:when test="${account.birthday != null}">
+                                        <p class="text-gray-700 dark:text-gray-200 font-semibold">
+                                            <f:formatDate value="${account.birthday}" pattern="dd/MM/yyyy" />
+                                        </p>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <p class="text-gray-700 dark:text-gray-200 font-semibold">N/A</p>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                             <div>
                                 <span>Title</span>
@@ -68,25 +100,25 @@
                         </div>
                         <div class="mt-4 flex flex-col xl:flex-row gap-2">
                             <button class="btn btn-default w-full">
-                                                                <span class="flex items-center justify-center">
-                                                                    <span class="text-lg">
-                                                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                                                        </svg>
-                                                                    </span>
-                                                                    <span class="ltr:ml-1 rtl:mr-1">Delete</span>
-                                                                </span>
+                                <span class="flex items-center justify-center">
+                                    <span class="text-lg">
+                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="ltr:ml-1 rtl:mr-1">Delete</span>
+                                </span>
                             </button>
                             <button class="btn btn-solid w-full">
-                                                                <span class="flex items-center justify-center">
-                                                                    <span class="text-lg">
-                                                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                                                            <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
-                                                                            <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path>
-                                                                        </svg>
-                                                                    </span>
-                                                                    <span class="ltr:ml-1 rtl:mr-1">Edit</span>
-                                                                </span>
+                                <span class="flex items-center justify-center">
+                                    <span class="text-lg">
+                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
+                                            <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </span>
+                                    <span class="ltr:ml-1 rtl:mr-1">Edit</span>
+                                </span>
                             </button>
                         </div>
                     </div>
@@ -102,13 +134,13 @@
                                     <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                                         <div class="flex items-center gap-3">
                                             <div>
-                                                                                <span class="avatar avatar-circle avatar-md bg-emerald-500">
-                                                                                    <span class="avatar-icon avatar-icon-md">
-                                                                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em"xmlns="http://www.w3.org/2000/svg">
-                                                                                            <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path>
-                                                                                        </svg>
-                                                                                    </span>
-                                                                                </span>
+                                                <span class="avatar avatar-circle avatar-md bg-emerald-500">
+                                                    <span class="avatar-icon avatar-icon-md">
+                                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" aria-hidden="true" height="1em" width="1em"xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                    </span>
+                                                </span>
                                             </div>
                                             <div>
                                                 <div class="flex items-center">
@@ -122,9 +154,9 @@
                                                     <span> | </span>
                                                     <span>Next payment on 12/10/2021</span>
                                                     <span>
-                                                                                        <span class="mx-1">for</span>
-                                                                                        <span class="font-semibold text-gray-900 dark:text-gray-100">$59.90</span>
-                                                                                    </span>
+                                                    <span class="mx-1">for</span>
+                                                    <span class="font-semibold text-gray-900 dark:text-gray-100">$59.90</span>
+                                                </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -139,104 +171,66 @@
                     </div>
                 </div>
                 <div class="mb-8">
-                    <h6 class="mb-4">Payment History</h6>
+                    <h6 class="mb-4">Order History</h6>
                     <div class="overflow-x-auto">
                         <table class="table-default table-hover">
                             <thead>
-                            <th>Reference</th>
-                            <th>Product</th>
-                            <th>Status</th>
-                            <th>Date</th>
-                            <th>Amount</th>
+                                <th>Id</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Total</th>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <span class="cursor-pointer">#36223</span>
-                                    </div>
-                                </td>
-                                <td>Mock premium pack</td>
-                                <td>
-                                    <div class="flex items-center">
-                                        <span class="badge-dot bg-amber-400"></span>
-                                        <span class="ml-2 rtl:mr-2 capitalize">pending</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="flex items-center">12/10/2021</div>
-                                </td>
-                                <td>
-                                    <div class="flex items-center"><span>$39.90</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <span class="cursor-pointer">#34283</span>
-                                    </div>
-                                </td>
-                                <td>Business board pro subscription</td>
-                                <td>
-                                    <div class="flex items-center">
-                                        <span class="badge-dot bg-emerald-500"></span>
-                                        <span class="ml-2 rtl:mr-2 capitalize">paid</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="flex items-center">11/13/2021</div>
-                                </td>
-                                <td>
-                                    <div class="flex items-center">
-                                        <span>$59.90</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <span class="cursor-pointer">#32234</span>
-                                    </div>
-                                </td>
-                                <td>Business board pro subscription</td>
-                                <td>
-                                    <div class="flex items-center">
-                                        <span class="badge-dot bg-emerald-500"></span>
-                                        <span class="ml-2 rtl:mr-2 capitalize">paid</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="flex items-center">10/13/2021</div>
-                                </td>
-                                <td>
-                                    <div class="flex items-center">
-                                        <span>$59.90</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div>
-                                        <span class="cursor-pointer">#31354</span>
-                                    </div>
-                                </td>
-                                <td>Business board pro subscription</td>
-                                <td>
-                                    <div class="flex items-center">
-                                        <span class="badge-dot bg-emerald-500"></span>
-                                        <span class="ml-2 rtl:mr-2 capitalize">paid</span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="flex items-center">09/13/2021</div>
-                                </td>
-                                <td>
-                                    <div class="flex items-center">
-                                        <span>$59.90</span>
-                                    </div>
-                                </td>
-                            </tr>
+                                <c:forEach var="o" items="${orders}">
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <span class="cursor-pointer">#${o.id}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <c:choose>
+                                                <c:when test="${o.orderStatus == 'NEW'}">
+                                                    <div class="flex items-center">
+                                                        <span class="badge-dot bg-emerald-500"></span>
+                                                        <span class="ml-2 rtl:mr-2 capitalize">New</span>
+                                                    </div>
+                                                </c:when>
+                                                <c:when test="${o.orderStatus == 'PROCESSING'}">
+                                                    <div class="flex items-center">
+                                                        <span class="badge-dot bg-emerald-500"></span>
+                                                        <span class="ml-2 rtl:mr-2 capitalize">Processing</span>
+                                                    </div>
+                                                </c:when>
+                                                <c:when test="${o.orderStatus == 'SHIPPED'}">
+                                                    <div class="flex items-center">
+                                                        <span class="badge-dot bg-emerald-500"></span>
+                                                        <span class="ml-2 rtl:mr-2 capitalize">Shipped</span>
+                                                    </div>
+                                                </c:when>
+                                                <c:when test="${o.orderStatus == 'DELIVERED'}">
+                                                    <div class="flex items-center">
+                                                        <span class="badge-dot bg-emerald-500"></span>
+                                                        <span class="ml-2 rtl:mr-2 capitalize">Delivered</span>
+                                                    </div>
+                                                </c:when>
+                                                <c:when test="${o.orderStatus == 'COMPLETED'}">
+                                                    <div class="flex items-center">
+                                                        <span class="badge-dot bg-emerald-500"></span>
+                                                        <span class="ml-2 rtl:mr-2 capitalize">Completed</span>
+                                                    </div>
+                                                </c:when>
+                                            </c:choose>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center"><f:formatDate value="${o.orderDate}" pattern="dd/MM/yyyy" /></div>
+                                        </td>
+                                        <td>
+                                            <div class="flex items-center"><span>$${o.total}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>

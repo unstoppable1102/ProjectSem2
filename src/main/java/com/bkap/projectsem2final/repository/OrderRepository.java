@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
@@ -17,4 +19,5 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     @Query("SELECT COUNT(o) FROM Order o WHERE o.account.id = :accountId")
     Integer countByAccountId(@Param("accountId") Integer accountId);
     Page<Order> findByAccountId(Integer accountId, Pageable pageable);
+    List<Order> findByAccountId(Integer accountId);
 }
