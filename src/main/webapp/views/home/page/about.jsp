@@ -6,13 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<section class="inner-section single-banner" style="background: url(resources/home/images/single-banner.jpg) no-repeat center;">
+<section class="inner-section single-banner" style="background: url(${contextPath}/resources/home/images/single-banner.jpg) no-repeat center;">
     <div class="container">
         <h2>about our company</h2>
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">about</li>
-        </ol>
     </div>
 </section>
 <section class="inner-section about-company">
@@ -43,9 +39,12 @@
                 </ul>
             </div>
             <div class="col-lg-6">
-                <div class="about-img"><img src="resources/home/images/about/01.jpg" alt="about"><img src="resources/home/images/about/02.jpg"
-                                                                                       alt="about"><img src="resources/home/images/about/03.jpg" alt="about"><img src="resources/home/images/about/04.jpg"
-                                                                                                                                                   alt="about"></div>
+                <div class="about-img">
+                    <img src="${contextPath}/resources/home/images/about/01.jpg" alt="about">
+                    <img src="${contextPath}/resources/home/images/about/02.jpg" alt="about">
+                    <img src="${contextPath}/resources/home/images/about/03.jpg" alt="about">
+                    <img src="${contextPath}/resources/home/images/about/04.jpg" alt="about">
+                </div>
             </div>
         </div>
     </div>
@@ -66,8 +65,10 @@
                 </div>
             </li>
             <li>
-                <div class="testi-content"><a class="testi-img" href="#"><img src="resources/home/images/testimonial/02.jpg"
-                                                                              alt="testimonial"></a>
+                <div class="testi-content">
+                    <a class="testi-img" href="#">
+                        <img src="resources/images/undefinded.jpg" alt="testimonial">
+                    </a>
                     <div class="testi-quote"><i class="icofont-quote-left"></i>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit neque earum sapiente vitae
                             obcaecati magnam doloribus magni provident ab ipsam sint dolores repellat inventore
@@ -146,13 +147,15 @@
             <div class="col-lg-12">
                 <ul class="team-slider slider-arrow">
                     <li>
-                        <figure class="team-media"><img src="resources/home/images/team/01.jpg" alt="team">
-                            <div class="team-overlay"><a href="#" class="icofont-facebook facebook"></a><a href="#"
-                                                                                                           class="icofont-twitter twitter"></a><a href="#"
+                        <figure class="team-media">
+                            <img src="resources/images/undefinded.jpg" alt="team">
+                            <div class="team-overlay">
+                                <a href="#" class="icofont-facebook facebook"></a>
+                                <a href="#" class="icofont-twitter twitter"></a><a href="#"
                                                                                                                                                   class="icofont-linkedin linkedin"></a></div>
                         </figure>
                         <div class="team-meta">
-                            <h5><a href="#">Jhonson Hononr</a></h5>
+                            <h5><a href="#">Pham Thanh Minh</a></h5>
                             <p>Founder & CEO</p>
                         </div>
                     </li>

@@ -1,10 +1,7 @@
 package com.bkap.projectsem2final.controller.home;
 
 
-import com.bkap.projectsem2final.entities.Account;
-import com.bkap.projectsem2final.entities.Cart;
-import com.bkap.projectsem2final.entities.CartItem;
-import com.bkap.projectsem2final.entities.Wishlist;
+import com.bkap.projectsem2final.entities.*;
 import com.bkap.projectsem2final.service.*;
 import com.bkap.projectsem2final.util.Cipher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 
 @Controller
 @RequiredArgsConstructor
@@ -116,9 +116,45 @@ public class HomeController {
     }
 
     @GetMapping("my-profile")
-    public String myProfile(Model model) {
+    public String myProfile(@ModelAttribute("userId") Integer userId, Model model) {
+        model.addAttribute("account", accountService.findById(userId));
         model.addAttribute("page", "my-profile");
         return "home";
+    }
+
+    @PostMapping("my-profile/update")
+    public String updateMyProfile(@Valid @ModelAttribute Account account, BindingResult result, Model model,
+                                  @RequestParam(value="file", required = false) MultipartFile file,
+                                  HttpServletRequest req) {
+        if (result.hasErrors()) {
+            model.addAttribute("page", "my-profile");
+            model.addAttribute("account", account);
+            return "admin";
+        }else{
+            if(file != null && !file.isEmpty()) {
+                //neu tải têp mới
+                String uploadRootPath = req.getServletContext().getRealPath("resources/images");
+                File f = new File(uploadRootPath + "/" + file.getOriginalFilename());
+
+                try {
+                    //Lưu ảnh tệp mới
+                    File destination = new File(f.getAbsolutePath() + "/" + file.getOriginalFilename());
+                    file.transferTo(destination);
+                    //Cập nhật đường dẫn ảnh mới vào account
+                    account.setAvatar(file.getOriginalFilename());
+                } catch (Exception e) {
+                    model.addAttribute("error", e.getMessage());
+                    model.addAttribute("account", account);
+                    model.addAttribute("page", "my-profile");
+                    return "admin";
+                }
+            } else {
+                var accountOld = accountService.findById(account.getId());
+                account.setAvatar(accountOld.getAvatar());
+            }
+            accountService.update(account);
+            return "redirect:/";
+        }
     }
 
     @ModelAttribute("totalPrice")
