@@ -67,7 +67,7 @@
                                     </li>
                                     <li>
                                         <h6>Order Time</h6>
-                                        <p><fmt:formatDate value="${o.orderDate}" pattern="dd/MM/yyyy" /></p>
+                                        <p><fmt:formatDate value="${o.currentDate}" pattern="dd/MM/yyyy" /></p>
                                     </li>
                                     <li>
                                         <h6>Delivery Time</h6>

@@ -231,32 +231,32 @@
       <button class="modal-close" data-bs-dismiss="modal">
         <i class="icofont-close"></i>
       </button>
-      <f:form  class="modal-form" method="post" modelAttribute="account" action="update" enctype="multipart/form-data">
-        <div class="form-title">
-          <h3>edit profile info</h3>
-        </div>
-        <div class="form-group">
-          <label class="form-label">profile image</label>
-          <input class="form-control" type="file" name="file">
-        </div>
-        <div class="form-group">
-          <label class="form-label">name</label>
-          <f:input class="form-control" type="text" path="${account.fullName}" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">email</label>
-          <f:input class="form-control" type="text" path="${account.email}" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">phone</label>
-          <f:input class="form-control" type="text" path="${account.phone}" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">address</label>
-          <f:input class="form-control" type="text" path="${account.address}" />
-        </div>
-        <button class="form-btn" type="submit">save profile info</button>
-      </f:form>
+        <form class="modal-form">
+          <div class="form-title">
+            <h3>edit profile info</h3>
+          </div>
+          <div class="form-group">
+            <label class="form-label">profile image</label>
+            <input class="form-control" type="file" name="file">
+          </div>
+          <div class="form-group">
+            <label class="form-label">name</label>
+            <input class="form-control" type="text" value="${sessionScope.fullName}" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">email</label>
+            <input class="form-control" type="text" value="${sessionScope.email}" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">phone</label>
+            <input class="form-control" type="text" value="${sessionScope.phone}" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">address</label>
+            <input class="form-control" type="text" value="${sessionScope.address}" />
+          </div>
+          <button class="form-btn" type="submit">save profile info</button>
+      </form>
     </div>
   </div>
 </div>

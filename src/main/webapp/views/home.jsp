@@ -78,13 +78,14 @@
                     <c:choose>
                         <c:when test="${!empty sessionScope.userId}">
                             <li><a href="${contextPath}/logout">Logout</a></li>
+                            <li><a href="${contextPath}/change-password">Change Password</a></li>
                         </c:when>
                         <c:otherwise>
                             <li><a href="${contextPath}/login">Login</a></li>
                         </c:otherwise>
                     </c:choose>
+                    <li><a href=#">$#</a></li>
 
-                    <li><a href="${contextPath}/contact">contact us</a></li>
                 </ul>
             </div>
         </div>
@@ -178,6 +179,7 @@
                         <li class="navbar-item"><a class="navbar-link" href="${contextPath}/product">Shop</a></li>
                         <li class="navbar-item dropdown"><a class="navbar-link" href="${contextPath}/blogs">blogs</a></li>
                         <li class="navbar-item dropdown"><a class="navbar-link" href="${contextPath}/about">about</a></li>
+                        <li class="navbar-item dropdown"><a class="navbar-link" href="${contextPath}/contact">contact us</a></li>
                     </ul>
                     <div class="navbar-info-group">
                         <div class="navbar-info"><i class="icofont-ui-touch-phone"></i>
@@ -357,7 +359,7 @@
                     <p class="footer-desc">Adipisci asperiores ipsum ipsa repellat consequatur repudiandae quisquam
                         assumenda dolor perspiciatis sit ipsum dolor amet.</p>
                     <ul class="footer-social">
-                        <li><a class="icofont-facebook" href="#"></a></li>
+                        <li><a class="icofont-facebook" href=""></a></li>
                         <li><a class="icofont-twitter" href="#"></a></li>
                         <li><a class="icofont-linkedin" href="#"></a></li>
                         <li><a class="icofont-instagram" href="#"></a></li>

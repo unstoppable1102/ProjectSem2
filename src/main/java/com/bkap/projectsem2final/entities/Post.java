@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "posts")
@@ -42,6 +45,10 @@ public class Post {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="postCategoryId", referencedColumnName = "id", insertable = false, updatable = false)
     private PostCategory postCategory;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdDate;
 
 
 }

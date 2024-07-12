@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface AccountService extends GenericService<Account, Integer> {
-    public Account findByUsername(String username);
-    public boolean existsByUsername(String username);
+    Account findByUsername(String username);
+    boolean existsByUsername(String username);
+    boolean changePassword(String username, String oldPassword, String newPassword);
 }

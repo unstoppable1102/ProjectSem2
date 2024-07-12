@@ -8,10 +8,10 @@ import com.bkap.projectsem2final.service.OrderItemService;
 import com.bkap.projectsem2final.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Controller(value = "OrderControllerOfHome")
@@ -84,7 +84,6 @@ public class OrderController {
             model.addAttribute("counterOrder", counter);
             model.addAttribute("size", size);
             model.addAttribute("page", "order/list");
-
         return "home";
     }
 }
